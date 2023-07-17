@@ -15,6 +15,10 @@
 		AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */; };
 		AAFEA5012A6566FE00080313 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5002A6566FE00080313 /* Problem.swift */; };
 		AAFEA5032A65670F00080313 /* Workbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5022A65670F00080313 /* Workbook.swift */; };
+		AAFEA5052A65675800080313 /* WorkbookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5042A65675800080313 /* WorkbookViewModel.swift */; };
+		AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5072A65679500080313 /* Array+subscript.swift */; };
+		AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */; };
+		AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50D2A6568AC00080313 /* WorkbookError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookListCell.swift; sourceTree = "<group>"; };
 		AAFEA5002A6566FE00080313 /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		AAFEA5022A65670F00080313 /* Workbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workbook.swift; sourceTree = "<group>"; };
+		AAFEA5042A65675800080313 /* WorkbookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookViewModel.swift; sourceTree = "<group>"; };
+		AAFEA5072A65679500080313 /* Array+subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+subscript.swift"; sourceTree = "<group>"; };
+		AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
+		AAFEA50D2A6568AC00080313 /* WorkbookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +52,9 @@
 		AA21F0952A64E3BD00744DBD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AAFEA50C2A65689B00080313 /* Error */,
+				AAFEA5062A65677C00080313 /* Extension */,
+				AAFEA5092A65682500080313 /* Utility */,
 				AA21F0982A64E59100744DBD /* Workbook */,
 				AAFEA4FF2A6566EC00080313 /* Problem */,
 			);
@@ -73,6 +84,7 @@
 			children = (
 				AAFEA5022A65670F00080313 /* Workbook.swift */,
 				AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */,
+				AAFEA5042A65675800080313 /* WorkbookViewModel.swift */,
 				AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */,
 			);
 			path = Workbook;
@@ -111,6 +123,30 @@
 				AAFEA5002A6566FE00080313 /* Problem.swift */,
 			);
 			path = Problem;
+			sourceTree = "<group>";
+		};
+		AAFEA5062A65677C00080313 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA5072A65679500080313 /* Array+subscript.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		AAFEA5092A65682500080313 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		AAFEA50C2A65689B00080313 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA50D2A6568AC00080313 /* WorkbookError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +220,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
+				AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */,
+				AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */,
+				AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */,
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
+				AAFEA5052A65675800080313 /* WorkbookViewModel.swift in Sources */,
 				AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */,
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
