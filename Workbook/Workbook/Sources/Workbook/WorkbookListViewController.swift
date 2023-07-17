@@ -157,7 +157,7 @@ extension WorkbookListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         do {
             try viewModel.selectWorkbook(at: indexPath)
-            let problemListViewController = ProblemListViewController()
+            let problemListViewController = ProblemListViewController(viewModel: viewModel)
             
             navigationController?.pushViewController(problemListViewController, animated: true)
         } catch {
