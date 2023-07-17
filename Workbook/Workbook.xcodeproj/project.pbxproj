@@ -19,6 +19,8 @@
 		AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5072A65679500080313 /* Array+subscript.swift */; };
 		AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */; };
 		AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50D2A6568AC00080313 /* WorkbookError.swift */; };
+		AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50F2A656A3300080313 /* AlertManager.swift */; };
+		AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5112A656A5500080313 /* ProblemListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		AAFEA5072A65679500080313 /* Array+subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+subscript.swift"; sourceTree = "<group>"; };
 		AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifying.swift; sourceTree = "<group>"; };
 		AAFEA50D2A6568AC00080313 /* WorkbookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookError.swift; sourceTree = "<group>"; };
+		AAFEA50F2A656A3300080313 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		AAFEA5112A656A5500080313 /* ProblemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEA5002A6566FE00080313 /* Problem.swift */,
+				AAFEA5112A656A5500080313 /* ProblemListViewController.swift */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */,
+				AAFEA50F2A656A3300080313 /* AlertManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -220,6 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
+				AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */,
+				AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */,
 				AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */,
 				AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */,
 				AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */,

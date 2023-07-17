@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class WorkbookListViewController: UIViewController {
     enum Section {
@@ -17,6 +18,7 @@ final class WorkbookListViewController: UIViewController {
                                               collectionViewLayout: createCollectionViewLayout())
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = self
         collectionView.dataSource = dataSource
         collectionView.register(WorkbookListCell.self, forCellWithReuseIdentifier: WorkbookListCell.reuseIdentifier)
         
@@ -24,6 +26,8 @@ final class WorkbookListViewController: UIViewController {
     }()
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Workbook>?
+    private let viewModel = WorkbookViewModel()
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,7 @@ final class WorkbookListViewController: UIViewController {
         setupLeftBarButton()
         setupRightBarButton()
         setupDataSource()
+        bind()
     }
     
     private func setupView() {
@@ -89,7 +94,13 @@ final class WorkbookListViewController: UIViewController {
     }
     
     @objc private func addFolder() {
+        let alertManager = AlertManager()
         
+        let alert = alertManager.createNewFolderAlert() { [weak self] title in
+            self?.viewModel.createWorkbook(title)
+        }
+        
+        self.present(alert, animated: true)
     }
     
     private func createCollectionViewLayout() -> UICollectionViewLayout {
@@ -124,6 +135,14 @@ final class WorkbookListViewController: UIViewController {
         }
     }
     
+    private func bind() {
+        viewModel.$workbookList
+            .sink { [weak self] workbookList in
+                self?.applySnapshot(workbookList: workbookList)
+            }
+            .store(in: &subscriptions)
+    }
+    
     private func applySnapshot(workbookList: [Workbook]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Workbook>()
 
@@ -131,5 +150,18 @@ final class WorkbookListViewController: UIViewController {
         snapshot.appendItems(workbookList)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension WorkbookListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        do {
+            try viewModel.selectWorkbook(at: indexPath)
+            let problemListViewController = ProblemListViewController()
+            
+            navigationController?.pushViewController(problemListViewController, animated: true)
+        } catch {
+            return
+        }
     }
 }
