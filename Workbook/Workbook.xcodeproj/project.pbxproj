@@ -21,6 +21,7 @@
 		AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50D2A6568AC00080313 /* WorkbookError.swift */; };
 		AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50F2A656A3300080313 /* AlertManager.swift */; };
 		AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5112A656A5500080313 /* ProblemListViewController.swift */; };
+		AAFEA5142A657DE700080313 /* ProblemControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5132A657DE700080313 /* ProblemControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AAFEA50D2A6568AC00080313 /* WorkbookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookError.swift; sourceTree = "<group>"; };
 		AAFEA50F2A656A3300080313 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		AAFEA5112A656A5500080313 /* ProblemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListViewController.swift; sourceTree = "<group>"; };
+		AAFEA5132A657DE700080313 /* ProblemControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				AAFEA5002A6566FE00080313 /* Problem.swift */,
 				AAFEA5112A656A5500080313 /* ProblemListViewController.swift */,
+				AAFEA5132A657DE700080313 /* ProblemControlView.swift */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
 				AAFEA5052A65675800080313 /* WorkbookViewModel.swift in Sources */,
 				AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */,
+				AAFEA5142A657DE700080313 /* ProblemControlView.swift in Sources */,
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
