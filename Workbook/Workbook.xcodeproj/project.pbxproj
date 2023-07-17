@@ -13,6 +13,8 @@
 		AAB38CCA2A64E249004E0A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAB38CC92A64E249004E0A55 /* Assets.xcassets */; };
 		AAB38CCD2A64E249004E0A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB38CCB2A64E249004E0A55 /* LaunchScreen.storyboard */; };
 		AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */; };
+		AAFEA5012A6566FE00080313 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5002A6566FE00080313 /* Problem.swift */; };
+		AAFEA5032A65670F00080313 /* Workbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5022A65670F00080313 /* Workbook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AAB38CCC2A64E249004E0A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAB38CCE2A64E249004E0A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookListCell.swift; sourceTree = "<group>"; };
+		AAFEA5002A6566FE00080313 /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
+		AAFEA5022A65670F00080313 /* Workbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workbook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				AA21F0982A64E59100744DBD /* Workbook */,
+				AAFEA4FF2A6566EC00080313 /* Problem */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -66,6 +71,7 @@
 		AA21F0982A64E59100744DBD /* Workbook */ = {
 			isa = PBXGroup;
 			children = (
+				AAFEA5022A65670F00080313 /* Workbook.swift */,
 				AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */,
 				AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */,
 			);
@@ -97,6 +103,14 @@
 				AAB38CCE2A64E249004E0A55 /* Info.plist */,
 			);
 			path = Workbook;
+			sourceTree = "<group>";
+		};
+		AAFEA4FF2A6566EC00080313 /* Problem */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA5002A6566FE00080313 /* Problem.swift */,
+			);
+			path = Problem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +186,9 @@
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
 				AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */,
+				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
+				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
