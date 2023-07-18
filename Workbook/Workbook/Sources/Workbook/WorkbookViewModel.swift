@@ -11,6 +11,9 @@ import Combine
 final class WorkbookViewModel {
     @Published var workbookList = [Workbook]()
     var selectedWorkbook: Workbook?
+    var selectedWorkbookTitle: String? {
+        return selectedWorkbook?.title
+    }
     
     func createWorkbook(_ title: String) {
         let workbook = Workbook(title: title, problems: [])

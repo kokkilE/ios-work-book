@@ -25,12 +25,59 @@ final class ProblemListViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setupNavigationItems()
         addSubviews()
         layout()
     }
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func setupNavigationItems() {
+        setupNavigationLeftBarButtonItem()
+        setupNavigationRightBarButtonItem()
+    }
+    
+    private func setupNavigationLeftBarButtonItem() {
+        let systemImageName = "chevron.backward"
+        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
+        let backImage = UIImage(systemName: systemImageName, withConfiguration: imageConfiguration)
+        
+        let leftBarButton = UIButton()
+        leftBarButton.addTarget(self, action: #selector(dismissProblemList),
+                                for: .touchUpInside)
+        leftBarButton.setImage(backImage, for: .normal)
+        leftBarButton.setTitle(viewModel.selectedWorkbookTitle, for: .normal)
+        leftBarButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        leftBarButton.setTitleColor(.black, for: .normal)
+        leftBarButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
+    }
+    
+    private func setupNavigationRightBarButtonItem() {
+        let systemImageName = "plus.app"
+        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
+        let addImage = UIImage(systemName: systemImageName, withConfiguration: imageConfiguration)
+        
+        let rightBarButton = UIButton()
+        rightBarButton.addTarget(self, action: #selector(addProblem), for: .touchUpInside)
+        rightBarButton.setImage(addImage, for: .normal)
+        rightBarButton.setTitle("문제 추가", for: .normal)
+        rightBarButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        rightBarButton.setTitleColor(.black, for: .normal)
+        rightBarButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+    }
+    
+    @objc private func dismissProblemList() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func addProblem() {
+        
     }
     
     private func addSubviews() {

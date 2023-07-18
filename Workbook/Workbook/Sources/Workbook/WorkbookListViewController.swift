@@ -88,12 +88,12 @@ final class WorkbookListViewController: UIViewController {
         let rightBarButton = UIBarButtonItem(image: image,
                                              style: .plain,
                                              target: self,
-                                             action: #selector(addFolder))
+                                             action: #selector(addWorkbook))
         
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc private func addFolder() {
+    @objc private func addWorkbook() {
         let alertManager = AlertManager()
         
         let alert = alertManager.createNewFolderAlert() { [weak self] title in
