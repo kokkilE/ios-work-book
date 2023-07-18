@@ -35,55 +35,51 @@ final class ProblemListViewController: UIViewController {
     }
     
     private func setupNavigationItems() {
+        setupNavigationTitle()
         setupNavigationLeftBarButtonItem()
         setupNavigationRightBarButtonItem()
     }
     
+    private func setupNavigationTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = viewModel.selectedWorkbookTitle
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let halfViewWidth = view.frame.width * 0.50
+        titleLabel.widthAnchor.constraint(equalToConstant: halfViewWidth).isActive = true
+        
+        navigationItem.titleView = titleLabel
+    }
+    
     private func setupNavigationLeftBarButtonItem() {
-        let systemImageName = "chevron.backward"
-        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
-        let backImage = UIImage(systemName: systemImageName, withConfiguration: imageConfiguration)
+        let systemImageName = "arrow.left"
+        let backImage = UIImage(systemName: systemImageName)
         
-        let leftBarButton = UIButton()
-        leftBarButton.addTarget(self, action: #selector(dismissProblemList),
-                                for: .touchUpInside)
-        leftBarButton.setImage(backImage, for: .normal)
-        leftBarButton.setTitle(viewModel.selectedWorkbookTitle, for: .normal)
-        leftBarButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
-        leftBarButton.titleLabel?.lineBreakMode = .byTruncatingTail
-        leftBarButton.contentHorizontalAlignment = .left
-        leftBarButton.setTitleColor(.black, for: .normal)
+        let leftBarButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(dismissProblemListViewController))
         leftBarButton.tintColor = .black
-        leftBarButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let halfViewFrameWidth = view.frame.width * 0.5
-        leftBarButton.widthAnchor.constraint(equalToConstant: halfViewFrameWidth).isActive = true
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
+        navigationItem.leftBarButtonItem = leftBarButton
     }
     
     private func setupNavigationRightBarButtonItem() {
-        let systemImageName = "plus.app"
-        let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold)
-        let addImage = UIImage(systemName: systemImageName, withConfiguration: imageConfiguration)
+        let systemImageName = "plus"
+        let addImage = UIImage(systemName: systemImageName)
         
-        let rightBarButton = UIButton()
-        rightBarButton.addTarget(self, action: #selector(addProblem), for: .touchUpInside)
-        rightBarButton.setImage(addImage, for: .normal)
-        rightBarButton.setTitle("문제 추가", for: .normal)
-        rightBarButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
-        rightBarButton.setTitleColor(.black, for: .normal)
+        let rightBarButton = UIBarButtonItem(image: addImage, style: .plain, target: self, action: #selector(addProblem))
         rightBarButton.tintColor = .black
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
+        navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc private func dismissProblemList() {
+    @objc private func dismissProblemListViewController() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func addProblem() {
+        let problemAddViewController = ProblemAddViewController()
         
+        navigationController?.pushViewController(problemAddViewController, animated: true)
     }
     
     private func addSubviews() {

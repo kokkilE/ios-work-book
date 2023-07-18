@@ -22,6 +22,8 @@
 		AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA50F2A656A3300080313 /* AlertManager.swift */; };
 		AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5112A656A5500080313 /* ProblemListViewController.swift */; };
 		AAFEA5142A657DE700080313 /* ProblemControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5132A657DE700080313 /* ProblemControlView.swift */; };
+		AAFEA5162A66B66C00080313 /* ProblemAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */; };
+		AAFEA5182A66B6F200080313 /* ProblemAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5172A66B6F200080313 /* ProblemAddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		AAFEA50F2A656A3300080313 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		AAFEA5112A656A5500080313 /* ProblemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemListViewController.swift; sourceTree = "<group>"; };
 		AAFEA5132A657DE700080313 /* ProblemControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemControlView.swift; sourceTree = "<group>"; };
+		AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemAddViewController.swift; sourceTree = "<group>"; };
+		AAFEA5172A66B6F200080313 /* ProblemAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemAddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				AAFEA5002A6566FE00080313 /* Problem.swift */,
 				AAFEA5112A656A5500080313 /* ProblemListViewController.swift */,
 				AAFEA5132A657DE700080313 /* ProblemControlView.swift */,
+				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
+				AAFEA5172A66B6F200080313 /* ProblemAddView.swift */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -228,10 +234,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFEA5162A66B66C00080313 /* ProblemAddViewController.swift in Sources */,
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
 				AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */,
 				AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */,
 				AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */,
+				AAFEA5182A66B6F200080313 /* ProblemAddView.swift in Sources */,
 				AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */,
 				AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */,
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
