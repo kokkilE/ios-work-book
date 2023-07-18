@@ -50,8 +50,14 @@ final class ProblemListViewController: UIViewController {
         leftBarButton.setImage(backImage, for: .normal)
         leftBarButton.setTitle(viewModel.selectedWorkbookTitle, for: .normal)
         leftBarButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        leftBarButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        leftBarButton.contentHorizontalAlignment = .left
         leftBarButton.setTitleColor(.black, for: .normal)
         leftBarButton.tintColor = .black
+        leftBarButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let halfViewFrameWidth = view.frame.width * 0.5
+        leftBarButton.widthAnchor.constraint(equalToConstant: halfViewFrameWidth).isActive = true
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
     }
