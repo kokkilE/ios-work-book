@@ -10,7 +10,6 @@ import UIKit
 final class ProblemControlView: UIStackView {
     private let solveProblemButton = {
         let button = UIButton()
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -18,7 +17,6 @@ final class ProblemControlView: UIStackView {
     
     private let addProblemButton = {
         let button = UIButton()
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button

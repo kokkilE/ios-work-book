@@ -10,7 +10,6 @@ import UIKit
 final class WorkbookListCell: UICollectionViewCell {
     private let imageView = {
         let imageView = UIImageView()
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -18,7 +17,6 @@ final class WorkbookListCell: UICollectionViewCell {
     
     private let label = {
         let label = UILabel()
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         

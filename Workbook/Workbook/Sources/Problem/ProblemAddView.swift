@@ -17,11 +17,11 @@ final class ProblemAddView: UIStackView {
     
     private let titleLabelStackView = {
         let titleLabel = UILabel()
-        titleLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.font = .boldSystemFont(ofSize: 24)
         titleLabel.text = "문항의 제목"
         
         let descriptionLabel = UILabel()
-        descriptionLabel.font = .systemFont(ofSize: 16)
+        descriptionLabel.font = .systemFont(ofSize: 20)
         descriptionLabel.text = "을 입력하세요."
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
