@@ -8,16 +8,33 @@
 import UIKit
 
 final class ProblemAddViewController: UIViewController {
+    private let problemAddView = ProblemAddView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        addSubviews()
+        layout()
         setupNavigationItems()
     }
     
     private func setupView() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func addSubviews() {
+        view.addSubview(problemAddView)
+    }
+    
+    private func layout() {
+        let safe = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            problemAddView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
+            problemAddView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
+            problemAddView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16)
+        ])
     }
     
     private func setupNavigationItems() {
