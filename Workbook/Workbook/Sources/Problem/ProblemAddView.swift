@@ -15,34 +15,22 @@ final class ProblemAddView: UIStackView {
         return segmentedControl
     }()
     
-    private let titleLabelStackView = {
+    private let titleStackView = {
         let titleLabel = UILabel()
         titleLabel.font = .boldSystemFont(ofSize: 24)
         titleLabel.text = "문항의 제목"
         titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
-        let descriptionLabel = UILabel()
-        descriptionLabel.font = .systemFont(ofSize: 20)
-        descriptionLabel.text = "을 입력하세요."
-        descriptionLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        let titleTextField = UITextField()
+        titleTextField.placeholder = "문항의 제목을 입력하세요."
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .bottom
-        
-        return stackView
-    }()
-    
-    private let titleStackView = {
-        let title = UITextField()
-        
-        let stackView = UIStackView(arrangedSubviews: [title])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleTextField])
         stackView.layer.borderWidth = 2
         stackView.layer.borderColor = UIColor.gray.cgColor
-        
+        stackView.spacing = 12
         stackView.backgroundColor = .systemGray6
-        stackView.axis = .horizontal
-        stackView.alignment = .bottom
+        stackView.axis = .vertical
+        stackView.alignment = .leading
         stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stackView.isLayoutMarginsRelativeArrangement = true
         
@@ -68,7 +56,6 @@ final class ProblemAddView: UIStackView {
     
     private func addSubviews() {
         addArrangedSubview(segmentedControl)
-        addArrangedSubview(titleLabelStackView)
         addArrangedSubview(titleStackView)
     }
 }
