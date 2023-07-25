@@ -17,23 +17,28 @@ final class ProblemAddView: UIStackView {
     
     private let titleStackView = {
         let titleLabel = UILabel()
-        titleLabel.font = .boldSystemFont(ofSize: 24)
-        titleLabel.text = "문항의 제목"
-        titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        titleLabel.font = .systemFont(ofSize: 20)
+        titleLabel.text = "문항 제목"
         
         let titleTextField = UITextField()
         titleTextField.placeholder = "문항의 제목을 입력하세요."
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleTextField])
-        stackView.layer.borderWidth = 2
-        stackView.layer.borderColor = UIColor.gray.cgColor
-        stackView.spacing = 12
-        stackView.backgroundColor = .systemGray6
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        stackView.isLayoutMarginsRelativeArrangement = true
+        let bottomBorder = UIView()
+        bottomBorder.backgroundColor = .systemGray4
+        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
+        bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        let textFieldStackView = UIStackView(arrangedSubviews: [titleTextField, bottomBorder])
+        textFieldStackView.spacing = 4
+        textFieldStackView.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        textFieldStackView.isLayoutMarginsRelativeArrangement = true
+        textFieldStackView.axis = .vertical
+        
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, textFieldStackView])
+        stackView.spacing = 4
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+                
         return stackView
     }()
     
