@@ -8,7 +8,7 @@
 import UIKit
 
 final class ProblemTitleView: UIStackView {
-    private let problemTextView = ProblemTextView()
+    private let problemTextView = ProblemTextView(placeHolder: "문항 제목을 입력하세요.")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

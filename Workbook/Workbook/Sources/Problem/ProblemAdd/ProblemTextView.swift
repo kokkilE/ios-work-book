@@ -8,8 +8,12 @@
 import UIKit
 
 final class ProblemTextView: UITextView {
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
+    private let placeHolder: String?
+    
+    init(placeHolder: String? = nil) {
+        self.placeHolder = placeHolder
+        
+        super.init(frame: .zero, textContainer: .none)
         
         setupView()
     }
@@ -21,6 +25,10 @@ final class ProblemTextView: UITextView {
     private func setupView() {
         isScrollEnabled = false
         delegate = self
+        
+        font = .systemFont(ofSize: 16)
+        text = placeHolder
+        textColor = .placeholderText
     }
 }
 
@@ -28,6 +36,20 @@ extension ProblemTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let contentSize = sizeThatFits(CGSize(width: bounds.width, height: bounds.height))
         
-        frame = CGRect(origin: .zero, size: contentSize)
+        bounds = CGRect(origin: .zero, size: contentSize)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if text == placeHolder {
+            text = nil
+            textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if text.isEmpty {
+            text = placeHolder
+            textColor = .placeholderText
+        }
     }
 }
