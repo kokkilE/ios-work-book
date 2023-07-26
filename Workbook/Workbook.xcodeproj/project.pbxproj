@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA7C35392A70E97800B6B0C5 /* ProblemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */; };
 		AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC02A64E248004E0A55 /* AppDelegate.swift */; };
 		AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */; };
 		AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleView.swift; sourceTree = "<group>"; };
 		AAB38CBD2A64E248004E0A55 /* Workbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB38CC02A64E248004E0A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				AAFEA5132A657DE700080313 /* ProblemControlView.swift */,
 				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
 				AAFEA5172A66B6F200080313 /* ProblemAddView.swift */,
+				AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
+				AA7C35392A70E97800B6B0C5 /* ProblemTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

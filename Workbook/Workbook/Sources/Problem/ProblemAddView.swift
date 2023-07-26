@@ -15,40 +15,11 @@ final class ProblemAddView: UIStackView {
         return segmentedControl
     }()
     
-    private let titleTextView = {
-        let titleTextView = UITextView()
-        titleTextView.isScrollEnabled = false
-        titleTextView.translatesAutoresizingMaskIntoConstraints = false
-        titleTextView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        return titleTextView
-    }()
+    private let problemTitleView = ProblemTitleView()
     
-    private lazy var titleStackView = {
-        let titleLabel = UILabel()
-        titleLabel.font = .systemFont(ofSize: 20)
-        titleLabel.text = "문항 제목"
-        
-        let bottomBorder = UIView()
-        bottomBorder.backgroundColor = .systemGray4
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
-        let textFieldStackView = UIStackView(arrangedSubviews: [titleTextView, bottomBorder])
-        textFieldStackView.spacing = 4
-        textFieldStackView.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        textFieldStackView.isLayoutMarginsRelativeArrangement = true
-        textFieldStackView.axis = .vertical
-        
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, textFieldStackView])
-        stackView.spacing = 4
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-                
-        return stackView
-    }()
+    private let exampleTextFieldList = [UITextField]()
     
-    private let exampleStackView = {
+    private lazy var exampleStackView = {
         let exampleLabel = UILabel()
         exampleLabel.font = .systemFont(ofSize: 20)
         exampleLabel.text = "문항 보기"
@@ -95,7 +66,7 @@ final class ProblemAddView: UIStackView {
     
     private func addSubviews() {
         addArrangedSubview(segmentedControl)
-        addArrangedSubview(titleStackView)
+        addArrangedSubview(problemTitleView)
         addArrangedSubview(exampleStackView)
     }
 }
