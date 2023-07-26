@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA7C35392A70E97800B6B0C5 /* ProblemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */; };
+		AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */; };
 		AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC02A64E248004E0A55 /* AppDelegate.swift */; };
 		AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */; };
 		AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleView.swift; sourceTree = "<group>"; };
+		AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleView.swift; sourceTree = "<group>"; };
 		AAB38CBD2A64E248004E0A55 /* Workbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB38CC02A64E248004E0A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
 				AAFEA5172A66B6F200080313 /* ProblemAddView.swift */,
 				AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */,
+				AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */,
 				AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */,
 				AAFEA5182A66B6F200080313 /* ProblemAddView.swift in Sources */,
+				AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleView.swift in Sources */,
 				AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */,
 				AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */,
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
