@@ -8,14 +8,7 @@
 import UIKit
 
 final class ProblemTitleView: UIStackView {
-    private let titleTextView = {
-        let titleTextView = UITextView()
-        titleTextView.isScrollEnabled = false
-        titleTextView.translatesAutoresizingMaskIntoConstraints = false
-        titleTextView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        return titleTextView
-    }()
+    private let problemTextView = ProblemTextView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +30,7 @@ final class ProblemTitleView: UIStackView {
         bottomBorder.translatesAutoresizingMaskIntoConstraints = false
         bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        let textFieldStackView = UIStackView(arrangedSubviews: [titleTextView, bottomBorder])
+        let textFieldStackView = UIStackView(arrangedSubviews: [problemTextView, bottomBorder])
         textFieldStackView.spacing = 4
         textFieldStackView.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         textFieldStackView.isLayoutMarginsRelativeArrangement = true
