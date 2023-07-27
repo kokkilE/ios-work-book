@@ -8,10 +8,21 @@
 import UIKit
 
 final class ProblemExampleStackView: UIStackView {
+    private var defaultNumberOfExamples = 4
     private var exampleTextViewList = [ProblemTextView]()
-    private var removeButtonList = [UIButton]()
+    private var removeButtonList = [UIButton]() {
+        didSet {
+            if removeButtonList.count <= 2 {
+                removeButtonList.forEach { $0.isHidden = true }
+
+                return
+            }
+
+            removeButtonList.forEach { $0.isHidden = false }
+        }
+    }
     
-    private let exampleItemStackView = {
+    private let exampleItemsStackView = {
         let stackView = UIStackView()
         stackView.spacing = 12
         stackView.axis = .vertical
@@ -26,8 +37,10 @@ final class ProblemExampleStackView: UIStackView {
         super.init(frame: frame)
         
         setupView()
-        addExampleItem()
-        addExampleItem()
+        
+        for _ in 1...defaultNumberOfExamples {
+            addExampleItem()
+        }
     }
     
     required init(coder: NSCoder) {
@@ -50,7 +63,7 @@ final class ProblemExampleStackView: UIStackView {
         exampleStackView.axis = .horizontal
         
         addArrangedSubview(exampleStackView)
-        addArrangedSubview(exampleItemStackView)
+        addArrangedSubview(exampleItemsStackView)
         spacing = 4
         axis = .vertical
         alignment = .fill
@@ -66,22 +79,21 @@ final class ProblemExampleStackView: UIStackView {
         removeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         removeButton.addTarget(self, action: #selector(removeExampleItem), for: .touchUpInside)
 
-        let stackView = UIStackView(arrangedSubviews: [exampleTextView, removeButton])
+        let itemStackView = UIStackView(arrangedSubviews: [exampleTextView, removeButton])
         
         removeButtonList.append(removeButton)
         exampleTextViewList.append(exampleTextView)
-        exampleItemStackView.addArrangedSubview(stackView)
+        exampleItemsStackView.addArrangedSubview(itemStackView)
     }
     
     @objc private func removeExampleItem(_ sender: UIButton) {
         guard let index = removeButtonList.firstIndex(where: { $0 == sender } ),
-              let superView = sender.superview,
               exampleTextViewList[safe: index] != nil else {
             return
         }
         
         removeButtonList.remove(at: index)
         exampleTextViewList.remove(at: index)
-        exampleItemStackView.removeArrangedSubview(superView)
+        sender.superview?.removeFromSuperview()
     }
 }

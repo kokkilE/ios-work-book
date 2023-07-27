@@ -15,8 +15,8 @@ final class ProblemAddView: UIStackView {
         return segmentedControl
     }()
     
-    private let problemTitleView = ProblemTitleStackView()
-    private let problemExampleView = ProblemExampleStackView()
+    private let problemTitleStackView = ProblemTitleStackView()
+    private let problemExampleStackView = ProblemExampleStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +37,7 @@ final class ProblemAddView: UIStackView {
     
     private func addSubviews() {
         addArrangedSubview(segmentedControl)
-        addArrangedSubview(problemTitleView)
-        addArrangedSubview(problemExampleView)
+        addArrangedSubview(problemTitleStackView)
+        addArrangedSubview(problemExampleStackView)
     }
 }
