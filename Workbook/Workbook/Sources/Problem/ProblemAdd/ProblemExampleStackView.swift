@@ -1,5 +1,5 @@
 //
-//  ProblemExampleView.swift
+//  ProblemExampleStackView.swift
 //  Workbook
 //
 //  Created by 조향래 on 2023/07/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProblemExampleView: UIStackView {
+final class ProblemExampleStackView: UIStackView {
     private var exampleTextFieldList = [UITextField]()
     
     private let textFieldStackView = {

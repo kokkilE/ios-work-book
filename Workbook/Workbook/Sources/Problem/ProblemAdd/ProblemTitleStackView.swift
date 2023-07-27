@@ -1,5 +1,5 @@
 //
-//  ProblemTitleView.swift
+//  ProblemTitleStackView.swift
 //  Workbook
 //
 //  Created by 조향래 on 2023/07/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProblemTitleView: UIStackView {
+final class ProblemTitleStackView: UIStackView {
     private let problemTextView = ProblemTextView(placeHolder: "문항 제목을 입력하세요.")
     
     override init(frame: CGRect) {

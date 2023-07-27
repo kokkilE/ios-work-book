@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA7C35392A70E97800B6B0C5 /* ProblemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */; };
-		AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */; };
+		AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */; };
+		AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */; };
 		AA7C35402A714C8400B6B0C5 /* ProblemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */; };
 		AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC02A64E248004E0A55 /* AppDelegate.swift */; };
 		AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */; };
@@ -30,8 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleView.swift; sourceTree = "<group>"; };
-		AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleView.swift; sourceTree = "<group>"; };
+		AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleStackView.swift; sourceTree = "<group>"; };
+		AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleStackView.swift; sourceTree = "<group>"; };
 		AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTextView.swift; sourceTree = "<group>"; };
 		AAB38CBD2A64E248004E0A55 /* Workbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB38CC02A64E248004E0A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 			children = (
 				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
 				AAFEA5172A66B6F200080313 /* ProblemAddView.swift */,
-				AA7C35382A70E97800B6B0C5 /* ProblemTitleView.swift */,
-				AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleView.swift */,
+				AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */,
+				AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */,
 				AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */,
 			);
 			path = ProblemAdd;
@@ -274,7 +274,7 @@
 				AAFEA50B2A65683400080313 /* ReuseIdentifying.swift in Sources */,
 				AA7C35402A714C8400B6B0C5 /* ProblemTextView.swift in Sources */,
 				AAFEA5182A66B6F200080313 /* ProblemAddView.swift in Sources */,
-				AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleView.swift in Sources */,
+				AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift in Sources */,
 				AAFEA50E2A6568AC00080313 /* WorkbookError.swift in Sources */,
 				AAFEA5082A65679500080313 /* Array+subscript.swift in Sources */,
 				AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */,
@@ -284,7 +284,7 @@
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
-				AA7C35392A70E97800B6B0C5 /* ProblemTitleView.swift in Sources */,
+				AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
