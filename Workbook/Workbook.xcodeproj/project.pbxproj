@@ -126,11 +126,11 @@
 		AA7C353E2A714C1D00B6B0C5 /* ProblemAdd */ = {
 			isa = PBXGroup;
 			children = (
+				AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */,
 				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
 				AAFEA5172A66B6F200080313 /* ProblemAddView.swift */,
 				AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */,
 				AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */,
-				AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */,
 			);
 			path = ProblemAdd;
 			sourceTree = "<group>";

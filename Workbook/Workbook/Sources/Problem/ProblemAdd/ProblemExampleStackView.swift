@@ -8,9 +8,10 @@
 import UIKit
 
 final class ProblemExampleStackView: UIStackView {
-    private var exampleTextFieldList = [UITextField]()
+    private var exampleTextViewList = [ProblemTextView]()
+    private var removeButtonList = [UIButton]()
     
-    private let textFieldStackView = {
+    private let exampleItemStackView = {
         let stackView = UIStackView()
         stackView.spacing = 12
         stackView.axis = .vertical
@@ -25,8 +26,8 @@ final class ProblemExampleStackView: UIStackView {
         super.init(frame: frame)
         
         setupView()
-        addTextField()
-        addTextField()
+        addExampleItem()
+        addExampleItem()
     }
     
     required init(coder: NSCoder) {
@@ -42,26 +43,45 @@ final class ProblemExampleStackView: UIStackView {
         let addImage = UIImage(systemName: "plus")
         let addExampleButton = UIButton()
         addExampleButton.setImage(addImage, for: .normal)
-        addExampleButton.addTarget(self, action: #selector(addTextField), for: .touchUpInside)
+        addExampleButton.addTarget(self, action: #selector(addExampleItem), for: .touchUpInside)
         addExampleButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         let exampleStackView = UIStackView(arrangedSubviews: [exampleLabel, addExampleButton])
         exampleStackView.axis = .horizontal
         
         addArrangedSubview(exampleStackView)
-        addArrangedSubview(textFieldStackView)
+        addArrangedSubview(exampleItemStackView)
         spacing = 4
         axis = .vertical
         alignment = .fill
     }
     
-    @objc private func addTextField() {
-        let titleTextField = UITextField()
-        titleTextField.placeholder = "문항의 보기를 입력하세요."
-        titleTextField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+    @objc private func addExampleItem() {
+        let exampleTextView = ProblemTextView(placeHolder: "문항의 보기를 입력하세요.")
+        exampleTextView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
-        exampleTextFieldList.append(titleTextField)
+        let removeImage = UIImage(systemName: "xmark")
+        let removeButton = UIButton()
+        removeButton.setImage(removeImage, for: .normal)
+        removeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        removeButton.addTarget(self, action: #selector(removeExampleItem), for: .touchUpInside)
+
+        let stackView = UIStackView(arrangedSubviews: [exampleTextView, removeButton])
         
-        textFieldStackView.addArrangedSubview(titleTextField)
+        removeButtonList.append(removeButton)
+        exampleTextViewList.append(exampleTextView)
+        exampleItemStackView.addArrangedSubview(stackView)
+    }
+    
+    @objc private func removeExampleItem(_ sender: UIButton) {
+        guard let index = removeButtonList.firstIndex(where: { $0 == sender } ),
+              let superView = sender.superview,
+              exampleTextViewList[safe: index] != nil else {
+            return
+        }
+        
+        removeButtonList.remove(at: index)
+        exampleTextViewList.remove(at: index)
+        exampleItemStackView.removeArrangedSubview(superView)
     }
 }
