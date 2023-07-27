@@ -14,7 +14,6 @@ final class ProblemExampleStackView: UIStackView {
         didSet {
             if removeButtonList.count <= 2 {
                 removeButtonList.forEach { $0.isHidden = true }
-
                 return
             }
 
@@ -76,6 +75,7 @@ final class ProblemExampleStackView: UIStackView {
         let removeImage = UIImage(systemName: "xmark")
         let removeButton = UIButton()
         removeButton.setImage(removeImage, for: .normal)
+        removeButton.tintColor = .systemRed
         removeButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         removeButton.addTarget(self, action: #selector(removeExampleItem), for: .touchUpInside)
 
