@@ -8,11 +8,13 @@
 import UIKit
 
 final class ProblemExampleStackView: UIStackView {
+    private let minimumExampleCount = 2
     private var defaultNumberOfExamples = 4
+    
     private var exampleTextViewList = [ProblemTextView]()
     private var removeButtonList = [UIButton]() {
         didSet {
-            if removeButtonList.count <= 2 {
+            if removeButtonList.count <= minimumExampleCount {
                 removeButtonList.forEach { $0.isHidden = true }
                 return
             }
@@ -44,6 +46,32 @@ final class ProblemExampleStackView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func isCanComplete() -> Bool {
+        var filledTextViewCount = 0
+        
+        exampleTextViewList.forEach {
+            if !$0.isEmptyExceptSpaces() {
+                filledTextViewCount += 1
+            }
+        }
+        
+        if filledTextViewCount >= minimumExampleCount {
+            return true
+        }
+        
+        return false
+    }
+    
+    func removeEmptyTextView() {
+        let indexRange = exampleTextViewList.endIndex...exampleTextViewList.startIndex
+        
+        for index in indexRange {
+            if exampleTextViewList[index].isEmptyExceptSpaces() {
+                exampleTextViewList.remove(at: index)
+            }
+        }
     }
     
     private func setupView() {
