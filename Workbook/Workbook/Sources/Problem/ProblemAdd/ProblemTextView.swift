@@ -22,6 +22,18 @@ final class ProblemTextView: UITextView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func isEmptyExceptSpaces() -> Bool {
+        guard var copiedText = text else { return false }
+        
+        copiedText.removeAll { $0 == " " || $0 == "\n" }
+        
+        if copiedText.isEmpty {
+            return true
+        }
+        
+        return false
+    }
+    
     private func setupView() {
         isScrollEnabled = false
         delegate = self
@@ -47,7 +59,7 @@ extension ProblemTextView: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if text.isEmpty {
+        if isEmptyExceptSpaces() {
             text = placeHolder
             textColor = .placeholderText
         }

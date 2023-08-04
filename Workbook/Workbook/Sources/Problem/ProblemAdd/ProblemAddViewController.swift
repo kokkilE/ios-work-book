@@ -54,8 +54,8 @@ final class ProblemAddViewController: UIViewController {
     
     private func setupNavigationRightBarButtonItem() {
         let rightBarButton = UIButton()
-//        rightBarButton.addTarget(self, action: #selector(addProblem), for: .touchUpInside)
-        rightBarButton.setTitle("사진으로 추가", for: .normal)
+        rightBarButton.addTarget(self, action: #selector(completeAddProblem), for: .touchUpInside)
+        rightBarButton.setTitle("완료", for: .normal)
         rightBarButton.titleLabel?.font = .systemFont(ofSize: 20)
         rightBarButton.setTitleColor(.black, for: .normal)
         rightBarButton.tintColor = .black
@@ -65,5 +65,9 @@ final class ProblemAddViewController: UIViewController {
     
     @objc private func dismissProblemAddViewController() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func completeAddProblem() {
+        
     }
 }
