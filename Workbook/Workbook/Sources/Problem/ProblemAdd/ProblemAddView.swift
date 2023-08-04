@@ -8,9 +8,14 @@
 import UIKit
 
 final class ProblemAddView: UIStackView {
-    private let segmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["주관식", "객관식"])
-        segmentedControl.selectedSegmentIndex = 0
+    private lazy var segmentedControl = {
+        let segmentedControl = UISegmentedControl(items: [Problem.ProblemType.shortAnswer.description, Problem.ProblemType.multipleChoice.description])
+        segmentedControl.selectedSegmentIndex = Problem.ProblemType.shortAnswer.index
+        
+        let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+        segmentedControl.setTitleTextAttributes(attribute, for: .normal)
+        
+        segmentedControl.addTarget(self, action: #selector(toggleSegmentedControl), for: .valueChanged)
         
         return segmentedControl
     }()
@@ -39,5 +44,17 @@ final class ProblemAddView: UIStackView {
         addArrangedSubview(segmentedControl)
         addArrangedSubview(problemTitleStackView)
         addArrangedSubview(problemExampleStackView)
+    }
+    
+    @objc private func toggleSegmentedControl() {
+        if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
+            
+            return
+        }
+        
+        if segmentedControl.selectedSegmentIndex == Problem.ProblemType.multipleChoice.index {
+            
+            return
+        }
     }
 }
