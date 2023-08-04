@@ -15,19 +15,21 @@ final class ProblemAddView: UIStackView {
         let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
         segmentedControl.setTitleTextAttributes(attribute, for: .normal)
         
-        segmentedControl.addTarget(self, action: #selector(toggleSegmentedControl), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(configureWithSegmentedControl), for: .valueChanged)
         
         return segmentedControl
     }()
     
     private let problemTitleStackView = ProblemTitleStackView()
     private let problemExampleStackView = ProblemExampleStackView()
+    private let problemAnswerStackView = ProblemAnswerStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupView()
         addSubviews()
+        configureWithSegmentedControl()
     }
     
     required init(coder: NSCoder) {
@@ -43,18 +45,17 @@ final class ProblemAddView: UIStackView {
     private func addSubviews() {
         addArrangedSubview(segmentedControl)
         addArrangedSubview(problemTitleStackView)
+        addArrangedSubview(problemAnswerStackView)
         addArrangedSubview(problemExampleStackView)
     }
     
-    @objc private func toggleSegmentedControl() {
+    @objc private func configureWithSegmentedControl() {
         if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
-            
-            return
-        }
-        
-        if segmentedControl.selectedSegmentIndex == Problem.ProblemType.multipleChoice.index {
-            
-            return
+            problemAnswerStackView.isHidden = false
+            problemExampleStackView.isHidden = true
+        } else if segmentedControl.selectedSegmentIndex == Problem.ProblemType.multipleChoice.index {
+            problemAnswerStackView.isHidden = true
+            problemExampleStackView.isHidden = false
         }
     }
 }

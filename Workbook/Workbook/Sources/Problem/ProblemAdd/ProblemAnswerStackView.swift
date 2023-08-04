@@ -1,14 +1,14 @@
 //
-//  ProblemTitleStackView.swift
+//  ProblemAnswerStackView.swift
 //  Workbook
 //
-//  Created by 조향래 on 2023/07/26.
+//  Created by 조향래 on 2023/08/04.
 //
 
 import UIKit
 
-final class ProblemTitleStackView: UIStackView {
-    private let problemTextView = ProblemTextView(placeHolder: "문항 제목을 작성하세요.")
+final class ProblemAnswerStackView: UIStackView {
+    private let problemTextView = ProblemTextView(placeHolder: "문항 정답을 작성하세요.")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,9 +21,9 @@ final class ProblemTitleStackView: UIStackView {
     }
     
     private func setupView() {
-        let titleLabel = UILabel()
-        titleLabel.font = .systemFont(ofSize: 20)
-        titleLabel.text = "문항 제목"
+        let answerLabel = UILabel()
+        answerLabel.font = .systemFont(ofSize: 20)
+        answerLabel.text = "문항 정답"
         
         let bottomBorder = UIView()
         bottomBorder.backgroundColor = .systemGray4
@@ -36,7 +36,7 @@ final class ProblemTitleStackView: UIStackView {
         textFieldStackView.isLayoutMarginsRelativeArrangement = true
         textFieldStackView.axis = .vertical
         
-        addArrangedSubview(titleLabel)
+        addArrangedSubview(answerLabel)
         addArrangedSubview(textFieldStackView)
         spacing = 4
         axis = .vertical
