@@ -24,6 +24,10 @@ final class ProblemAnswerStackView: UIStackView {
         return !problemTextView.isEmptyExceptSpaces()
     }
     
+    func getAnswer() -> String {
+        return problemTextView.text
+    }
+    
     private func setupView() {
         let answerLabel = UILabel()
         answerLabel.font = .systemFont(ofSize: 20)

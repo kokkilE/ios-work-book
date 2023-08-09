@@ -24,6 +24,10 @@ final class ProblemTitleStackView: UIStackView {
         return !problemTextView.isEmptyExceptSpaces()
     }
     
+    func getTitle() -> String {
+        return problemTextView.text
+    }
+    
     private func setupView() {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 20)

@@ -11,7 +11,7 @@ enum WorkbookError: LocalizedError {
     case wrongSubscript
     
     var description: String {
-        switch self{
+        switch self {
         case .wrongSubscript:
             return "wrong subscript"
         }

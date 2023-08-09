@@ -64,6 +64,18 @@ final class ProblemExampleStackView: UIStackView {
         return false
     }
     
+    func getExampleList() -> [String] {
+        var exampleList = [String]()
+        
+        exampleTextViewList.forEach {
+            if !$0.isEmptyExceptSpaces() {
+                exampleList.append($0.text)
+            }
+        }
+        
+        return exampleList
+    }
+    
     func removeEmptyTextView() {
         let indexRange = exampleTextViewList.endIndex...exampleTextViewList.startIndex
         
