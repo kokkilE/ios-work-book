@@ -58,4 +58,8 @@ final class ProblemAddView: UIStackView {
             problemExampleStackView.isHidden = false
         }
     }
+    
+    private func addProblem() {
+        
+    }
 }

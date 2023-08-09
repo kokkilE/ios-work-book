@@ -29,6 +29,7 @@ struct Problem: Hashable {
         }
     }
     
+    let problemType: ProblemType
     let question: String
     let example: String?
     let answer: String

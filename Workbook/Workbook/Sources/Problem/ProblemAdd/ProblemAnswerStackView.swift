@@ -20,6 +20,10 @@ final class ProblemAnswerStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func isCanComplete() -> Bool {
+        return !problemTextView.isEmptyExceptSpaces()
+    }
+    
     private func setupView() {
         let answerLabel = UILabel()
         answerLabel.font = .systemFont(ofSize: 20)
