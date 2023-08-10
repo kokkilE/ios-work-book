@@ -68,6 +68,6 @@ final class ProblemAddViewController: UIViewController {
     }
     
     @objc func completeAddProblem() {
-        
+        try! problemAddView.addProblem()
     }
 }

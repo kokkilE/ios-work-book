@@ -95,6 +95,10 @@ final class ProblemAddView: UIStackView {
             throw ProblemError.emptyExample
         }
         
+        let problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problemExampleStackView.getExampleList())
+        
+        addArrangedSubview(problemExampleChoiceStackView)
+        
         let problem = Problem(problemType: .shortAnswer,
                               question: problemTitleStackView.getTitle(),
                               example: problemExampleStackView.getExampleList(),

@@ -127,7 +127,7 @@ final class ProblemExampleStackView: UIStackView {
     }
     
     @objc private func removeExampleItem(_ sender: UIButton) {
-        guard let index = removeButtonList.firstIndex(where: { $0 == sender } ),
+        guard let index = removeButtonList.firstIndex(where: { $0 == sender }),
               exampleTextViewList[safe: index] != nil else {
             return
         }
