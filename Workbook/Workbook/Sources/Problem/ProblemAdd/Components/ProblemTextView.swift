@@ -23,7 +23,8 @@ final class ProblemTextView: UITextView {
     }
     
     func isEmptyExceptSpaces() -> Bool {
-        guard var copiedText = text else { return false }
+        guard var copiedText = text,
+              copiedText != placeHolder else { return true }
         
         copiedText.removeAll { $0 == " " || $0 == "\n" }
         
@@ -32,6 +33,15 @@ final class ProblemTextView: UITextView {
         }
         
         return false
+    }
+    
+    func getTextExceptSpaces() -> String? {
+        guard var copiedText = text,
+              copiedText != placeHolder else { return nil }
+        
+        copiedText.removeAll { $0 == " " || $0 == "\n" }
+        
+        return copiedText
     }
     
     private func setupView() {

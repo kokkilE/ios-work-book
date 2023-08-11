@@ -92,7 +92,7 @@ final class ProblemAddView: UIStackView {
         }
                 
         guard problemExampleStackView.isCanComplete() else {
-            throw ProblemError.emptyExample
+            throw ProblemError.notEnoughExample
         }
         
         let problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problemExampleStackView.getExampleList())

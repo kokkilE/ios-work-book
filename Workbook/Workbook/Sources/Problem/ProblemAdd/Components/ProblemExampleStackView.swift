@@ -8,13 +8,12 @@
 import UIKit
 
 final class ProblemExampleStackView: UIStackView {
-    private let minimumExampleCount = 2
     private var defaultNumberOfExamples = 4
     
     private var exampleTextViewList = [ProblemTextView]()
     private var removeButtonList = [UIButton]() {
         didSet {
-            if removeButtonList.count <= minimumExampleCount {
+            if removeButtonList.count <= Problem.minimumExampleCount {
                 removeButtonList.forEach { $0.isHidden = true }
                 return
             }
@@ -57,11 +56,23 @@ final class ProblemExampleStackView: UIStackView {
             }
         }
         
-        if filledTextViewCount >= minimumExampleCount {
-            return true
+        if filledTextViewCount < Problem.minimumExampleCount {
+            return false
         }
         
-        return false
+        var textExceptSpacesSet = Set<String>()
+        
+        exampleTextViewList.forEach {
+            if let text = $0.getTextExceptSpaces() {
+                textExceptSpacesSet.insert(text)
+            }
+        }
+        
+        if textExceptSpacesSet.count != filledTextViewCount {
+            return false
+        }
+        
+        return true
     }
     
     func getExampleList() -> [String] {

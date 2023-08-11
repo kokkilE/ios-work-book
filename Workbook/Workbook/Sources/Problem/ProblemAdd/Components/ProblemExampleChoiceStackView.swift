@@ -36,7 +36,7 @@ class ProblemExampleChoiceStackView: UIStackView {
         spacing = 4
         
         let label = UILabel()
-        label.text = "보기 중 정답을 클릭하세요. (복수 선택 가능)"
+        label.text = "보기 중 정답을 모두 클릭하세요."
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 20)
         

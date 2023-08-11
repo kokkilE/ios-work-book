@@ -29,6 +29,7 @@ struct Problem: Hashable {
         }
     }
     
+    static let minimumExampleCount = 2
     let problemType: ProblemType
     let question: String
     let example: [String]?
