@@ -71,9 +71,7 @@ final class ProblemAddViewController: UIViewController {
         // Alert 처리
         do {
             try problemAddView.addProblem()
-        } catch let error as ProblemError {
-            print(error.description)
-        } catch let error as WorkbookError {
+        } catch let error as Descripting {
             print(error.description)
         } catch {
             print(error.localizedDescription)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProblemError: LocalizedError {
+enum ProblemError: Descripting {
     case emptyTitle
     case emptyAnswer
     case notEnoughExample

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0268502A89EAAE006864B8 /* Descripting.swift */; };
 		AA4CEFDD2A831D0A002F0B86 /* ProblemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */; };
 		AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */; };
 		AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA0268502A89EAAE006864B8 /* Descripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descripting.swift; sourceTree = "<group>"; };
 		AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemError.swift; sourceTree = "<group>"; };
 		AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceStackView.swift; sourceTree = "<group>"; };
 		AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleStackView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		AAFEA50C2A65689B00080313 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				AA0268502A89EAAE006864B8 /* Descripting.swift */,
 				AAFEA50D2A6568AC00080313 /* WorkbookError.swift */,
 				AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */,
 			);
@@ -286,6 +289,7 @@
 			files = (
 				AAFEA5162A66B66C00080313 /* ProblemAddViewController.swift in Sources */,
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
+				AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */,
 				AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */,
 				AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */,
 				AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */,

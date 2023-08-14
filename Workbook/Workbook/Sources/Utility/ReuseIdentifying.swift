@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol ReuseIdentifying {}
+protocol ReuseIdentifying {}
 
 extension ReuseIdentifying {
     public static var reuseIdentifier: String {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WorkbookError: LocalizedError {
+enum WorkbookError: Descripting {
     case wrongSubscript
     
     var description: String {
