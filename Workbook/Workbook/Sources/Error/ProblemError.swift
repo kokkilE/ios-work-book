@@ -11,6 +11,7 @@ enum ProblemError: LocalizedError {
     case emptyTitle
     case emptyAnswer
     case notEnoughExample
+    case duplicatedExample
     
     var description: String {
         switch self {
@@ -20,6 +21,8 @@ enum ProblemError: LocalizedError {
             return "문항의 정답을 작성해주세요."
         case .notEnoughExample:
             return "문항의 보기를 \(Problem.minimumExampleCount)개 이상 작성해주세요."
+        case .duplicatedExample:
+            return "문항의 보기가 중복되었습니다."
         }
     }
 }

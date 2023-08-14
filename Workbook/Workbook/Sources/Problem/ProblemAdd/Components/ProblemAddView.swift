@@ -90,9 +90,13 @@ final class ProblemAddView: UIStackView {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
-                
-        guard problemExampleStackView.isCanComplete() else {
+        
+        guard problemExampleStackView.isEnoughExamples() else {
             throw ProblemError.notEnoughExample
+        }
+        
+        guard problemExampleStackView.isNoDuplication() else {
+            throw ProblemError.duplicatedExample
         }
         
         let problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problemExampleStackView.getExampleList())

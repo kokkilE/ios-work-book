@@ -11,6 +11,18 @@ final class ProblemExampleStackView: UIStackView {
     private var defaultNumberOfExamples = 4
     
     private var exampleTextViewList = [ProblemTextView]()
+    private var countTextViewListExceptSpaces: Int {
+        get {
+            var count = 0
+            exampleTextViewList.forEach {
+                if !$0.isEmptyExceptSpaces() {
+                    count += 1
+                }
+            }
+            return count
+        }
+    }
+    
     private var removeButtonList = [UIButton]() {
         didSet {
             if removeButtonList.count <= Problem.minimumExampleCount {
@@ -45,6 +57,30 @@ final class ProblemExampleStackView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func isNoDuplication() -> Bool {
+        var textExceptSpacesSet = Set<String>()
+        
+        exampleTextViewList.forEach {
+            if let text = $0.getTextExceptSpaces() {
+                textExceptSpacesSet.insert(text)
+            }
+        }
+        
+        if textExceptSpacesSet.count != countTextViewListExceptSpaces {
+            return false
+        }
+        
+        return true
+    }
+    
+    func isEnoughExamples() -> Bool {
+        if countTextViewListExceptSpaces < Problem.minimumExampleCount {
+            return false
+        }
+        
+        return true
     }
     
     func isCanComplete() -> Bool {
