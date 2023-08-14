@@ -30,4 +30,20 @@ struct AlertManager {
         
         return alertController
     }
+    
+    func createErrorAlert(error: Error) -> UIAlertController {
+        let alertController = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        
+        if let descriptingError = error as? Descripting {
+            alertController.message = descriptingError.description
+        } else {
+            alertController.message = error.localizedDescription
+        }
+        
+        let confirmAction = UIAlertAction(title: "확인", style: .cancel)
+                
+        alertController.addAction(confirmAction)
+        
+        return alertController
+    }
 }

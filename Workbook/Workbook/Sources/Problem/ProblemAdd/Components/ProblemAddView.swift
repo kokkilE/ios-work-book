@@ -59,17 +59,17 @@ final class ProblemAddView: UIStackView {
         }
     }
     
-    func addProblem() throws -> Problem? {
+    func createProblem() throws -> Problem? {
         if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
-            return try addShortAnswerProblem()
+            return try createShortAnswerProblem()
         } else if segmentedControl.selectedSegmentIndex == Problem.ProblemType.multipleChoice.index {
-            return try addMultipleChoiceProblem()
+            return try createMultipleChoiceProblem()
         }
         
         return nil
     }
     
-    private func addShortAnswerProblem() throws -> Problem {
+    private func createShortAnswerProblem() throws -> Problem {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
@@ -86,7 +86,7 @@ final class ProblemAddView: UIStackView {
         return problem
     }
     
-    private func addMultipleChoiceProblem() throws -> Problem {
+    private func createMultipleChoiceProblem() throws -> Problem {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }

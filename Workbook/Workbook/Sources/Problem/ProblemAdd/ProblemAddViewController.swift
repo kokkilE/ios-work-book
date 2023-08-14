@@ -70,11 +70,11 @@ final class ProblemAddViewController: UIViewController {
     @objc func completeAddProblem() {
         // Alert 처리
         do {
-            try problemAddView.addProblem()
-        } catch let error as Descripting {
-            print(error.description)
+            let problem = try problemAddView.createProblem()
         } catch {
-            print(error.localizedDescription)
+            let alert = AlertManager().createErrorAlert(error: error)
+            
+            present(alert, animated: true)
         }
     }
 }
