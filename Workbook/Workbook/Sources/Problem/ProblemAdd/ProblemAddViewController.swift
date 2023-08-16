@@ -25,6 +25,8 @@ final class ProblemAddViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(problemAddView)
+        
+        problemAddView.delegate = self
     }
     
     private func layout() {
@@ -68,7 +70,6 @@ final class ProblemAddViewController: UIViewController {
     }
     
     @objc func completeAddProblem() {
-        // Alert 처리
         do {
             let problem = try problemAddView.createProblem()
         } catch {
@@ -76,5 +77,11 @@ final class ProblemAddViewController: UIViewController {
             
             present(alert, animated: true)
         }
+    }
+}
+
+extension ProblemAddViewController: ViewControllerPresentable {
+    func presentViewController(_ viewController: UIViewController) {        
+        present(viewController, animated: true)
     }
 }

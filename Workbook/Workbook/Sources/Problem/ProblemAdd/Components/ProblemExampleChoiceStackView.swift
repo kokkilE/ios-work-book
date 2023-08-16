@@ -34,13 +34,6 @@ class ProblemExampleChoiceStackView: UIStackView {
         axis = .vertical
         alignment = .leading
         spacing = 4
-        
-        let label = UILabel()
-        label.text = "보기 중 정답을 모두 클릭하세요."
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 20)
-        
-        addArrangedSubview(label)
     }
     
     private func setupExampleLabelList(examples: [String]) {
@@ -60,6 +53,7 @@ class ProblemExampleChoiceStackView: UIStackView {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.backgroundColor = defaultColor
+        button.layer.cornerRadius = 10
         
         guard let titleLabel = button.titleLabel else { return button }
         

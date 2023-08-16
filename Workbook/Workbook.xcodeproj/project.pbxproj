@@ -19,6 +19,8 @@
 		AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */; };
 		AAB38CCA2A64E249004E0A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAB38CC92A64E249004E0A55 /* Assets.xcassets */; };
 		AAB38CCD2A64E249004E0A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB38CCB2A64E249004E0A55 /* LaunchScreen.storyboard */; };
+		AAB6A1422A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6A1412A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift */; };
+		AAE233AC2A8CD2AB006DB522 /* ViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */; };
 		AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */; };
 		AAFEA5012A6566FE00080313 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5002A6566FE00080313 /* Problem.swift */; };
 		AAFEA5032A65670F00080313 /* Workbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5022A65670F00080313 /* Workbook.swift */; };
@@ -48,6 +50,8 @@
 		AAB38CC92A64E249004E0A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAB38CCC2A64E249004E0A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAB38CCE2A64E249004E0A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAB6A1412A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceViewController.swift; sourceTree = "<group>"; };
+		AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentable.swift; sourceTree = "<group>"; };
 		AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookListCell.swift; sourceTree = "<group>"; };
 		AAFEA5002A6566FE00080313 /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		AAFEA5022A65670F00080313 /* Workbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workbook.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		AA21F0952A64E3BD00744DBD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AAE233AA2A8CD29B006DB522 /* Protocol */,
 				AAFEA50C2A65689B00080313 /* Error */,
 				AAFEA5062A65677C00080313 /* Extension */,
 				AAFEA5092A65682500080313 /* Utility */,
@@ -147,8 +152,9 @@
 		AA7C353E2A714C1D00B6B0C5 /* ProblemAdd */ = {
 			isa = PBXGroup;
 			children = (
-				AA4CEFE02A84C08E002F0B86 /* Components */,
 				AAFEA5152A66B66C00080313 /* ProblemAddViewController.swift */,
+				AAB6A1412A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift */,
+				AA4CEFE02A84C08E002F0B86 /* Components */,
 			);
 			path = ProblemAdd;
 			sourceTree = "<group>";
@@ -178,6 +184,14 @@
 				AAB38CCE2A64E249004E0A55 /* Info.plist */,
 			);
 			path = Workbook;
+			sourceTree = "<group>";
+		};
+		AAE233AA2A8CD29B006DB522 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		AAFEA4FF2A6566EC00080313 /* Problem */ = {
@@ -289,6 +303,7 @@
 			files = (
 				AAFEA5162A66B66C00080313 /* ProblemAddViewController.swift in Sources */,
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
+				AAB6A1422A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift in Sources */,
 				AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */,
 				AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */,
 				AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */,
@@ -308,6 +323,7 @@
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
+				AAE233AC2A8CD2AB006DB522 /* ViewControllerPresentable.swift in Sources */,
 				AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

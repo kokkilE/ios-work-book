@@ -23,6 +23,7 @@ final class ProblemAddView: UIStackView {
     private let problemTitleStackView = ProblemTitleStackView()
     private let problemExampleStackView = ProblemExampleStackView()
     private let problemAnswerStackView = ProblemAnswerStackView()
+    var delegate: ProblemAddViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,9 +100,10 @@ final class ProblemAddView: UIStackView {
             throw ProblemError.duplicatedExample
         }
         
-        let problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problemExampleStackView.getExampleList())
+        let examples = problemExampleStackView.getExampleList()
+        let problemExampleChoiceViewController = ProblemExampleChoiceViewController(examples: examples)
         
-        addArrangedSubview(problemExampleChoiceStackView)
+        delegate?.presentViewController(problemExampleChoiceViewController)
         
         let problem = Problem(problemType: .shortAnswer,
                               question: problemTitleStackView.getTitle(),

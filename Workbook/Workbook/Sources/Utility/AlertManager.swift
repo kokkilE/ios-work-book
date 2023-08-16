@@ -41,7 +41,7 @@ struct AlertManager {
         }
         
         let confirmAction = UIAlertAction(title: "확인", style: .cancel)
-                
+        
         alertController.addAction(confirmAction)
         
         return alertController
