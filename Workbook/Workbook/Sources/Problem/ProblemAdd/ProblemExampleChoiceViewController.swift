@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class ProblemExampleChoiceViewController: UIViewController {
     private let color = CGColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.8)
@@ -58,10 +59,14 @@ final class ProblemExampleChoiceViewController: UIViewController {
         let button = UIButton()
         button.setTitle("완료", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.systemGray2, for: .disabled)
         button.addTarget(self, action: #selector(touchUpDoneButton), for: .touchUpInside)
+        button.isEnabled = false
         
         return button
     }()
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     init(examples: [String]) {
         self.problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: examples)
@@ -80,6 +85,7 @@ final class ProblemExampleChoiceViewController: UIViewController {
         addSubviews()
         setupProblemExampleChoiceStackView()
         layout()
+        bind()
     }
     
     private func setupView() {
@@ -120,6 +126,14 @@ final class ProblemExampleChoiceViewController: UIViewController {
     }
     
     @objc private func touchUpDoneButton() {
-        
+        print("touchUpDoneButton")
+    }
+    
+    private func bind() {
+        problemExampleChoiceStackView.$isAnswerSelected
+            .sink { [weak self] isAnswerSelected in
+                self?.doneButton.isEnabled = isAnswerSelected
+            }
+            .store(in: &subscriptions)
     }
 }

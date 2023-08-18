@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ProblemExampleChoiceStackView: UIStackView {
     private let defaultColor = UIColor.white
@@ -18,6 +19,7 @@ class ProblemExampleChoiceStackView: UIStackView {
     }()
     
     private var selectedIndexList = Set<Int>()
+    @Published var isAnswerSelected = false
     
     init(examples: [String]) {
         super.init(frame: .zero)
@@ -84,5 +86,7 @@ class ProblemExampleChoiceStackView: UIStackView {
             selectedIndexList.insert(index)
             exampleButtonList[index].backgroundColor = selectedColor
         }
+        
+        isAnswerSelected = !selectedIndexList.isEmpty
     }
 }
