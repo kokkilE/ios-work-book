@@ -71,7 +71,7 @@ final class ProblemAddViewController: UIViewController {
     
     @objc func completeAddProblem() {
         do {
-            let problem = try problemAddView.createProblem()
+            try problemAddView.addProblem()
         } catch {
             let alert = AlertManager().createErrorAlert(error: error)
             

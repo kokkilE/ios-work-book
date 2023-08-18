@@ -18,7 +18,7 @@ class ProblemExampleChoiceStackView: UIStackView {
         return buttonList
     }()
     
-    private var selectedIndexList = Set<Int>()
+    var selectedIndexList = Set<Int>()
     @Published var isAnswerSelected = false
     
     init(examples: [String]) {

@@ -23,7 +23,13 @@ final class ProblemAddView: UIStackView {
     private let problemTitleStackView = ProblemTitleStackView()
     private let problemExampleStackView = ProblemExampleStackView()
     private let problemAnswerStackView = ProblemAnswerStackView()
+    
     var delegate: ProblemAddViewController?
+    private var problem: Problem? {
+        didSet {
+            
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,17 +66,17 @@ final class ProblemAddView: UIStackView {
         }
     }
     
-    func createProblem() throws -> Problem? {
+    func addProblem() throws {
         if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
-            return try createShortAnswerProblem()
-        } else if segmentedControl.selectedSegmentIndex == Problem.ProblemType.multipleChoice.index {
-            return try createMultipleChoiceProblem()
+            try addShortAnswerProblem()
+            
+            return
         }
         
-        return nil
+        try addMultipleChoiceProblem()
     }
     
-    private func createShortAnswerProblem() throws -> Problem {
+    private func addShortAnswerProblem() throws {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
@@ -79,15 +85,10 @@ final class ProblemAddView: UIStackView {
             throw ProblemError.emptyAnswer
         }
         
-        let problem = Problem(problemType: .shortAnswer,
-                              question: problemTitleStackView.getTitle(),
-                              example: nil,
-                              answer: problemAnswerStackView.getAnswer())
-        
-        return problem
+        problem = createProblem()
     }
     
-    private func createMultipleChoiceProblem() throws -> Problem {
+    private func addMultipleChoiceProblem() throws {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
@@ -105,10 +106,24 @@ final class ProblemAddView: UIStackView {
         
         delegate?.presentViewController(problemExampleChoiceViewController)
         
+        problem = createProblem()
+    }
+    
+    private func createProblem() -> Problem {
+        if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
+            let problem = Problem(problemType: .shortAnswer,
+                                  question: problemTitleStackView.getTitle(),
+                                  example: nil,
+                                  shortAnswer: problemAnswerStackView.getAnswer(),
+                                  multipleAnswer: nil)
+            return problem
+        }
+        
         let problem = Problem(problemType: .shortAnswer,
                               question: problemTitleStackView.getTitle(),
                               example: problemExampleStackView.getExampleList(),
-                              answer: problemAnswerStackView.getAnswer())
+                              shortAnswer: nil,
+                              multipleAnswer: nil)
         
         return problem
     }
