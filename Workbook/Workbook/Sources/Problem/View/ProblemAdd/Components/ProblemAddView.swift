@@ -24,7 +24,7 @@ final class ProblemAddView: UIStackView {
     private let problemExampleStackView = ProblemExampleStackView()
     private let problemAnswerStackView = ProblemAnswerStackView()
     
-    private let problemViewModel = ProblemViewModel()
+    private let viewModel = ProblemViewModel()
     var delegate: ProblemAddViewController?
     
     override init(frame: CGRect) {
@@ -82,7 +82,7 @@ final class ProblemAddView: UIStackView {
         }
         
         let problem = createProblem()
-        problemViewModel.addProblem(problem)
+        viewModel.addProblem(problem)
     }
     
     private func addMultipleChoiceProblem() throws {

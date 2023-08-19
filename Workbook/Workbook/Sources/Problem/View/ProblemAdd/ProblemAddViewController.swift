@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 final class ProblemAddViewController: UIViewController {
     private let problemAddView = ProblemAddView()
+    private let viewModel = ProblemViewModel()
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,7 @@ final class ProblemAddViewController: UIViewController {
         addSubviews()
         layout()
         setupNavigationItems()
+        bind()
     }
     
     private func setupView() {
@@ -77,6 +81,15 @@ final class ProblemAddViewController: UIViewController {
             
             present(alert, animated: true)
         }
+    }
+    
+    private func bind() {
+        viewModel.requestProblemListPublisher()
+            .dropFirst()
+            .sink { [weak self] _ in
+                self?.dismiss()
+            }
+            .store(in: &subscriptions)
     }
     
     private func dismiss() {

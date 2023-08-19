@@ -6,14 +6,19 @@
 //
 
 import Foundation
+import Combine
 
 final class ProblemManager {
     static let shared = ProblemManager()
     
-    private var problemList = [Problem]() {
+    @Published private var problemList = [Problem]() {
         didSet {
             print(problemList)
         }
+    }
+        
+    func requestProblemListPublisher() -> AnyPublisher<[Problem], Never> {
+        return $problemList.eraseToAnyPublisher()
     }
     
     private init() {}

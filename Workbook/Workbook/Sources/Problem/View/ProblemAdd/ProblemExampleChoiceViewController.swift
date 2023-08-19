@@ -66,7 +66,7 @@ final class ProblemExampleChoiceViewController: UIViewController {
     }()
     
     private var problem: Problem
-    private let problemViewModel = ProblemViewModel()
+    private let viewModel = ProblemViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
     init(problem: Problem) {
@@ -131,9 +131,8 @@ final class ProblemExampleChoiceViewController: UIViewController {
         let selectedAnswer = problemExampleChoiceStackView.selectedIndexList
         problem.configureMultipleAnswer(selectedAnswer)
         
-        problemViewModel.addProblem(problem)
-        
         dismiss(animated: true)
+        viewModel.addProblem(problem)
     }
     
     private func bind() {
