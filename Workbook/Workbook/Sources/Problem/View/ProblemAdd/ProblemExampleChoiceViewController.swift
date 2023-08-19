@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 final class ProblemExampleChoiceViewController: UIViewController {
-    private let color = CGColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.8)
     private let problemExampleChoiceStackView: ProblemExampleChoiceStackView
     
     private lazy var mainStackView = {
@@ -126,7 +125,7 @@ final class ProblemExampleChoiceViewController: UIViewController {
     }
     
     @objc private func touchUpDoneButton() {
-        print("touchUpDoneButton")
+        print(problemExampleChoiceStackView.selectedIndexList)
     }
     
     private func bind() {

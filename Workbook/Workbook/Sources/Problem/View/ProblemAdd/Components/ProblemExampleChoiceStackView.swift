@@ -8,11 +8,11 @@
 import UIKit
 import Combine
 
-class ProblemExampleChoiceStackView: UIStackView {
+final class ProblemExampleChoiceStackView: UIStackView {
     private let defaultColor = UIColor.white
     private let selectedColor = UIColor(cgColor: CGColor(red: 0.0, green: 0.55, blue: 0.05, alpha: 0.4))
     
-    private var exampleButtonList =  {
+    private var exampleButtonList = {
         let buttonList = [UIButton]()
         
         return buttonList

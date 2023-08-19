@@ -10,6 +10,7 @@
 		AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0268502A89EAAE006864B8 /* Descripting.swift */; };
 		AA4CEFDD2A831D0A002F0B86 /* ProblemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */; };
 		AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */; };
+		AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */; };
 		AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */; };
 		AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */; };
 		AA7C35402A714C8400B6B0C5 /* ProblemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */; };
@@ -39,6 +40,7 @@
 		AA0268502A89EAAE006864B8 /* Descripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descripting.swift; sourceTree = "<group>"; };
 		AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemError.swift; sourceTree = "<group>"; };
 		AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceStackView.swift; sourceTree = "<group>"; };
+		AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemViewModel.swift; sourceTree = "<group>"; };
 		AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleStackView.swift; sourceTree = "<group>"; };
 		AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleStackView.swift; sourceTree = "<group>"; };
 		AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTextView.swift; sourceTree = "<group>"; };
@@ -111,10 +113,9 @@
 		AA21F0982A64E59100744DBD /* Workbook */ = {
 			isa = PBXGroup;
 			children = (
-				AAFEA5022A65670F00080313 /* Workbook.swift */,
-				AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */,
-				AAFEA5042A65675800080313 /* WorkbookViewModel.swift */,
-				AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */,
+				AA6AD23E2A90A76F00E76F0E /* Model */,
+				AA6AD2402A90A78600E76F0E /* View */,
+				AA6AD23F2A90A77800E76F0E /* ViewModel */,
 			);
 			path = Workbook;
 			sourceTree = "<group>";
@@ -130,6 +131,48 @@
 				AAA313F72A7C974900BA6463 /* ProblemAnswerStackView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AA6AD23E2A90A76F00E76F0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA5022A65670F00080313 /* Workbook.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA6AD23F2A90A77800E76F0E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA5042A65675800080313 /* WorkbookViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA6AD2402A90A78600E76F0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */,
+				AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA6AD2412A90A7A800E76F0E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA6AD2422A90A7B700E76F0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C353D2A714C1600B6B0C5 /* ProblemList */,
+				AA7C353E2A714C1D00B6B0C5 /* ProblemAdd */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AA7C353C2A714C0D00B6B0C5 /* Model */ = {
@@ -198,8 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				AA7C353C2A714C0D00B6B0C5 /* Model */,
-				AA7C353D2A714C1600B6B0C5 /* ProblemList */,
-				AA7C353E2A714C1D00B6B0C5 /* ProblemAdd */,
+				AA6AD2422A90A7B700E76F0E /* View */,
+				AA6AD2412A90A7A800E76F0E /* ViewModel */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -323,6 +366,7 @@
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
+				AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */,
 				AAE233AC2A8CD2AB006DB522 /* ViewControllerPresentable.swift in Sources */,
 				AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */,
 			);
