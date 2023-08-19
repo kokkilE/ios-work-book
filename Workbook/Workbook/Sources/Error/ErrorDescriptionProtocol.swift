@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol Descripting: LocalizedError {
+protocol ErrorDescriptionProtocol: LocalizedError {
     var description: String { get }
 }

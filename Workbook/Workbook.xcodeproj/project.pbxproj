@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0268502A89EAAE006864B8 /* Descripting.swift */; };
+		AA0268512A89EAAE006864B8 /* ErrorDescriptionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0268502A89EAAE006864B8 /* ErrorDescriptionProtocol.swift */; };
 		AA4CEFDD2A831D0A002F0B86 /* ProblemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */; };
 		AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */; };
 		AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA0268502A89EAAE006864B8 /* Descripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Descripting.swift; sourceTree = "<group>"; };
+		AA0268502A89EAAE006864B8 /* ErrorDescriptionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptionProtocol.swift; sourceTree = "<group>"; };
 		AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemError.swift; sourceTree = "<group>"; };
 		AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceStackView.swift; sourceTree = "<group>"; };
 		AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemViewModel.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 		AAFEA50C2A65689B00080313 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				AA0268502A89EAAE006864B8 /* Descripting.swift */,
+				AA0268502A89EAAE006864B8 /* ErrorDescriptionProtocol.swift */,
 				AAFEA50D2A6568AC00080313 /* WorkbookError.swift */,
 				AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */,
 			);
@@ -358,7 +358,7 @@
 				AAFEA5162A66B66C00080313 /* ProblemAddViewController.swift in Sources */,
 				AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */,
 				AAB6A1422A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift in Sources */,
-				AA0268512A89EAAE006864B8 /* Descripting.swift in Sources */,
+				AA0268512A89EAAE006864B8 /* ErrorDescriptionProtocol.swift in Sources */,
 				AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */,
 				AAFEA5102A656A3300080313 /* AlertManager.swift in Sources */,
 				AAFEA5122A656A5500080313 /* ProblemListViewController.swift in Sources */,

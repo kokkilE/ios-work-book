@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProblemError: Descripting {
+enum ProblemError: ErrorDescriptionProtocol {
     case emptyTitle
     case emptyAnswer
     case notEnoughExample

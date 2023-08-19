@@ -34,7 +34,7 @@ struct AlertManager {
     func createErrorAlert(error: Error) -> UIAlertController {
         let alertController = UIAlertController(title: "", message: nil, preferredStyle: .alert)
         
-        if let descriptingError = error as? Descripting {
+        if let descriptingError = error as? ErrorDescriptionProtocol {
             alertController.message = descriptingError.description
         } else {
             alertController.message = error.localizedDescription
