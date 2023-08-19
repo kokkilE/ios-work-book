@@ -21,7 +21,7 @@ final class ProblemExampleChoiceStackView: UIStackView {
     var selectedIndexList = Set<Int>()
     @Published var isAnswerSelected = false
     
-    init(examples: [String]) {
+    init(examples: [String]?) {
         super.init(frame: .zero)
         
         setupView()
@@ -38,8 +38,8 @@ final class ProblemExampleChoiceStackView: UIStackView {
         spacing = 4
     }
     
-    private func setupExampleLabelList(examples: [String]) {
-        examples.forEach {
+    private func setupExampleLabelList(examples: [String]?) {
+        examples?.forEach {
             let button = createButton(from: $0)
             
             exampleButtonList.append(button)

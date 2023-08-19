@@ -65,10 +65,13 @@ final class ProblemExampleChoiceViewController: UIViewController {
         return button
     }()
     
+    private var problem: Problem
+    private let problemViewModel = ProblemViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
-    init(examples: [String]) {
-        self.problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: examples)
+    init(problem: Problem) {
+        self.problem = problem
+        self.problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problem.example)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -125,7 +128,12 @@ final class ProblemExampleChoiceViewController: UIViewController {
     }
     
     @objc private func touchUpDoneButton() {
-        print(problemExampleChoiceStackView.selectedIndexList)
+        let selectedAnswer = problemExampleChoiceStackView.selectedIndexList
+        problem.configureMultipleAnswer(selectedAnswer)
+        
+        problemViewModel.addProblem(problem)
+        
+        dismiss(animated: true)
     }
     
     private func bind() {

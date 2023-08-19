@@ -24,12 +24,8 @@ final class ProblemAddView: UIStackView {
     private let problemExampleStackView = ProblemExampleStackView()
     private let problemAnswerStackView = ProblemAnswerStackView()
     
+    private let problemViewModel = ProblemViewModel()
     var delegate: ProblemAddViewController?
-    private var problem: Problem? {
-        didSet {
-            
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,7 +81,8 @@ final class ProblemAddView: UIStackView {
             throw ProblemError.emptyAnswer
         }
         
-        problem = createProblem()
+        let problem = createProblem()
+        problemViewModel.addProblem(problem)
     }
     
     private func addMultipleChoiceProblem() throws {
@@ -101,12 +98,10 @@ final class ProblemAddView: UIStackView {
             throw ProblemError.duplicatedExample
         }
         
-        let examples = problemExampleStackView.getExampleList()
-        let problemExampleChoiceViewController = ProblemExampleChoiceViewController(examples: examples)
+        let problem = createProblem()
+        let problemExampleChoiceViewController = ProblemExampleChoiceViewController(problem: problem)
         
         delegate?.presentViewController(problemExampleChoiceViewController)
-        
-        problem = createProblem()
     }
     
     private func createProblem() -> Problem {

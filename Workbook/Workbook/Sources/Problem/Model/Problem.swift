@@ -34,5 +34,9 @@ struct Problem: Hashable {
     let question: String
     let example: [String]?
     let shortAnswer: String?
-    let multipleAnswer: Set<Int>?
+    var multipleAnswer: Set<Int>?
+    
+    mutating func configureMultipleAnswer(_ multipleAnswer: Set<Int>) {
+        self.multipleAnswer = multipleAnswer
+    }
 }

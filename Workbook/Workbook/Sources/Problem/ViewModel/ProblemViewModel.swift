@@ -8,5 +8,9 @@
 import Foundation
 
 final class ProblemViewModel {
+    private let problemManager = ProblemManager.shared
     
+    func addProblem(_ problem: Problem) {
+        problemManager.addProblem(problem)
+    }
 }

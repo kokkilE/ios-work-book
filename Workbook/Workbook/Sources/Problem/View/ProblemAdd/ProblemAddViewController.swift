@@ -78,6 +78,10 @@ final class ProblemAddViewController: UIViewController {
             present(alert, animated: true)
         }
     }
+    
+    private func dismiss() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ProblemAddViewController: ViewControllerPresentable {
