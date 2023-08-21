@@ -8,12 +8,10 @@
 import UIKit
 
 final class ProblemListViewController: UIViewController {
-    private let viewModel: WorkbookViewModel
+    private let viewModel = WorkbookViewModel()
     private let problemControlView = ProblemControlView()
     
-    init(viewModel: WorkbookViewModel) {
-        self.viewModel = viewModel
-        
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
