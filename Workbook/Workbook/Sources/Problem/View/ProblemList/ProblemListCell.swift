@@ -12,6 +12,7 @@ final class ProblemListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
+        label.numberOfLines = 2
         
         return label
     }()
@@ -19,6 +20,7 @@ final class ProblemListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        setupView()
         addsubviews()
         layout()
     }
@@ -28,7 +30,11 @@ final class ProblemListCell: UITableViewCell {
     }
     
     func configure(title: String) {
-        label.text = title
+        setupAttributedText(title)
+    }
+    
+    private func setupView() {
+        accessoryType = .disclosureIndicator
     }
     
     private func addsubviews() {
@@ -39,10 +45,27 @@ final class ProblemListCell: UITableViewCell {
         let safe = safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: safe.topAnchor, constant: 4),
-            label.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 4),
-            label.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -4),
-            label.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -4)
+            label.topAnchor.constraint(equalTo: safe.topAnchor, constant: 12),
+            label.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 8),
+            label.widthAnchor.constraint(equalTo: safe.widthAnchor, multiplier: 0.85),
+            label.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -12)
         ])
+    }
+    
+    private func setupAttributedText(_ title: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 8
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.systemFont(ofSize: 20),
+            .kern: 1.0,
+            .paragraphStyle: paragraphStyle
+        ]
+        
+        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        
+        label.attributedText = attributedString
     }
 }
