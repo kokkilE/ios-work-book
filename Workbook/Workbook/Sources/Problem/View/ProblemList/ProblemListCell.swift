@@ -52,7 +52,7 @@ final class ProblemListCell: UITableViewCell {
         ])
     }
     
-    private func setupAttributedText(_ title: String) {
+    private func setupAttributedText(_ text: String) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 8
         paragraphStyle.lineBreakMode = .byTruncatingTail
@@ -64,7 +64,7 @@ final class ProblemListCell: UITableViewCell {
             .paragraphStyle: paragraphStyle
         ]
         
-        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        let attributedString = NSAttributedString(string: text, attributes: attributes)
         
         label.attributedText = attributedString
     }

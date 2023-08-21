@@ -145,5 +145,11 @@ final class ProblemListViewController: UIViewController {
 }
 
 extension ProblemListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let problemAddViewController = ProblemAddViewController()
+        
+        navigationController?.pushViewController(problemAddViewController, animated: true)
+    }
 }
