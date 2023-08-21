@@ -9,15 +9,15 @@ import Foundation
 import Combine
 
 final class ProblemViewModel {
-    private let problemManager = ProblemManager.shared
+    private let workbookManager = WorkbookManager.shared
     @Published var isProblemAdded = false
     
     func addProblem(_ problem: Problem) {
-        problemManager.addProblem(problem)
+        workbookManager.addProblem(problem)
         isProblemAdded = true
     }
     
-    func requestProblemListPublisher() -> AnyPublisher<[Problem], Never> {
-        return problemManager.requestProblemListPublisher()
+    func requestWorkbookListPublisher() -> AnyPublisher<[Workbook], Never> {
+        return workbookManager.requestWorkbookListPublisher()
     }
 }

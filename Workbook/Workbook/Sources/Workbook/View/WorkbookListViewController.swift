@@ -96,7 +96,7 @@ final class WorkbookListViewController: UIViewController {
         let alertManager = AlertManager()
         
         let alert = alertManager.createNewFolderAlert() { [weak self] title in
-            self?.viewModel.createWorkbook(title)
+            self?.viewModel.addWorkbook(title)
         }
         
         self.present(alert, animated: true)
@@ -128,14 +128,14 @@ final class WorkbookListViewController: UIViewController {
                 return UICollectionViewCell()
             }
             
-            cell.configure(title: workbook.title)
+            cell.configure(title: workbook.getTitle())
             
             return cell
         }
     }
     
     private func bind() {
-        viewModel.$workbookList
+        viewModel.requestWorkbookListPublisher()
             .sink { [weak self] workbookList in
                 self?.applySnapshot(workbookList: workbookList)
             }

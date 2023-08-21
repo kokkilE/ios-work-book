@@ -9,23 +9,27 @@ import Foundation
 import Combine
 
 final class WorkbookViewModel {
-    @Published var workbookList = [Workbook]()
-    var selectedWorkbook: Workbook?
+    private var workbookManager = WorkbookManager.shared
+    
     var selectedWorkbookTitle: String? {
-        return selectedWorkbook?.title
+        return workbookManager.selectedWoorbookTitle()
     }
     
-    func createWorkbook(_ title: String) {
+    func requestWorkbookListPublisher() -> AnyPublisher<[Workbook], Never> {
+        return workbookManager.requestWorkbookListPublisher()
+    }
+    
+    func addWorkbook(_ title: String) {
         let workbook = Workbook(title: title, problems: [])
         
-        workbookList.append(workbook)
+        workbookManager.addWorkbook(workbook)
     }
     
     func selectWorkbook(at indexPath: IndexPath) throws {
-        guard let workbook = workbookList[safe: indexPath.item] else {
+        do {
+            try workbookManager.selectWorkbook(at: indexPath.item)
+        } catch {
             throw WorkbookError.wrongSubscript
         }
-        
-        selectedWorkbook = workbook
     }
 }

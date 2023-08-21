@@ -6,6 +6,19 @@
 //
 
 struct Workbook: Hashable {
-    var title: String
-    var problems: [Problem]
+    private var title: String
+    private var problems: [Problem]
+    
+    init(title: String, problems: [Problem]) {
+        self.title = title
+        self.problems = problems
+    }
+    
+    mutating func addProblem(_ problem: Problem) {
+        problems.append(problem)
+    }
+    
+    func getTitle() -> String {
+        return title
+    }
 }
