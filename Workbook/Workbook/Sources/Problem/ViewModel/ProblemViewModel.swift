@@ -11,6 +11,9 @@ import Combine
 final class ProblemViewModel {
     private let workbookManager = WorkbookManager.shared
     @Published var isProblemAdded = false
+    var workbookTitle: String? {
+        return workbookManager.selectedWoorbookTitle()
+    }
     
     func addProblem(_ problem: Problem) {
         workbookManager.addProblem(problem)
@@ -19,5 +22,9 @@ final class ProblemViewModel {
     
     func requestWorkbookListPublisher() -> AnyPublisher<[Workbook], Never> {
         return workbookManager.requestWorkbookListPublisher()
+    }
+    
+    func requestProblemListPublisher() -> AnyPublisher<[Problem], Never>? {
+        return workbookManager.requestProblemListPublisher()
     }
 }

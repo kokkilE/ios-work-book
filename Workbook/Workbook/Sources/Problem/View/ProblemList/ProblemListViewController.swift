@@ -6,18 +6,27 @@
 //
 
 import UIKit
+import Combine
 
 final class ProblemListViewController: UIViewController {
-    private let viewModel = WorkbookViewModel()
+    enum Section {
+        case main
+    }
+    
     private let problemControlView = ProblemControlView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = dataSource
+        tableView.register(ProblemListCell.self, forCellReuseIdentifier: ProblemListCell.reuseIdentifier)
+        
+        return tableView
+    }()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private let viewModel = ProblemViewModel()
+    private var dataSource: UITableViewDiffableDataSource<Section, Problem>?
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +35,8 @@ final class ProblemListViewController: UIViewController {
         setupNavigationItems()
         addSubviews()
         layout()
+        setupDataSource()
+        bind()
     }
     
     private func setupView() {
@@ -40,7 +51,7 @@ final class ProblemListViewController: UIViewController {
     
     private func setupNavigationTitle() {
         let titleLabel = UILabel()
-        titleLabel.text = viewModel.selectedWorkbookTitle
+        titleLabel.text = viewModel.workbookTitle
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -82,6 +93,7 @@ final class ProblemListViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(problemControlView)
+        view.addSubview(tableView)
     }
     
     private func layout() {
@@ -91,7 +103,47 @@ final class ProblemListViewController: UIViewController {
             problemControlView.topAnchor.constraint(equalTo: safe.topAnchor),
             problemControlView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
             problemControlView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
-            problemControlView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.10)
+            problemControlView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.10),
+            
+            tableView.topAnchor.constraint(equalTo: problemControlView.bottomAnchor, constant: 12),
+            tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safe.bottomAnchor)
         ])
     }
+    
+    private func setupDataSource() {
+        dataSource = UITableViewDiffableDataSource<Section, Problem>(tableView: tableView) { tableView, indexPath, problem in
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ProblemListCell.reuseIdentifier,
+                for: indexPath) as? ProblemListCell else {
+                return UITableViewCell()
+            }
+            
+            cell.configure(title: problem.question)
+            
+            return cell
+        }
+    }
+    
+    private func bind() {
+        viewModel.requestProblemListPublisher()?
+            .sink { [weak self] problemList in
+                self?.applySnapshot(problemList: problemList)
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func applySnapshot(problemList: [Problem]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Problem>()
+
+        snapshot.appendSections([.main])
+        snapshot.appendItems(problemList)
+
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension ProblemListViewController: UITableViewDelegate {
+    
 }

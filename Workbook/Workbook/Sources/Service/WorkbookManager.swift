@@ -21,6 +21,15 @@ final class WorkbookManager {
         return $workbookList.eraseToAnyPublisher()
     }
     
+    func requestProblemListPublisher() -> AnyPublisher<[Problem], Never>? {
+        guard let selectedWorkbookIndex else { return nil }
+        
+        return workbookList[safe: selectedWorkbookIndex]?
+            .problemContainer
+            .$problems
+            .eraseToAnyPublisher()
+    }
+    
     func addWorkbook(_ workbook: Workbook) {
         workbookList.append(workbook)
     }

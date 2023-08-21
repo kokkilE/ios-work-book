@@ -16,3 +16,4 @@ extension ReuseIdentifying {
 }
 
 extension UICollectionViewCell: ReuseIdentifying {}
+extension UITableViewCell: ReuseIdentifying {}

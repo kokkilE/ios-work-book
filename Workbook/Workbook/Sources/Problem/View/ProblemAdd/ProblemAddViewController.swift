@@ -84,7 +84,7 @@ final class ProblemAddViewController: UIViewController {
     }
     
     private func bind() {
-        viewModel.requestWorkbookListPublisher()
+        viewModel.requestProblemListPublisher()?
             .dropFirst()
             .sink { [weak self] _ in
                     self?.dismiss()
