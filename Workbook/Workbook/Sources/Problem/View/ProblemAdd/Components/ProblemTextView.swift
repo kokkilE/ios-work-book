@@ -16,6 +16,7 @@ final class ProblemTextView: UITextView {
         super.init(frame: .zero, textContainer: .none)
         
         setupView()
+        setupAttributedText()
     }
     
     required init?(coder: NSCoder) {
@@ -43,24 +44,32 @@ final class ProblemTextView: UITextView {
         
         return copiedText
     }
-    
+        
     private func setupView() {
         isScrollEnabled = false
         delegate = self
         
-        font = .systemFont(ofSize: 16)
         text = placeHolder
-        textColor = .placeholderText
+    }
+    
+    private func setupAttributedText() {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 8
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.placeholderText,
+            .font: UIFont.systemFont(ofSize: 16),
+            .kern: 1.0,
+            .paragraphStyle: paragraphStyle
+        ]
+        
+        let attributedString = NSAttributedString(string: self.text, attributes: attributes)
+        
+        attributedText = attributedString
     }
 }
 
 extension ProblemTextView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        let contentSize = sizeThatFits(CGSize(width: bounds.width, height: bounds.height))
-        
-        bounds = CGRect(origin: .zero, size: contentSize)
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if text == placeHolder {
             text = nil
