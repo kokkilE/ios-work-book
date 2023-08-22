@@ -8,18 +8,31 @@
 import Foundation
 import Combine
 
-struct Workbook: Hashable {
+final class Workbook: Hashable {
     private let identifier = UUID()
     private var title: String
-    var problemContainer: ProblemContainer
+    @Published private var problems: [Problem]
     
     init(title: String, problems: [Problem]) {
         self.title = title
-        self.problemContainer = ProblemContainer(problems: problems)
+        self.problems = problems
     }
     
-    mutating func addProblem(_ problem: Problem) {
-        problemContainer.problems.append(problem)
+    func requestProblemsPublisher() -> AnyPublisher<[Problem], Never> {
+        return $problems.eraseToAnyPublisher()
+    }
+    
+    func addProblem(_ problem: Problem) {
+        if problems.contains(problem) { return }
+        
+        problems.append(problem)
+    }
+        
+    func editProblem(with problem: Problem) {
+        let endIndex = problems.endIndex
+        for index in 0...endIndex {
+            problems[safe: index]?.overwrite(with: problem)
+        }
     }
     
     func getTitle() -> String {
@@ -29,20 +42,8 @@ struct Workbook: Hashable {
     static func == (lhs: Workbook, rhs: Workbook) -> Bool {
         return lhs.identifier == rhs.identifier
     }
-}
-
-final class ProblemContainer: Hashable {
-    @Published var problems: [Problem]
-    
-    init(problems: [Problem]) {
-        self.problems = problems
-    }
-    
-    static func == (lhs: ProblemContainer, rhs: ProblemContainer) -> Bool {
-        return lhs.problems == rhs.problems
-    }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(problems)
+        hasher.combine(identifier)
     }
 }

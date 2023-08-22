@@ -25,8 +25,7 @@ final class WorkbookManager {
         guard let selectedWorkbookIndex else { return nil }
         
         return workbookList[safe: selectedWorkbookIndex]?
-            .problemContainer
-            .$problems
+            .requestProblemsPublisher()
             .eraseToAnyPublisher()
     }
     
