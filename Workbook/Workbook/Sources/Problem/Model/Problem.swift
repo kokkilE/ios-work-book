@@ -5,6 +5,8 @@
 //  Created by 조향래 on 2023/07/17.
 //
 
+import Foundation
+
 struct Problem: Hashable {
     enum ProblemType: Hashable {
         case shortAnswer
@@ -30,13 +32,26 @@ struct Problem: Hashable {
     }
     
     static let minimumExampleCount = 2
-    let problemType: ProblemType
-    let question: String
-    let example: [String]?
-    let shortAnswer: String?
+    let identifier = UUID()
+    var problemType: ProblemType
+    var question: String
+    var example: [String]?
+    var shortAnswer: String?
     var multipleAnswer: Set<Int>?
     
     mutating func configureMultipleAnswer(_ multipleAnswer: Set<Int>) {
         self.multipleAnswer = multipleAnswer
+    }
+    
+    static func == (lhs: Problem, rhs: Problem) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+        
+    mutating func overwrite(with problem: Problem) {
+        problemType = problem.problemType
+        question = problem.question
+        example = problem.example
+        shortAnswer = problem.shortAnswer
+        multipleAnswer = problem.multipleAnswer
     }
 }
