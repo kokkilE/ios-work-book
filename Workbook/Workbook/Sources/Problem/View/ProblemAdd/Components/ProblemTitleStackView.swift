@@ -28,6 +28,10 @@ final class ProblemTitleStackView: UIStackView {
         return problemTextView.text
     }
     
+    func configure(with text: String) {
+        problemTextView.text = text
+    }
+    
     private func setupView() {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 20)

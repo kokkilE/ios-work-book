@@ -148,7 +148,9 @@ extension ProblemListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let problemAddViewController = ProblemAddViewController()
+        guard let problem = viewModel.getProblem(at: indexPath.item) else { return }
+                
+        let problemAddViewController = ProblemAddViewController(problem: problem)
         
         navigationController?.pushViewController(problemAddViewController, animated: true)
     }

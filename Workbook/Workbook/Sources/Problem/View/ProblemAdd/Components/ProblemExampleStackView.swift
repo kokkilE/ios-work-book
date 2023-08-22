@@ -22,7 +22,6 @@ final class ProblemExampleStackView: UIStackView {
             return count
         }
     }
-    
     private var removeButtonList = [UIButton]() {
         didSet {
             if removeButtonList.count <= Problem.minimumExampleCount {
@@ -33,7 +32,6 @@ final class ProblemExampleStackView: UIStackView {
             removeButtonList.forEach { $0.isHidden = false }
         }
     }
-    
     private let exampleItemsStackView = {
         let stackView = UIStackView()
         stackView.spacing = 12

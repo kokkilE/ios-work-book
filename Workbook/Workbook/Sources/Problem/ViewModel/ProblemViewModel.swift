@@ -27,4 +27,8 @@ final class ProblemViewModel {
     func requestProblemListPublisher() -> AnyPublisher<[Problem], Never>? {
         return workbookManager.requestProblemListPublisher()
     }
+    
+    func getProblem(at index: Int) -> Problem? {
+        return workbookManager.getProblem(at: index)
+    }
 }

@@ -13,6 +13,18 @@ final class ProblemAddViewController: UIViewController {
     private let viewModel = ProblemViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
+    init(problem: Problem? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        
+        if let problem {
+            problemAddView.configure(with: problem)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

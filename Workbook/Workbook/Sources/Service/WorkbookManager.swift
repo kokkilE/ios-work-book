@@ -52,4 +52,11 @@ final class WorkbookManager {
         
         workbookList[safe: selectedWorkbookIndex]?.addProblem(problem)
     }
+    
+    func getProblem(at index: Int) -> Problem? {
+        guard let selectedWorkbookIndex else { return nil }
+        
+        return workbookList[safe: selectedWorkbookIndex]?
+            .getProblem(at: index)
+    }
 }

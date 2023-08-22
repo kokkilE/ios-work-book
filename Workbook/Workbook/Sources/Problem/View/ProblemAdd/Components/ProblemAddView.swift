@@ -114,12 +114,17 @@ final class ProblemAddView: UIStackView {
             return problem
         }
         
-        let problem = Problem(problemType: .shortAnswer,
+        let problem = Problem(problemType: .multipleChoice,
                               question: problemTitleStackView.getTitle(),
                               example: problemExampleStackView.getExampleList(),
                               shortAnswer: nil,
                               multipleAnswer: nil)
         
         return problem
+    }
+    
+    func configure(with problem: Problem) {
+        segmentedControl.selectedSegmentIndex = problem.problemType.index
+        configureWithSegmentedControl()
     }
 }

@@ -43,15 +43,15 @@ struct Problem: Hashable {
         self.multipleAnswer = multipleAnswer
     }
     
-    static func == (lhs: Problem, rhs: Problem) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-        
     mutating func overwrite(with problem: Problem) {
         problemType = problem.problemType
         question = problem.question
         example = problem.example
         shortAnswer = problem.shortAnswer
         multipleAnswer = problem.multipleAnswer
+    }
+    
+    static func == (lhs: Problem, rhs: Problem) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }
