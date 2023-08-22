@@ -25,7 +25,7 @@ final class ProblemAddView: UIStackView {
     private let problemAnswerStackView = ProblemAnswerStackView()
     
     private let viewModel = ProblemViewModel()
-    var delegate: ProblemAddViewController?
+    var delegate: ViewControllerPresentable?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
