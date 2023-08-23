@@ -42,6 +42,8 @@ final class ProblemTextView: UITextView {
         
         copiedText.removeAll { $0 == " " || $0 == "\n" }
         
+        if copiedText.isEmpty { return nil }
+        
         return copiedText
     }
         
