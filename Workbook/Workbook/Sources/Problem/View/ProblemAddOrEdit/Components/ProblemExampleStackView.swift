@@ -43,12 +43,10 @@ final class ProblemExampleStackView: UIStackView {
         return stackView
     }()
     
-    init( isEditing: Bool = false) {
+    init(isEditing: Bool = false) {
         super.init(frame: .zero)
         
         setupView()
-        
-        if isEditing { return }
         
         for _ in 1...defaultNumberOfExamples {
             addExampleItem()
@@ -85,7 +83,7 @@ final class ProblemExampleStackView: UIStackView {
     
     func isCanComplete() -> Bool {
         var filledTextViewCount = 0
-        // MARK: PlaceHolder의 개수에 버그가 있음...
+        
         exampleTextViewList.forEach {
             if !$0.isEmptyExceptSpaces() {
                 filledTextViewCount += 1
@@ -123,21 +121,16 @@ final class ProblemExampleStackView: UIStackView {
         return exampleList
     }
     
-    func removeEmptyTextView() {
-        let indexRange = exampleTextViewList.endIndex...exampleTextViewList.startIndex
-        
-        for index in indexRange {
-            if exampleTextViewList[index].isEmptyExceptSpaces() {
-                exampleTextViewList.remove(at: index)
-            }
-        }
-    }
-    
     func configure(with examples: [String]?) {
+        guard let examples else { return }
+        
         removeButtonList.removeAll()
         exampleTextViewList.removeAll()
+        exampleItemsStackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         
-        examples?.forEach {
+        examples.forEach {
             addExampleItem($0)
         }
     }
