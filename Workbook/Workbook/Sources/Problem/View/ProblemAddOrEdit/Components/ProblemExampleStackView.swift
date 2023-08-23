@@ -43,10 +43,12 @@ final class ProblemExampleStackView: UIStackView {
         return stackView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init( isEditing: Bool = false) {
+        super.init(frame: .zero)
         
         setupView()
+        
+        if isEditing { return }
         
         for _ in 1...defaultNumberOfExamples {
             addExampleItem()
@@ -83,7 +85,7 @@ final class ProblemExampleStackView: UIStackView {
     
     func isCanComplete() -> Bool {
         var filledTextViewCount = 0
-        
+        // MARK: PlaceHolder의 개수에 버그가 있음...
         exampleTextViewList.forEach {
             if !$0.isEmptyExceptSpaces() {
                 filledTextViewCount += 1
@@ -131,6 +133,15 @@ final class ProblemExampleStackView: UIStackView {
         }
     }
     
+    func configure(with examples: [String]?) {
+        removeButtonList.removeAll()
+        exampleTextViewList.removeAll()
+        
+        examples?.forEach {
+            addExampleItem($0)
+        }
+    }
+    
     private func setupView() {
         let exampleLabel = UILabel()
         exampleLabel.font = .systemFont(ofSize: 20)
@@ -140,7 +151,7 @@ final class ProblemExampleStackView: UIStackView {
         let addImage = UIImage(systemName: "plus")
         let addExampleButton = UIButton()
         addExampleButton.setImage(addImage, for: .normal)
-        addExampleButton.addTarget(self, action: #selector(addExampleItem), for: .touchUpInside)
+        addExampleButton.addTarget(self, action: #selector(touchUpAddButton), for: .touchUpInside)
         addExampleButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         let exampleStackView = UIStackView(arrangedSubviews: [exampleLabel, addExampleButton])
@@ -153,9 +164,18 @@ final class ProblemExampleStackView: UIStackView {
         alignment = .fill
     }
     
-    @objc private func addExampleItem() {
-        let exampleTextView = ProblemTextView(placeHolder: "문항의 보기를 입력하세요.")
+    @objc private func touchUpAddButton() {
+        addExampleItem()
+    }
+    
+    private func addExampleItem(_ example: String? = nil) {
+        let placeHolder = "문항의 보기를 입력하세요."
+        
+        let exampleTextView = ProblemTextView(placeHolder: placeHolder)
         exampleTextView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        if let example {
+            exampleTextView.text = example
+        }
         
         let removeImage = UIImage(systemName: "xmark")
         let removeButton = UIButton()

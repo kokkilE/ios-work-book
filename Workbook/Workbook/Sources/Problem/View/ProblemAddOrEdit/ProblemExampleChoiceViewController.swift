@@ -9,6 +9,11 @@ import UIKit
 import Combine
 
 final class ProblemExampleChoiceViewController: UIViewController {
+    enum Mode {
+        case Add
+        case Edit
+    }
+    
     private let problemExampleChoiceStackView: ProblemExampleChoiceStackView
     
     private lazy var mainStackView = {
@@ -66,11 +71,13 @@ final class ProblemExampleChoiceViewController: UIViewController {
     }()
     
     private var problem: Problem
+    private let mode: Mode
     private let viewModel = ProblemViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
-    init(problem: Problem) {
+    init(problem: Problem, mode: Mode) {
         self.problem = problem
+        self.mode = mode
         self.problemExampleChoiceStackView = ProblemExampleChoiceStackView(examples: problem.example)
         
         super.init(nibName: nil, bundle: nil)
@@ -132,7 +139,7 @@ final class ProblemExampleChoiceViewController: UIViewController {
         problem.configureMultipleAnswer(selectedAnswer)
         
         dismiss(animated: true)
-        viewModel.addProblem(problem)
+        addOrEditProblem(problem)
     }
     
     private func bind() {
@@ -141,5 +148,14 @@ final class ProblemExampleChoiceViewController: UIViewController {
                 self?.doneButton.isEnabled = isAnswerSelected
             }
             .store(in: &subscriptions)
+    }
+    
+    private func addOrEditProblem(_ problem: Problem) {
+        switch mode {
+        case .Add:
+            viewModel.addProblem(problem)
+        case .Edit:
+            viewModel.editProblem(with: problem)
+        }
     }
 }

@@ -20,6 +20,11 @@ final class ProblemViewModel {
         isProblemAdded = true
     }
     
+    func editProblem(with problem: Problem) {
+        workbookManager.editProblem(with: problem)
+        isProblemAdded = true
+    }
+    
     func requestWorkbookListPublisher() -> AnyPublisher<[Workbook], Never> {
         return workbookManager.requestWorkbookListPublisher()
     }

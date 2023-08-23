@@ -71,9 +71,10 @@ final class ProblemTextView: UITextView {
 
 extension ProblemTextView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        textColor = .black
+        
         if text == placeHolder {
             text = nil
-            textColor = .black
         }
     }
     

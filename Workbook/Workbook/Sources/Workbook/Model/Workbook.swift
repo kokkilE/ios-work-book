@@ -23,13 +23,19 @@ final class Workbook: Hashable {
     }
     
     func addProblem(_ problem: Problem) {
-        if problems.contains(problem) {
-            editProblem(with: problem)
-            
-            return
-        }
+        if problems.contains(problem) { return }
         
         problems.append(problem)
+    }
+    
+    func editProblem(with problem: Problem) {
+        let endIndex = problems.endIndex
+        
+        for index in 0...endIndex {
+            if problems[safe: index] == problem {
+                problems[safe: index]?.overwrite(with: problem)
+            }
+        }
     }
     
     func getTitle() -> String {
@@ -38,13 +44,6 @@ final class Workbook: Hashable {
     
     func getProblem(at index: Int) -> Problem? {
         return problems[safe: index]
-    }
-    
-    private func editProblem(with problem: Problem) {
-        let endIndex = problems.endIndex
-        for index in 0...endIndex {
-            problems[safe: index]?.overwrite(with: problem)
-        }
     }
     
     static func == (lhs: Workbook, rhs: Workbook) -> Bool {

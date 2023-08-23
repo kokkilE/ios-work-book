@@ -150,7 +150,7 @@ extension ProblemListViewController: UITableViewDelegate {
         
         guard let problem = viewModel.getProblem(at: indexPath.item) else { return }
                 
-        let problemAddViewController = ProblemAddViewController(problem: problem)
+        let problemAddViewController = ProblemEditViewController(problem: problem)
         
         navigationController?.pushViewController(problemAddViewController, animated: true)
     }
