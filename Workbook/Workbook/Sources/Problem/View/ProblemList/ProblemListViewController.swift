@@ -100,10 +100,9 @@ final class ProblemListViewController: UIViewController {
         let safe = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            problemControlView.topAnchor.constraint(equalTo: safe.topAnchor),
-            problemControlView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
-            problemControlView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
-            problemControlView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.10),
+            problemControlView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 4),
+            problemControlView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 8),
+            problemControlView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -8),
             
             tableView.topAnchor.constraint(equalTo: problemControlView.bottomAnchor, constant: 12),
             tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
@@ -130,6 +129,7 @@ final class ProblemListViewController: UIViewController {
         viewModel.requestProblemListPublisher()?
             .sink { [weak self] problemList in
                 self?.applySnapshot(problemList: problemList)
+                self?.problemControlView.configureProblemCountLabel(problemList.count)
             }
             .store(in: &subscriptions)
     }

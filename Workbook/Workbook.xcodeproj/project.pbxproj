@@ -207,9 +207,8 @@
 		AA7C353D2A714C1600B6B0C5 /* ProblemList */ = {
 			isa = PBXGroup;
 			children = (
-				AA7048B42A93408E00142C93 /* ProblemListCell.swift */,
-				AAFEA5132A657DE700080313 /* ProblemControlView.swift */,
 				AAFEA5112A656A5500080313 /* ProblemListViewController.swift */,
+				AAD1B22C2A973B1000CEA77B /* Components */,
 			);
 			path = ProblemList;
 			sourceTree = "<group>";
@@ -250,6 +249,15 @@
 				AAB38CCE2A64E249004E0A55 /* Info.plist */,
 			);
 			path = Workbook;
+			sourceTree = "<group>";
+		};
+		AAD1B22C2A973B1000CEA77B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA7048B42A93408E00142C93 /* ProblemListCell.swift */,
+				AAFEA5132A657DE700080313 /* ProblemControlView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		AAE233AA2A8CD29B006DB522 /* Protocol */ = {

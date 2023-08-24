@@ -36,4 +36,8 @@ final class ProblemViewModel {
     func getProblem(at index: Int) -> Problem? {
         return workbookManager.getProblem(at: index)
     }
+    
+    func getWorkbookTitle() -> String? {
+        return workbookManager.selectedWoorbookTitle()
+    }
 }
