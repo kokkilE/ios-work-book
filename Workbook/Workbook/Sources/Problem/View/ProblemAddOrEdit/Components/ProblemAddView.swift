@@ -23,6 +23,7 @@ final class ProblemAddView: UIStackView {
     private let problemTitleStackView = ProblemTitleStackView()
     private let problemExampleStackView = ProblemExampleStackView(isEditing: false)
     private let problemAnswerStackView = ProblemAnswerStackView()
+    private let problemExplanationStackView = ProblemExplanationStackView()
     
     private let viewModel = ProblemViewModel()
     var delegate: ViewControllerPresentable?
@@ -50,6 +51,7 @@ final class ProblemAddView: UIStackView {
         addArrangedSubview(problemTitleStackView)
         addArrangedSubview(problemAnswerStackView)
         addArrangedSubview(problemExampleStackView)
+        addArrangedSubview(problemExplanationStackView)
     }
     
     @objc private func configureWithSegmentedControl() {
@@ -110,7 +112,8 @@ final class ProblemAddView: UIStackView {
                                   question: problemTitleStackView.getTitle(),
                                   example: nil,
                                   shortAnswer: problemAnswerStackView.getAnswer(),
-                                  multipleAnswer: nil)
+                                  multipleAnswer: nil,
+                                  explanation: problemExplanationStackView.getText())
             return problem
         }
         
@@ -118,13 +121,9 @@ final class ProblemAddView: UIStackView {
                               question: problemTitleStackView.getTitle(),
                               example: problemExampleStackView.getExampleList(),
                               shortAnswer: nil,
-                              multipleAnswer: nil)
+                              multipleAnswer: nil,
+                              explanation: problemExplanationStackView.getText())
         
         return problem
-    }
-    
-    func configure(with problem: Problem) {
-        segmentedControl.selectedSegmentIndex = problem.problemType.index
-        configureWithSegmentedControl()
     }
 }

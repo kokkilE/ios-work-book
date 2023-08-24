@@ -50,6 +50,7 @@ struct Problem: Hashable {
         example = problem.example
         shortAnswer = problem.shortAnswer
         multipleAnswer = problem.multipleAnswer
+        explanation = problem.explanation
     }
     
     static func == (lhs: Problem, rhs: Problem) -> Bool {

@@ -28,7 +28,7 @@ final class ProblemTitleStackView: UIStackView {
         return problemTextView.text
     }
     
-    func configure(with text: String) {
+    func configure(with text: String) {        
         problemTextView.text = text
     }
     

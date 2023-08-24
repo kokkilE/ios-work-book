@@ -23,6 +23,7 @@ final class ProblemEditView: UIStackView {
     private let problemTitleStackView = ProblemTitleStackView()
     private let problemExampleStackView = ProblemExampleStackView(isEditing: true)
     private let problemAnswerStackView = ProblemAnswerStackView()
+    private let problemExplanationStackView = ProblemExplanationStackView()
     
     private let viewModel = ProblemViewModel()
     private var oldProblem: Problem
@@ -54,6 +55,7 @@ final class ProblemEditView: UIStackView {
         addArrangedSubview(problemTitleStackView)
         addArrangedSubview(problemAnswerStackView)
         addArrangedSubview(problemExampleStackView)
+        addArrangedSubview(problemExplanationStackView)
     }
     
     private func configure(with problem: Problem) {
@@ -61,6 +63,7 @@ final class ProblemEditView: UIStackView {
         problemTitleStackView.configure(with: problem.question)
         problemAnswerStackView.configure(with: problem.shortAnswer)
         problemExampleStackView.configure(with: problem.example)
+        problemExplanationStackView.configure(with: problem.explanation)
     }
     
     @objc private func configureWithSegmentedControl() {
@@ -123,7 +126,9 @@ final class ProblemEditView: UIStackView {
                                   question: problemTitleStackView.getTitle(),
                                   example: nil,
                                   shortAnswer: problemAnswerStackView.getAnswer(),
-                                  multipleAnswer: nil)
+                                  multipleAnswer: nil,
+                                  explanation: problemExplanationStackView.getText())
+            
             return problem
         }
         
@@ -131,7 +136,8 @@ final class ProblemEditView: UIStackView {
                               question: problemTitleStackView.getTitle(),
                               example: problemExampleStackView.getExampleList(),
                               shortAnswer: nil,
-                              multipleAnswer: nil)
+                              multipleAnswer: nil,
+                              explanation: problemExplanationStackView.getText())
         
         return problem
     }

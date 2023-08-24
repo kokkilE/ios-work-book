@@ -1,14 +1,14 @@
 //
-//  ProblemAnswerStackView.swift
+//  ProblemExplanationStackView.swift
 //  Workbook
 //
-//  Created by 조향래 on 2023/08/04.
+//  Created by 조향래 on 2023/08/24.
 //
 
 import UIKit
 
-final class ProblemAnswerStackView: UIStackView {
-    private let problemTextView = ProblemTextView(placeHolder: "문항 정답을 작성하세요.")
+final class ProblemExplanationStackView: UIStackView {
+    private let problemTextView = ProblemTextView(placeHolder: "문항 해설을 작성하세요.")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,11 +20,9 @@ final class ProblemAnswerStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func isCanComplete() -> Bool {
-        return !problemTextView.isEmptyExceptSpaces()
-    }
-    
-    func getAnswer() -> String {
+    func getText() -> String? {
+        if problemTextView.isEmptyExceptSpaces() { return nil }
+        
         return problemTextView.text
     }
     
@@ -35,9 +33,9 @@ final class ProblemAnswerStackView: UIStackView {
     }
     
     private func setupView() {
-        let answerLabel = UILabel()
-        answerLabel.font = .systemFont(ofSize: 20)
-        answerLabel.text = "문항 정답"
+        let titleLabel = UILabel()
+        titleLabel.font = .systemFont(ofSize: 20)
+        titleLabel.text = "문항 해설(선택)"
         
         let bottomBorder = UIView()
         bottomBorder.backgroundColor = .systemGray4
@@ -50,7 +48,7 @@ final class ProblemAnswerStackView: UIStackView {
         textFieldStackView.isLayoutMarginsRelativeArrangement = true
         textFieldStackView.axis = .vertical
         
-        addArrangedSubview(answerLabel)
+        addArrangedSubview(titleLabel)
         addArrangedSubview(textFieldStackView)
         spacing = 4
         axis = .vertical
