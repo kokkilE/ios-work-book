@@ -64,7 +64,6 @@ final class ProblemAddViewController: UIViewController {
         rightBarButton.setTitle("완료", for: .normal)
         rightBarButton.titleLabel?.font = .systemFont(ofSize: 20)
         rightBarButton.setTitleColor(.systemBlue, for: .normal)
-        rightBarButton.tintColor = .black
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
     }
