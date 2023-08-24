@@ -34,8 +34,8 @@ final class WorkbookListViewController: UIViewController {
         setupView()
         addSubviews()
         layout()
-        setupLeftBarButton()
-        setupRightBarButton()
+        setupNavigationLeftBarButtonItem()
+        setupNavigationRightBarButtonItem()
         setupDataSource()
         bind()
     }
@@ -59,7 +59,7 @@ final class WorkbookListViewController: UIViewController {
         ])
     }
     
-    private func setupLeftBarButton() {
+    private func setupNavigationLeftBarButtonItem() {
         let systemImageName = "list.triangle"
         let title = "Workbook"
         
@@ -79,9 +79,8 @@ final class WorkbookListViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: stackView)
     }
     
-    private func setupRightBarButton() {
+    private func setupNavigationRightBarButtonItem() {
         let systemImageName = "folder.fill.badge.plus"
-        
         let image = UIImage(systemName: systemImageName)
         
         let rightBarButton = UIBarButtonItem(image: image,

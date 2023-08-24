@@ -73,10 +73,13 @@ final class ProblemListViewController: UIViewController {
     
     private func setupNavigationRightBarButtonItem() {
         let systemImageName = "plus"
-        let addImage = UIImage(systemName: systemImageName)
+        let image = UIImage(systemName: systemImageName)
         
-        let rightBarButton = UIBarButtonItem(image: addImage, style: .plain, target: self, action: #selector(addProblem))
-        rightBarButton.tintColor = .black
+        let rightBarButton = UIBarButtonItem(image: image,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(addProblem))
+        rightBarButton.tintColor = .systemBlue
         
         navigationItem.rightBarButtonItem = rightBarButton
     }
