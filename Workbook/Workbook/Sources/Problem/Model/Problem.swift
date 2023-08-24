@@ -38,6 +38,7 @@ struct Problem: Hashable {
     var example: [String]?
     var shortAnswer: String?
     var multipleAnswer: Set<Int>?
+    var explanation: String?
     
     mutating func configureMultipleAnswer(_ multipleAnswer: Set<Int>) {
         self.multipleAnswer = multipleAnswer
