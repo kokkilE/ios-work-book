@@ -45,10 +45,10 @@ final class ProblemListCell: UITableViewCell {
         let safe = safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: safe.topAnchor, constant: 12),
-            label.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 8),
-            label.widthAnchor.constraint(equalTo: safe.widthAnchor, multiplier: 0.85),
-            label.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -12)
+            label.topAnchor.constraint(equalTo: safe.topAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 12),
+            label.widthAnchor.constraint(equalTo: safe.widthAnchor, multiplier: 0.80),
+            label.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -16)
         ])
     }
     
