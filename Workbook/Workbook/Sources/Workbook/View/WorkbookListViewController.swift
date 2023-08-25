@@ -95,7 +95,7 @@ final class WorkbookListViewController: UIViewController {
         let alertManager = AlertManager()
         
         let alert = alertManager.createNewWorkbookAlert() { [weak self] title in
-            if title.isEmpty {
+            if title.isEmptyExceptSpaces() {
                 let errorAlert = alertManager.createErrorAlert(error: WorkbookError.emptyTitle)
                 self?.present(errorAlert, animated: true)
                 

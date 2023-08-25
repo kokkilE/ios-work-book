@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA0268512A89EAAE006864B8 /* ErrorDescriptionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0268502A89EAAE006864B8 /* ErrorDescriptionProtocol.swift */; };
+		AA26B28B2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA26B28A2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift */; };
 		AA4CEFDD2A831D0A002F0B86 /* ProblemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */; };
 		AA4CEFDF2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */; };
 		AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		AA0268502A89EAAE006864B8 /* ErrorDescriptionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptionProtocol.swift; sourceTree = "<group>"; };
+		AA26B28A2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isEmptyExceptSpaces.swift"; sourceTree = "<group>"; };
 		AA4CEFDC2A831D0A002F0B86 /* ProblemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemError.swift; sourceTree = "<group>"; };
 		AA4CEFDE2A83385A002F0B86 /* ProblemExampleChoiceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceStackView.swift; sourceTree = "<group>"; };
 		AA6AD2432A90A7FE00E76F0E /* ProblemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEA5072A65679500080313 /* Array+subscript.swift */,
+				AA26B28A2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				AAFEA5142A657DE700080313 /* ProblemControlView.swift in Sources */,
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
+				AA26B28B2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
 				AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */,
 				AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */,
