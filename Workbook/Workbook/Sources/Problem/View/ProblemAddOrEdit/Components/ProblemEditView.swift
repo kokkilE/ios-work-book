@@ -27,7 +27,7 @@ final class ProblemEditView: UIStackView {
     
     private let viewModel = ProblemViewModel()
     private var oldProblem: Problem
-    var delegate: ViewControllerPresentable?
+    @Published var newMultipleChoiceProblem: Problem?
     
     init(problem: Problem) {
         oldProblem = problem
@@ -115,9 +115,7 @@ final class ProblemEditView: UIStackView {
         
         let newProblem = createProblem()
         oldProblem.overwrite(with: newProblem)
-        let problemExampleChoiceViewController = ProblemExampleChoiceViewController(problem: oldProblem, mode: .Edit)
-        
-        delegate?.presentViewController(problemExampleChoiceViewController)
+        newMultipleChoiceProblem = oldProblem
     }
     
     private func createProblem() -> Problem {

@@ -26,7 +26,7 @@ final class ProblemAddView: UIStackView {
     private let problemExplanationStackView = ProblemExplanationStackView()
     
     private let viewModel = ProblemViewModel()
-    var delegate: ViewControllerPresentable?
+    @Published var newMultipleChoiceProblem: Problem?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -101,9 +101,7 @@ final class ProblemAddView: UIStackView {
         }
         
         let problem = createProblem()
-        let problemExampleChoiceViewController = ProblemExampleChoiceViewController(problem: problem, mode: .Add)
-        
-        delegate?.presentViewController(problemExampleChoiceViewController)
+        newMultipleChoiceProblem = problem
     }
     
     private func createProblem() -> Problem {

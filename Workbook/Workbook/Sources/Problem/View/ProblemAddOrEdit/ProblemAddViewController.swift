@@ -29,8 +29,6 @@ final class ProblemAddViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(problemAddView)
-        
-        problemAddView.delegate = self
     }
     
     private func layout() {
@@ -89,11 +87,19 @@ final class ProblemAddViewController: UIViewController {
                     self?.dismissProblemAddViewController()
             }
             .store(in: &subscriptions)
+        
+        problemAddView.$newMultipleChoiceProblem
+            .sink { [weak self] problem in
+                guard let problem else { return }
+                
+                self?.presentProblemExampleChoiceViewController(problem)
+            }
+            .store(in: &subscriptions)
     }
-}
-
-extension ProblemAddViewController: ViewControllerPresentable {
-    func presentViewController(_ viewController: UIViewController) {        
+    
+    private func presentProblemExampleChoiceViewController(_ problem: Problem) {
+        let viewController = ProblemExampleChoiceViewController(problem: problem, mode: .Add)
+        
         present(viewController, animated: true)
     }
 }
