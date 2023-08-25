@@ -8,7 +8,7 @@
 import UIKit
 
 struct AlertManager {
-    func createNewFolderAlert(okCompletion: @escaping (String) -> ()) -> UIAlertController {
+    func createNewWorkbookAlert(okCompletion: @escaping (String) -> ()) -> UIAlertController {
         let alertController = UIAlertController(title: "새 문제집을 만들어요.", message: nil, preferredStyle: .alert)
         
         alertController.addTextField() { textField in

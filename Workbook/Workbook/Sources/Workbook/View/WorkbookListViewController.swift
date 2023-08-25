@@ -94,7 +94,14 @@ final class WorkbookListViewController: UIViewController {
     @objc private func addWorkbook() {
         let alertManager = AlertManager()
         
-        let alert = alertManager.createNewFolderAlert() { [weak self] title in
+        let alert = alertManager.createNewWorkbookAlert() { [weak self] title in
+            if title.isEmpty {
+                let errorAlert = alertManager.createErrorAlert(error: WorkbookError.emptyTitle)
+                self?.present(errorAlert, animated: true)
+                
+                return
+            }
+            
             self?.viewModel.addWorkbook(title)
         }
         
