@@ -26,7 +26,6 @@
 		AAB38CCD2A64E249004E0A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB38CCB2A64E249004E0A55 /* LaunchScreen.storyboard */; };
 		AAB6A1422A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB6A1412A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift */; };
 		AAD1B22B2A9732B200CEA77B /* ProblemExplanationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD1B22A2A9732B200CEA77B /* ProblemExplanationStackView.swift */; };
-		AAE233AC2A8CD2AB006DB522 /* ViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */; };
 		AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */; };
 		AAFEA5012A6566FE00080313 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5002A6566FE00080313 /* Problem.swift */; };
 		AAFEA5032A65670F00080313 /* Workbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEA5022A65670F00080313 /* Workbook.swift */; };
@@ -63,7 +62,6 @@
 		AAB38CCE2A64E249004E0A55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAB6A1412A8C89C700D7D52E /* ProblemExampleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleChoiceViewController.swift; sourceTree = "<group>"; };
 		AAD1B22A2A9732B200CEA77B /* ProblemExplanationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExplanationStackView.swift; sourceTree = "<group>"; };
-		AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPresentable.swift; sourceTree = "<group>"; };
 		AAFEA4FD2A6566B600080313 /* WorkbookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookListCell.swift; sourceTree = "<group>"; };
 		AAFEA5002A6566FE00080313 /* Problem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		AAFEA5022A65670F00080313 /* Workbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workbook.swift; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 		AAE233AA2A8CD29B006DB522 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				AAE233AB2A8CD2AB006DB522 /* ViewControllerPresentable.swift */,
 				AAFEA50A2A65683400080313 /* ReuseIdentifying.swift */,
 			);
 			path = Protocol;
@@ -403,7 +400,6 @@
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AAFEA5032A65670F00080313 /* Workbook.swift in Sources */,
 				AA6AD2442A90A7FE00E76F0E /* ProblemViewModel.swift in Sources */,
-				AAE233AC2A8CD2AB006DB522 /* ViewControllerPresentable.swift in Sources */,
 				AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
