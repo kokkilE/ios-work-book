@@ -18,23 +18,20 @@ final class ProblemControlView: UIStackView {
     private lazy var solveProblemButton = {
         let button = UIButton()
         button.setTitle("문제 풀기", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.backgroundColor = .systemGray6
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5
         
-        let borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1
-        button.layer.borderColor = borderColor
         button.addTarget(self, action: #selector(solveProblem), for: .touchUpInside)
         
         guard let titleLabel = button.titleLabel else { return button }
                 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: button.topAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: button.topAnchor, constant: 4),
             titleLabel.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -12),
-            titleLabel.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -12)
+            titleLabel.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -4)
         ])
         
         return button
