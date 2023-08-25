@@ -122,7 +122,8 @@ final class ProblemListViewController: UIViewController {
                 return UITableViewCell()
             }
             
-            cell.configure(title: problem.question)
+            let cellTitle = "\(indexPath.row + 1). \(problem.question)"
+            cell.configure(title: cellTitle)
             
             return cell
         }
