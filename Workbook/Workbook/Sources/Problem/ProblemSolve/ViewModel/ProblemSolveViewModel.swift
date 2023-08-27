@@ -20,6 +20,22 @@ final class ProblemSolveViewModel {
         problemsCount = selectedWorkbook?.getProblemsCount()
     }
     
+    func moveToPrevious() {
+        guard let problemsCount,
+              0...(problemsCount - 1) ~= (currentProblemIndex - 1) else { return }
+        
+        currentProblemIndex -= 1
+        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
+    }
+    
+    func moveToNext() {
+        guard let problemsCount,
+              0...(problemsCount - 1) ~= (currentProblemIndex + 1) else { return }
+        
+        currentProblemIndex += 1
+        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
+    }
+    
     func getProgressString() -> String? {
         guard let problemsCount else { return nil }
         
