@@ -136,6 +136,14 @@ final class ProblemListViewController: UIViewController {
                 self?.problemControlView.configureProblemCountLabel(problemList.count)
             }
             .store(in: &subscriptions)
+        
+        problemControlView.$isSolveButtonTapped
+            .sink { [weak self] isSolveButtonTapped in
+                guard isSolveButtonTapped else { return }
+                
+                self?.presentProblemSolveViewController()
+            }
+            .store(in: &subscriptions)
     }
     
     private func applySnapshot(problemList: [Problem]) {
@@ -145,6 +153,12 @@ final class ProblemListViewController: UIViewController {
         snapshot.appendItems(problemList)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func presentProblemSolveViewController() {
+        let problemSolveViewController = ProblemSolveViewController()
+        
+        navigationController?.pushViewController(problemSolveViewController, animated: true)
     }
 }
 

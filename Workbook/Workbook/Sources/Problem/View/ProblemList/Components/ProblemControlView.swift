@@ -37,6 +37,8 @@ final class ProblemControlView: UIStackView {
         return button
     }()
     
+    @Published var isSolveButtonTapped = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -48,8 +50,9 @@ final class ProblemControlView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureProblemCountLabel(_ count: Int) {
-        problemCountLabel.text = "문항 수: \(count)"
+    func configureProblemCountLabel(_ problemCount: Int) {
+        problemCountLabel.text = "문항 수: \(problemCount)"
+        toggleButtonActiveState(problemCount)
     }
     
     private func setupView() {
@@ -65,7 +68,19 @@ final class ProblemControlView: UIStackView {
         addArrangedSubview(solveProblemButton)
     }
     
-    @objc private func solveProblem() {
+    private func toggleButtonActiveState(_ problemCount: Int) {
+        if problemCount == 0 {
+            solveProblemButton.isEnabled = false
+            solveProblemButton.alpha = 0.2
+            
+            return
+        }
         
+        solveProblemButton.isEnabled = true
+        solveProblemButton.alpha = 1
+    }
+    
+    @objc private func solveProblem() {
+        isSolveButtonTapped = true
     }
 }
