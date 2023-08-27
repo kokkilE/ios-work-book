@@ -42,6 +42,10 @@ final class Workbook: Hashable {
         return title
     }
     
+    func getProblemsCount() -> Int {
+        return problems.count
+    }
+    
     func getProblem(at index: Int) -> Problem? {
         return problems[safe: index]
     }

@@ -12,7 +12,6 @@ final class WorkbookManager {
     static let shared = WorkbookManager()
     
     @Published private var workbookList = [Workbook]()
-    
     private var selectedWorkbookIndex: Int?
     
     private init() {}
@@ -45,6 +44,12 @@ final class WorkbookManager {
         guard let selectedWorkbookIndex else { return nil }
         
         return workbookList[safe: selectedWorkbookIndex]?.getTitle()
+    }
+    
+    func selectedWorkbook() -> Workbook? {
+        guard let selectedWorkbookIndex else { return nil }
+        
+        return workbookList[safe: selectedWorkbookIndex]
     }
     
     func addProblem(_ problem: Problem) {
