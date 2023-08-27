@@ -46,6 +46,10 @@ final class Workbook: Hashable {
         return problems[safe: index]
     }
     
+    func deleteProblem(at index: Int) {
+        problems.remove(at: index)
+    }
+    
     static func == (lhs: Workbook, rhs: Workbook) -> Bool {
         return lhs.identifier == rhs.identifier
     }

@@ -40,4 +40,8 @@ final class ProblemViewModel {
     func getWorkbookTitle() -> String? {
         return workbookManager.selectedWoorbookTitle()
     }
+    
+    func deleteProblem(at index: Int) {
+        workbookManager.deleteProblem(at: index)
+    }
 }

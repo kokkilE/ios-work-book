@@ -172,4 +172,21 @@ extension ProblemListViewController: UITableViewDelegate {
         
         navigationController?.pushViewController(problemAddViewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "삭제") { [weak self] _, _, _ in
+            self?.showDeleteAlert(indexPath.item)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    private func showDeleteAlert(_ index: Int) {
+        let alert = AlertManager().createDeleteProblemAlert() { [weak self] in
+            self?.viewModel.deleteProblem(at: index)
+            self?.tableView.reloadData()
+        }
+        
+        present(alert, animated: true)
+    }
 }

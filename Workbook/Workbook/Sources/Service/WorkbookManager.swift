@@ -65,4 +65,10 @@ final class WorkbookManager {
         return workbookList[safe: selectedWorkbookIndex]?
             .getProblem(at: index)
     }
+    
+    func deleteProblem(at index: Int) {
+        guard let selectedWorkbookIndex else { return }
+        
+        workbookList[safe: selectedWorkbookIndex]?.deleteProblem(at: index)
+    }
 }

@@ -24,9 +24,9 @@ struct AlertManager {
         }
         
         let cancelAction = UIAlertAction(title: "취소", style: .destructive)
-                
-        alertController.addAction(confirmAction)
+        
         alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
         
         return alertController
     }
@@ -42,6 +42,21 @@ struct AlertManager {
         
         let confirmAction = UIAlertAction(title: "확인", style: .cancel)
         
+        alertController.addAction(confirmAction)
+        
+        return alertController
+    }
+    
+    func createDeleteProblemAlert(okCompletion: @escaping () -> ()) -> UIAlertController {
+        let alertController = UIAlertController(title: "정말 삭제하시겠습니까??", message: nil, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "삭제", style: .default) { _ in
+            okCompletion()
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .destructive)
+        
+        alertController.addAction(cancelAction)
         alertController.addAction(confirmAction)
         
         return alertController
