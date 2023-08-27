@@ -50,11 +50,11 @@ struct AlertManager {
     func createDeleteProblemAlert(okCompletion: @escaping () -> ()) -> UIAlertController {
         let alertController = UIAlertController(title: "정말 삭제하시겠습니까??", message: nil, preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "삭제", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
             okCompletion()
         }
         
-        let cancelAction = UIAlertAction(title: "취소", style: .destructive)
+        let cancelAction = UIAlertAction(title: "취소", style: .default)
         
         alertController.addAction(cancelAction)
         alertController.addAction(confirmAction)
