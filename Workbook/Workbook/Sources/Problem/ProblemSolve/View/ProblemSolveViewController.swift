@@ -8,7 +8,7 @@
 import UIKit
 
 class ProblemSolveViewController: UIViewController {
-    private let viewModel = ProblemViewModel()
+//    private let viewModel = ProblemViewModel()
     private let progressLabel = {
         let label = UILabel()
         label.textAlignment = .center

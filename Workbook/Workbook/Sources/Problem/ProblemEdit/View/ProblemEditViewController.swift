@@ -10,7 +10,7 @@ import Combine
 
 final class ProblemEditViewController: UIViewController {
     private let problemEditView: ProblemEditView
-    private let viewModel = ProblemViewModel()
+    private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
     init(problem: Problem) {

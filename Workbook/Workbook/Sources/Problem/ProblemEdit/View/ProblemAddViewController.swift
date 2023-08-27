@@ -10,7 +10,7 @@ import Combine
 
 final class ProblemAddViewController: UIViewController {
     private let problemAddView = ProblemAddView()
-    private let viewModel = ProblemViewModel()
+    private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
         
     override func viewDidLoad() {

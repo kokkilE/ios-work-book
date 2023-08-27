@@ -24,7 +24,7 @@ final class ProblemListViewController: UIViewController {
         return tableView
     }()
     
-    private let viewModel = ProblemViewModel()
+    private let viewModel = ProblemListViewModel()
     private var dataSource: UITableViewDiffableDataSource<Section, Problem>?
     private var subscriptions = Set<AnyCancellable>()
     
@@ -51,7 +51,7 @@ final class ProblemListViewController: UIViewController {
     
     private func setupNavigationTitle() {
         let titleLabel = UILabel()
-        titleLabel.text = viewModel.workbookTitle
+        titleLabel.text = viewModel.getWorkbookTitle()
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         

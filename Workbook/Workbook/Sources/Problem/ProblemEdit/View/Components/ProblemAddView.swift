@@ -1,13 +1,13 @@
 //
-//  ProblemEditView.swift
+//  ProblemAddView.swift
 //  Workbook
 //
-//  Created by 조향래 on 2023/08/22.
+//  Created by 조향래 on 2023/07/18.
 //
 
 import UIKit
 
-final class ProblemEditView: UIStackView {
+final class ProblemAddView: UIStackView {
     private lazy var segmentedControl = {
         let segmentedControl = UISegmentedControl(items: [Problem.ProblemType.shortAnswer.description, Problem.ProblemType.multipleChoice.description])
         segmentedControl.selectedSegmentIndex = Problem.ProblemType.shortAnswer.index
@@ -21,22 +21,18 @@ final class ProblemEditView: UIStackView {
     }()
     
     private let problemTitleStackView = ProblemTitleStackView()
-    private let problemExampleStackView = ProblemExampleStackView(isEditing: true)
+    private let problemExampleStackView = ProblemExampleStackView(isEditing: false)
     private let problemAnswerStackView = ProblemAnswerStackView()
     private let problemExplanationStackView = ProblemExplanationStackView()
     
-    private let viewModel = ProblemViewModel()
-    private var oldProblem: Problem
+    private let viewModel = ProblemEditViewModel()
     @Published var newMultipleChoiceProblem: Problem?
     
-    init(problem: Problem) {
-        oldProblem = problem
-        
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         setupView()
         addSubviews()
-        configure(with: problem)
         configureWithSegmentedControl()
     }
     
@@ -58,14 +54,6 @@ final class ProblemEditView: UIStackView {
         addArrangedSubview(problemExplanationStackView)
     }
     
-    private func configure(with problem: Problem) {
-        segmentedControl.selectedSegmentIndex = problem.problemType.index
-        problemTitleStackView.configure(with: problem.question)
-        problemAnswerStackView.configure(with: problem.shortAnswer)
-        problemExampleStackView.configure(with: problem.example)
-        problemExplanationStackView.configure(with: problem.explanation)
-    }
-    
     @objc private func configureWithSegmentedControl() {
         if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
             problemAnswerStackView.isHidden = false
@@ -76,17 +64,17 @@ final class ProblemEditView: UIStackView {
         }
     }
     
-    func editProblem() throws {
+    func addProblem() throws {
         if segmentedControl.selectedSegmentIndex == Problem.ProblemType.shortAnswer.index {
-            try editShortAnswerProblem()
+            try addShortAnswerProblem()
             
             return
         }
         
-        try editMultipleChoiceProblem()
+        try addMultipleChoiceProblem()
     }
     
-    private func editShortAnswerProblem() throws {
+    private func addShortAnswerProblem() throws {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
@@ -95,12 +83,11 @@ final class ProblemEditView: UIStackView {
             throw ProblemError.emptyAnswer
         }
         
-        let newProblem = createProblem()
-        oldProblem.overwrite(with: newProblem)
-        viewModel.editProblem(with: oldProblem)
+        let problem = createProblem()
+        viewModel.addProblem(problem)
     }
     
-    private func editMultipleChoiceProblem() throws {
+    private func addMultipleChoiceProblem() throws {
         guard problemTitleStackView.isCanComplete() else {
             throw ProblemError.emptyTitle
         }
@@ -113,9 +100,8 @@ final class ProblemEditView: UIStackView {
             throw ProblemError.duplicatedExample
         }
         
-        let newProblem = createProblem()
-        oldProblem.overwrite(with: newProblem)
-        newMultipleChoiceProblem = oldProblem
+        let problem = createProblem()
+        newMultipleChoiceProblem = problem
     }
     
     private func createProblem() -> Problem {
@@ -126,7 +112,6 @@ final class ProblemEditView: UIStackView {
                                   shortAnswer: problemAnswerStackView.getAnswer(),
                                   multipleAnswer: nil,
                                   explanation: problemExplanationStackView.getText())
-            
             return problem
         }
         

@@ -72,7 +72,7 @@ final class ProblemExampleChoiceViewController: UIViewController {
     
     private var problem: Problem
     private let mode: Mode
-    private let viewModel = ProblemViewModel()
+    private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
     init(problem: Problem, mode: Mode) {
