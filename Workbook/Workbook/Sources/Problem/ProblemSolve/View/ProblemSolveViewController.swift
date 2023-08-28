@@ -61,8 +61,12 @@ final class ProblemSolveViewController: UIViewController {
     private func bind() {
         viewModel.$currentProblem
             .sink { [weak self] problem in
-                self?.progressLabel.text = self?.viewModel.getProgressString()
-                self?.problemSolveView.configure(problem)
+                guard let self else { return }
+                
+                UIView.transition(with: view, duration: 0.5, options: .transitionCurlDown, animations: {
+                    self.progressLabel.text = self.viewModel.getProgressString()
+                    self.problemSolveView.configure(problem)
+                }, completion: nil)
             }
             .store(in: &subscriptions)
     }
