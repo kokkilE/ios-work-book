@@ -42,7 +42,7 @@ final class ProblemSolveViewController: UIViewController {
             problemSolveView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 16),
             problemSolveView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
             problemSolveView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
-            problemSolveView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -8)
+            problemSolveView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.5)
         ])
     }
     

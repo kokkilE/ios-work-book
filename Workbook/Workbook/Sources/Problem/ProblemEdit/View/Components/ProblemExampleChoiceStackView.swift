@@ -63,8 +63,8 @@ final class ProblemExampleChoiceStackView: UIStackView {
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: button.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 4),
+            titleLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -4),
             titleLabel.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -8)
         ])
         
