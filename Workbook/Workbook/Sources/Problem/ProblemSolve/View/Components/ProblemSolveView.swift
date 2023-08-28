@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class ProblemSolveView: UIStackView {
     private let scrollView = {
@@ -98,12 +99,16 @@ final class ProblemSolveView: UIStackView {
         return button
     }()
     
+    private let viewModel = ProblemSolveViewModel()
+    private var subscriptions = Set<AnyCancellable>()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupView()
         addSubviews()
         layout()
+        bind()
     }
     
     required init(coder: NSCoder) {
@@ -165,5 +170,34 @@ final class ProblemSolveView: UIStackView {
     
     @objc private func touchUpNextButton() {
         
+    }
+    
+    private func bind() {
+        viewModel.$currentProblem
+            .sink { [weak self] _ in
+                guard let self else { return }
+                
+                configureButtonState(isFirst: viewModel.isFirstProblem,
+                                     isLast: viewModel.isLastProblem)
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func configureButtonState(isFirst: Bool, isLast: Bool) {
+        previousButton.isEnabled = true
+        previousButton.alpha = 1
+        nextButton.isEnabled = true
+        nextButton.alpha = 1
+        
+        if isFirst {
+            previousButton.isEnabled = false
+            previousButton.alpha = 0.2
+        }
+        
+        if isLast {
+            nextButton.setTitle("제출", for: .normal)
+        } else {
+            nextButton.setTitle("다음", for: .normal)
+        }
     }
 }

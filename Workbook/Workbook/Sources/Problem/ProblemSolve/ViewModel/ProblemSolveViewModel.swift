@@ -14,6 +14,18 @@ final class ProblemSolveViewModel {
     private var currentProblemIndex = 0
     private let problemsCount: Int?
     @Published var currentProblem: Problem?
+    var isFirstProblem: Bool {
+        get {
+            return currentProblemIndex == 0
+        }
+    }
+    var isLastProblem: Bool {
+        get {
+            guard let problemsCount else { return false }
+            
+            return currentProblemIndex == problemsCount - 1
+        }
+    }
     
     init() {
         selectedWorkbook = workbookManager.selectedWorkbook()
