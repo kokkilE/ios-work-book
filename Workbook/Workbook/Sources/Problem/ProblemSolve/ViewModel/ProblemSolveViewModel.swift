@@ -18,6 +18,7 @@ final class ProblemSolveViewModel {
     init() {
         selectedWorkbook = workbookManager.selectedWorkbook()
         problemsCount = selectedWorkbook?.getProblemsCount()
+        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
     }
     
     func moveToPrevious() {

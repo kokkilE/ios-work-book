@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ProblemSolveViewController: UIViewController {
+final class ProblemSolveViewController: UIViewController {
     private let viewModel = ProblemSolveViewModel()
     private let progressLabel = {
         let label = UILabel()
@@ -16,6 +16,7 @@ class ProblemSolveViewController: UIViewController {
         
         return label
     }()
+    private let problemSolveView = ProblemSolveView()
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -23,12 +24,26 @@ class ProblemSolveViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        layout()
         setupNavigationItems()
         bind()
     }
     
     private func setupView() {
         view.backgroundColor = .white
+        
+        view.addSubview(problemSolveView)
+    }
+    
+    private func layout() {
+        let safe = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            problemSolveView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 16),
+            problemSolveView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
+            problemSolveView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
+            problemSolveView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -8)
+        ])
     }
     
     private func setupNavigationItems() {
@@ -41,8 +56,9 @@ class ProblemSolveViewController: UIViewController {
     
     private func bind() {
         viewModel.$currentProblem
-            .sink { [weak self] _ in
+            .sink { [weak self] problem in                
                 self?.progressLabel.text = self?.viewModel.getProgressString()
+                self?.problemSolveView.configure(problem)
             }
             .store(in: &subscriptions)
     }

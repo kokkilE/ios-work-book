@@ -38,7 +38,7 @@ final class ProblemExampleChoiceStackView: UIStackView {
         spacing = 4
     }
     
-    private func setupExampleLabelList(examples: [String]?) {
+    func setupExampleLabelList(examples: [String]?) {
         examples?.forEach {
             let button = createButton(from: $0)
             
