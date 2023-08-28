@@ -63,7 +63,14 @@ final class ProblemSolveViewController: UIViewController {
             .sink { [weak self] problem in
                 guard let self else { return }
                 
-                UIView.transition(with: view, duration: 0.5, options: .transitionCurlDown, animations: {
+                var animationOption: UIView.AnimationOptions
+                if viewModel.isMovedToNext {
+                    animationOption = .transitionCurlUp
+                } else {
+                    animationOption = .transitionCurlDown
+                }
+                
+                UIView.transition(with: view, duration: 0.5, options: animationOption, animations: {
                     self.progressLabel.text = self.viewModel.getProgressString()
                     self.problemSolveView.configure(problem)
                 }, completion: nil)

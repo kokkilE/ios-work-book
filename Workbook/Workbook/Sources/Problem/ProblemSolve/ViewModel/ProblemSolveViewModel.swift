@@ -26,6 +26,7 @@ final class ProblemSolveViewModel {
             return currentProblemIndex == problemsCount - 1
         }
     }
+    private(set) var isMovedToNext = true
     
     init() {
         selectedWorkbook = workbookManager.selectedWorkbook()
@@ -37,6 +38,7 @@ final class ProblemSolveViewModel {
         guard let problemsCount,
               0...(problemsCount - 1) ~= (currentProblemIndex - 1) else { return }
         
+        isMovedToNext = false
         currentProblemIndex -= 1
         currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
     }
@@ -45,6 +47,7 @@ final class ProblemSolveViewModel {
         guard let problemsCount,
               0...(problemsCount - 1) ~= (currentProblemIndex + 1) else { return }
         
+        isMovedToNext = true
         currentProblemIndex += 1
         currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
     }
