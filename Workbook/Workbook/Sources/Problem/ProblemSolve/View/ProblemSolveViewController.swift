@@ -10,13 +10,17 @@ import Combine
 
 final class ProblemSolveViewController: UIViewController {
     private let viewModel = ProblemSolveViewModel()
-    private let progressLabel = {
+    private lazy var progressLabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let halfViewWidth = view.frame.width * 0.50
+        label.widthAnchor.constraint(equalToConstant: halfViewWidth).isActive = true
         
         return label
     }()
-    private let problemSolveView = ProblemSolveView()
+    private lazy var problemSolveView = ProblemSolveView(viewModel: viewModel)
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -56,7 +60,7 @@ final class ProblemSolveViewController: UIViewController {
     
     private func bind() {
         viewModel.$currentProblem
-            .sink { [weak self] problem in                
+            .sink { [weak self] problem in
                 self?.progressLabel.text = self?.viewModel.getProgressString()
                 self?.problemSolveView.configure(problem)
             }

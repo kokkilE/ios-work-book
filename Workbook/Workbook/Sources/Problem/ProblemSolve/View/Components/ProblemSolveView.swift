@@ -99,11 +99,13 @@ final class ProblemSolveView: UIStackView {
         return button
     }()
     
-    private let viewModel = ProblemSolveViewModel()
+    private let viewModel: ProblemSolveViewModel
     private var subscriptions = Set<AnyCancellable>()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: ProblemSolveViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(frame: .zero)
         
         setupView()
         addSubviews()
@@ -165,11 +167,11 @@ final class ProblemSolveView: UIStackView {
     }
     
     @objc private func touchUpPreviousButton() {
-        
+        viewModel.moveToPrevious()
     }
     
     @objc private func touchUpNextButton() {
-        
+        viewModel.moveToNext()
     }
     
     private func bind() {
