@@ -155,6 +155,19 @@ final class ProblemSolveView: UIStackView {
         activateHeightAnchor()
     }
     
+    func configure(_ userAnswer: ProblemUserAnswer?) {
+        guard let userAnswer else { return }
+        
+        switch userAnswer.problemType {
+        case .shortAnswer:
+            if let answer = userAnswer.shortAnswer {
+                answerTextView.text = answer
+            }
+        case .multipleChoice:
+            problemExampleChoiceStackView.configureUserAnswer(userAnswer.multipleAnswer)
+        }
+    }
+    
     private func configureShortAnswerProblme() {
         answerTextView.isHidden = false
         problemExampleChoiceStackView.isHidden = true

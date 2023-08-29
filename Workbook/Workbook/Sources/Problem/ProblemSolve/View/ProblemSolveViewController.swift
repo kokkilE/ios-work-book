@@ -72,6 +72,7 @@ final class ProblemSolveViewController: UIViewController {
                 UIView.transition(with: view, duration: 0.5, options: animationOption, animations: {
                     self.progressLabel.text = self.viewModel.getProgressString()
                     self.problemSolveView.configure(problem)
+                    self.problemSolveView.configure(self.viewModel.currentProblemUserAnswer)
                 }, completion: nil)
             }
             .store(in: &subscriptions)

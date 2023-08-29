@@ -39,8 +39,7 @@ final class ProblemExampleChoiceStackView: UIStackView {
     }
     
     func setupExampleLabelList(examples: [String]?) {
-        guard exampleButtonList.count == 0,
-              subviews.count == 0 else { return }
+        clear()
         
         examples?.forEach {
             let button = createButton(from: $0)
@@ -49,6 +48,25 @@ final class ProblemExampleChoiceStackView: UIStackView {
             addArrangedSubview(button)
             
             button.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+        }
+    }
+    
+    func configureUserAnswer(_ selectedIndexList: Set<Int>?) {
+        guard let selectedIndexList else { return }
+        
+        self.selectedIndexList.removeAll()
+        
+        selectedIndexList.forEach { index in
+            guard let button = exampleButtonList[safe: index] else { return }
+            
+            touchUpButton(sender: button)
+        }
+    }
+    
+    private func clear() {
+        exampleButtonList.removeAll()
+        subviews.forEach { subview in
+            subview.removeFromSuperview()
         }
     }
     

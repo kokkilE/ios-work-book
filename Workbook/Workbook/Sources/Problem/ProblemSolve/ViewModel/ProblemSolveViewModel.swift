@@ -15,6 +15,11 @@ final class ProblemSolveViewModel {
     private var currentProblemIndex = 0
     private let problemsCount: Int?
     @Published var currentProblem: Problem?
+    var currentProblemUserAnswer: ProblemUserAnswer? {
+        get {
+            return userAnswerList[safe: currentProblemIndex]
+        }
+    }
     var isFirstProblem: Bool {
         get {
             return currentProblemIndex == 0
