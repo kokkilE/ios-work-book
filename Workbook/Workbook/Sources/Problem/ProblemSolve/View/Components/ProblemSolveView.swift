@@ -12,7 +12,7 @@ final class ProblemSolveView: UIStackView {
     private let scrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .systemGray6
+        scrollView.backgroundColor = AppColor.yellowGreen
         scrollView.layer.cornerRadius = 10
         
         return scrollView
@@ -61,7 +61,7 @@ final class ProblemSolveView: UIStackView {
         button.setTitle("이전", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = AppColor.deepGreen
         button.layer.cornerRadius = 5
         
         button.addTarget(self, action: #selector(touchUpPreviousButton), for: .touchUpInside)
@@ -82,7 +82,7 @@ final class ProblemSolveView: UIStackView {
         button.setTitle("다음", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = AppColor.deepGreen
         button.layer.cornerRadius = 5
         
         button.addTarget(self, action: #selector(touchUpNextButton), for: .touchUpInside)

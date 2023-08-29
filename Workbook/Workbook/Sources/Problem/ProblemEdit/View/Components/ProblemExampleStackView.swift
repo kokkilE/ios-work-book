@@ -146,6 +146,7 @@ final class ProblemExampleStackView: UIStackView {
         addExampleButton.setImage(addImage, for: .normal)
         addExampleButton.addTarget(self, action: #selector(touchUpAddButton), for: .touchUpInside)
         addExampleButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        addExampleButton.tintColor = AppColor.deepGreen
         
         let exampleStackView = UIStackView(arrangedSubviews: [exampleLabel, addExampleButton])
         exampleStackView.axis = .horizontal

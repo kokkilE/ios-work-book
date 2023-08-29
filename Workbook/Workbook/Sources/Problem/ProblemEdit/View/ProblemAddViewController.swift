@@ -61,7 +61,7 @@ final class ProblemAddViewController: UIViewController {
         rightBarButton.addTarget(self, action: #selector(completeAddProblem), for: .touchUpInside)
         rightBarButton.setTitle("완료", for: .normal)
         rightBarButton.titleLabel?.font = .systemFont(ofSize: 20)
-        rightBarButton.setTitleColor(.systemBlue, for: .normal)
+        rightBarButton.setTitleColor(AppColor.deepGreen, for: .normal)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
     }

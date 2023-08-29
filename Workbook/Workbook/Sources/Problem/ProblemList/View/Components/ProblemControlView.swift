@@ -20,7 +20,7 @@ final class ProblemControlView: UIStackView {
         button.setTitle("문제 풀기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = AppColor.deepGreen
         button.layer.cornerRadius = 5
         
         button.addTarget(self, action: #selector(solveProblem), for: .touchUpInside)
@@ -71,7 +71,7 @@ final class ProblemControlView: UIStackView {
     private func toggleButtonActiveState(_ problemCount: Int) {
         if problemCount == 0 {
             solveProblemButton.isEnabled = false
-            solveProblemButton.alpha = 0.2
+            solveProblemButton.alpha = 0.5
             
             return
         }

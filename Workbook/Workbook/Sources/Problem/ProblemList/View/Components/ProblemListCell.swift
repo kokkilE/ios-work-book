@@ -35,6 +35,8 @@ final class ProblemListCell: UITableViewCell {
     
     private func setupView() {
         accessoryType = .disclosureIndicator
+        layer.cornerRadius = 10
+        backgroundColor = AppColor.yellowGreen
     }
     
     private func addsubviews() {

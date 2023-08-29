@@ -16,10 +16,11 @@ final class ProblemListViewController: UIViewController {
     private let problemControlView = ProblemControlView()
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .systemGray6
         tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.register(ProblemListCell.self, forCellReuseIdentifier: ProblemListCell.reuseIdentifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView
     }()
@@ -40,7 +41,7 @@ final class ProblemListViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
     }
     
     private func setupNavigationItems() {
@@ -72,14 +73,14 @@ final class ProblemListViewController: UIViewController {
     }
     
     private func setupNavigationRightBarButtonItem() {
-        let systemImageName = "plus"
+        let systemImageName = "plus.app"
         let image = UIImage(systemName: systemImageName)
         
         let rightBarButton = UIBarButtonItem(image: image,
                                              style: .plain,
                                              target: self,
                                              action: #selector(addProblem))
-        rightBarButton.tintColor = .systemBlue
+        rightBarButton.tintColor = AppColor.deepGreen
         
         navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -108,8 +109,8 @@ final class ProblemListViewController: UIViewController {
             problemControlView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -8),
             
             tableView.topAnchor.constraint(equalTo: problemControlView.bottomAnchor, constant: 12),
-            tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: safe.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 8),
+            tableView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -8),
             tableView.bottomAnchor.constraint(equalTo: safe.bottomAnchor)
         ])
     }
