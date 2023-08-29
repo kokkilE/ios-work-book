@@ -27,6 +27,7 @@ final class ProblemListViewController: UIViewController {
     
     private let viewModel = ProblemListViewModel()
     private var dataSource: UITableViewDiffableDataSource<Section, Problem>?
+    var delegate: DataUpdatable?
     private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -123,7 +124,7 @@ final class ProblemListViewController: UIViewController {
                 return UITableViewCell()
             }
             
-            let cellTitle = "\(indexPath.row + 1). \(problem.question)"
+            let cellTitle = problem.question
             cell.configure(title: cellTitle)
             
             return cell
@@ -135,6 +136,7 @@ final class ProblemListViewController: UIViewController {
             .sink { [weak self] problemList in
                 self?.applySnapshot(problemList: problemList)
                 self?.problemControlView.configureProblemCountLabel(problemList.count)
+                self?.delegate?.updateData()
             }
             .store(in: &subscriptions)
         

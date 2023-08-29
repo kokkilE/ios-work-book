@@ -165,10 +165,17 @@ extension WorkbookListViewController: UICollectionViewDelegate {
         do {
             try viewModel.selectWorkbook(at: indexPath)
             let problemListViewController = ProblemListViewController()
+            problemListViewController.delegate = self
             
             navigationController?.pushViewController(problemListViewController, animated: true)
         } catch {
             return
         }
+    }
+}
+
+extension WorkbookListViewController: DataUpdatable {
+    func updateData() {
+        collectionView.reloadData()
     }
 }
