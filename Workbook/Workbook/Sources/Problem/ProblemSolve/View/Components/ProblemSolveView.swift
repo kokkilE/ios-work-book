@@ -179,10 +179,14 @@ final class ProblemSolveView: UIStackView {
     }
     
     @objc private func touchUpPreviousButton() {
+        viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
+                                 multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
         viewModel.moveToPrevious()
     }
     
     @objc private func touchUpNextButton() {
+        viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
+                                 multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
         viewModel.moveToNext()
     }
     

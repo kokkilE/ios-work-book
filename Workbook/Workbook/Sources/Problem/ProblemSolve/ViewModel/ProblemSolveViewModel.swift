@@ -11,6 +11,7 @@ import Combine
 final class ProblemSolveViewModel {
     private let workbookManager = WorkbookManager.shared
     private let selectedWorkbook: Workbook?
+    private var userAnswerList = [ProblemUserAnswer]()
     private var currentProblemIndex = 0
     private let problemsCount: Int?
     @Published var currentProblem: Problem?
@@ -56,5 +57,25 @@ final class ProblemSolveViewModel {
         guard let problemsCount else { return nil }
         
         return "\(currentProblemIndex + 1) / \(problemsCount)"
+    }
+    
+    func saveUserAnswer(shortAnswer: String?, multipleAnswer: Set<Int>?) {
+        guard let problemType = currentProblem?.problemType else { return }
+        
+        if userAnswerList[safe: currentProblemIndex] == nil {
+            let problemUserAnswer = ProblemUserAnswer(problemType: problemType,
+                                                      shortAnswer: shortAnswer,
+                                                      multipleAnswer: multipleAnswer)
+            userAnswerList.append(problemUserAnswer)
+            
+            return
+        }
+        
+        switch problemType {
+        case .shortAnswer:
+            userAnswerList[safe: currentProblemIndex]?.shortAnswer = shortAnswer
+        case .multipleChoice:
+            userAnswerList[safe: currentProblemIndex]?.multipleAnswer = multipleAnswer
+        }
     }
 }
