@@ -9,7 +9,9 @@ import UIKit
 
 struct AlertManager {
     func createNewWorkbookAlert(okCompletion: @escaping (String) -> ()) -> UIAlertController {
-        let alertController = UIAlertController(title: "새 문제집을 만들어요.", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "새 문제집을 만들어요.",
+                                                message: "새로운 문제집의 이름을 입력하세요.",
+                                                preferredStyle: .alert)
         
         alertController.addTextField() { textField in
             textField.placeholder = "문제집 이름"

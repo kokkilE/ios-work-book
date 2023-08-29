@@ -20,6 +20,7 @@ final class WorkbookListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = dataSource
         collectionView.register(WorkbookListCell.self, forCellWithReuseIdentifier: WorkbookListCell.reuseIdentifier)
+        collectionView.backgroundColor = .systemGray6
         
         return collectionView
     }()
@@ -41,7 +42,7 @@ final class WorkbookListViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
     }
     
     private func addSubviews() {
@@ -61,11 +62,11 @@ final class WorkbookListViewController: UIViewController {
     
     private func setupNavigationLeftBarButtonItem() {
         let systemImageName = "list.triangle"
-        let title = "Workbook"
+        let title = "문제집"
         
         let image = UIImage(systemName: systemImageName)
         let titleImageView = UIImageView(image: image)
-        titleImageView.tintColor = .label
+        titleImageView.tintColor = .systemGreen
         
         let titleLabel = UILabel()
         titleLabel.text = title
@@ -87,6 +88,7 @@ final class WorkbookListViewController: UIViewController {
                                              style: .plain,
                                              target: self,
                                              action: #selector(addWorkbook))
+        rightBarButton.tintColor = .systemGreen
         
         navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -134,7 +136,7 @@ final class WorkbookListViewController: UIViewController {
                 return UICollectionViewCell()
             }
             
-            cell.configure(title: workbook.getTitle())
+            cell.configure(title: workbook.getTitle(), problemCount: workbook.getProblemsCount())
             
             return cell
         }

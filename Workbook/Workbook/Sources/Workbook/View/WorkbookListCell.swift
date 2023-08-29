@@ -8,24 +8,37 @@
 import UIKit
 
 final class WorkbookListCell: UICollectionViewCell {
-    private let imageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var mainStackView = {
+        let stackView = UIStackView(arrangedSubviews: [workbookTitltLabel, problemCountLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        return imageView
+        return stackView
     }()
-    
-    private let label = {
+    private let workbookTitltLabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 24)
+        label.numberOfLines = 3
+        label.textColor = .black
+        label.text = "asldkalsdasld"
+        
+        return label
+    }()
+    private let problemCountLabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 20)
+        label.textColor = .systemGray
         
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
+        
+        setupView()
         addsubviews()
         layout()
     }
@@ -34,42 +47,32 @@ final class WorkbookListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(title: String, image: UIImage? = nil) {
-        label.text = title
+    func configure(title: String, problemCount: Int) {
+        workbookTitltLabel.text = title
+        problemCountLabel.text = "\(problemCount)개 문제"
+    }
+    
+    private func setupView() {
+        backgroundColor = .white
         
-        guard let image else {
-            setupDefaultImage()
-            return
-        }
-        
-        imageView.image = image
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.systemGray.cgColor
+        layer.shadowOffset = .init(width: 2, height: 2)
+        layer.shadowOpacity = 0.5
     }
     
     private func addsubviews() {
-        addSubview(imageView)
-        addSubview(label)
+        addSubview(mainStackView)
     }
     
     private func layout() {
         let safe = safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 4),
-            imageView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 4),
-            imageView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -4),
-            imageView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.7),
-            
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
-            label.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 4),
-            label.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -4),
-            label.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -4)
+            mainStackView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 12),
+            mainStackView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 12),
+            mainStackView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -12),
+            mainStackView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -12)
         ])
-    }
-    
-    private func setupDefaultImage() {
-        let systemImageName = "folder"
-        let image = UIImage(systemName: systemImageName)
-        
-        imageView.image = image
     }
 }
