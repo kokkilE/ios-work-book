@@ -39,6 +39,9 @@ final class ProblemExampleChoiceStackView: UIStackView {
     }
     
     func setupExampleLabelList(examples: [String]?) {
+        guard exampleButtonList.count == 0,
+              subviews.count == 0 else { return }
+        
         examples?.forEach {
             let button = createButton(from: $0)
             

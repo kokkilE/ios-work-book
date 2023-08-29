@@ -11,9 +11,9 @@ import Combine
 final class ProblemSolveView: UIStackView {
     private let scrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = AppColor.yellowGreen
         scrollView.layer.cornerRadius = 10
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         return scrollView
     }()
@@ -99,6 +99,7 @@ final class ProblemSolveView: UIStackView {
         return button
     }()
     
+    private var scrollViewHeightConstraint: NSLayoutConstraint?
     private let viewModel: ProblemSolveViewModel
     private var subscriptions = Set<AnyCancellable>()
     
@@ -150,6 +151,8 @@ final class ProblemSolveView: UIStackView {
         case .multipleChoice:
             configureMultipleAnswerProblme(problem)
         }
+        
+        activateHeightAnchor()
     }
     
     private func configureShortAnswerProblme() {
@@ -164,6 +167,15 @@ final class ProblemSolveView: UIStackView {
         let examples = problem.example
         
         problemExampleChoiceStackView.setupExampleLabelList(examples: examples)
+    }
+    
+    private func activateHeightAnchor() {
+        let height = mainStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        
+        scrollViewHeightConstraint?.isActive = false
+        scrollViewHeightConstraint = scrollView.heightAnchor.constraint(equalToConstant: height)
+        scrollViewHeightConstraint?.isActive = true
+        scrollView.layoutIfNeeded()
     }
     
     @objc private func touchUpPreviousButton() {

@@ -45,8 +45,7 @@ final class ProblemSolveViewController: UIViewController {
         NSLayoutConstraint.activate([
             problemSolveView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 16),
             problemSolveView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
-            problemSolveView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
-            problemSolveView.heightAnchor.constraint(equalTo: safe.heightAnchor, multiplier: 0.5)
+            problemSolveView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16)
         ])
     }
     
