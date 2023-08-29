@@ -61,7 +61,7 @@ final class ProblemEditViewController: UIViewController {
         let backImage = UIImage(systemName: systemImageName)
         
         let leftBarButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(dismissProblemEditViewController))
-        leftBarButton.tintColor = .black
+        leftBarButton.tintColor = AppColor.deepGreen
         
         navigationItem.leftBarButtonItem = leftBarButton
     }

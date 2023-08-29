@@ -50,7 +50,18 @@ final class ProblemSolveViewController: UIViewController {
     }
     
     private func setupNavigationItems() {
+        setupNavigationLeftBarButtonItem()
         setupNavigationTitle()
+    }
+    
+    private func setupNavigationLeftBarButtonItem() {
+        let systemImageName = "arrow.left"
+        let backImage = UIImage(systemName: systemImageName)
+        
+        let leftBarButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(dismissProblemSolveViewController))
+        leftBarButton.tintColor = AppColor.deepGreen
+        
+        navigationItem.leftBarButtonItem = leftBarButton
     }
     
     private func setupNavigationTitle() {
@@ -76,5 +87,9 @@ final class ProblemSolveViewController: UIViewController {
                 }, completion: nil)
             }
             .store(in: &subscriptions)
+    }
+    
+    @objc private func dismissProblemSolveViewController() {
+        navigationController?.popViewController(animated: true)
     }
 }

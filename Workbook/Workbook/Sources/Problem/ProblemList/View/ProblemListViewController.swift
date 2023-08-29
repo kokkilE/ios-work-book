@@ -67,7 +67,7 @@ final class ProblemListViewController: UIViewController {
         let backImage = UIImage(systemName: systemImageName)
         
         let leftBarButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(dismissProblemListViewController))
-        leftBarButton.tintColor = .black
+        leftBarButton.tintColor = AppColor.deepGreen
         
         navigationItem.leftBarButtonItem = leftBarButton
     }

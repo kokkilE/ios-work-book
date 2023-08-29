@@ -51,7 +51,7 @@ final class ProblemAddViewController: UIViewController {
         let backImage = UIImage(systemName: systemImageName)
         
         let leftBarButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(dismissProblemAddViewController))
-        leftBarButton.tintColor = .black
+        leftBarButton.tintColor = AppColor.deepGreen
         
         navigationItem.leftBarButtonItem = leftBarButton
     }
