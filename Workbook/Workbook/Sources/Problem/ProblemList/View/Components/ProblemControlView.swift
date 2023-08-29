@@ -71,7 +71,7 @@ final class ProblemControlView: UIStackView {
     private func toggleButtonActiveState(_ problemCount: Int) {
         if problemCount == 0 {
             solveProblemButton.isEnabled = false
-            solveProblemButton.alpha = 0.5
+            solveProblemButton.alpha = 0.3
             
             return
         }

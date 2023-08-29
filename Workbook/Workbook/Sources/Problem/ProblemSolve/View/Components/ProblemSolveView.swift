@@ -222,7 +222,7 @@ final class ProblemSolveView: UIStackView {
         
         if isFirst {
             previousButton.isEnabled = false
-            previousButton.alpha = 0.2
+            previousButton.alpha = 0.3
         }
         
         if isLast {
