@@ -87,6 +87,17 @@ final class ProblemSolveViewController: UIViewController {
                 }, completion: nil)
             }
             .store(in: &subscriptions)
+        
+        viewModel.$isAnswerSubmitted
+            .sink { [weak self] isAnswerSubmitted in
+                guard let self,
+                      isAnswerSubmitted else { return }
+                
+                let problemGradeViewController = ProblemGradeViewController(viewModel: viewModel)
+                
+                navigationController?.pushViewController(problemGradeViewController, animated: true)
+            }
+            .store(in: &subscriptions)
     }
     
     @objc private func dismissProblemSolveViewController() {

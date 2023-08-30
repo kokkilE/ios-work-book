@@ -33,6 +33,7 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
         }
     }
     private(set) var isMovedToNext = true
+    @Published var isAnswerSubmitted = false
     
     init() {
         selectedWorkbook = workbookManager.selectedWorkbook()
@@ -52,7 +53,7 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
     func moveToNext() {
         guard let problemsCount,
               0...(problemsCount - 1) ~= (currentProblemIndex + 1) else {
-            grade()
+            isAnswerSubmitted = true
             
             return
         }
@@ -86,9 +87,5 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
         case .multipleChoice:
             userAnswerList[safe: currentProblemIndex]?.multipleAnswer = multipleAnswer
         }
-    }
-    
-    private func grade() {
-        
     }
 }

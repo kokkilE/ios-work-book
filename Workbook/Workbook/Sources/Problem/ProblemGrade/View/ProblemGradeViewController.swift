@@ -10,7 +10,7 @@ import UIKit
 class ProblemGradeViewController: UIViewController {
     private let viewModel: ProblemGradeViewModel
     
-    init(viewModel: UserAnswerProcessing) throws {
+    init(viewModel: UserAnswerProcessing) {
         self.viewModel = ProblemGradeViewModel(viewModel)
         
         super.init(nibName: nil, bundle: nil)
@@ -22,5 +22,11 @@ class ProblemGradeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .systemGray6
     }
 }
