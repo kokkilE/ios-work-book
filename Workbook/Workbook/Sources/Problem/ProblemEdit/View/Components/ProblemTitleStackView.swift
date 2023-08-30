@@ -37,21 +37,11 @@ final class ProblemTitleStackView: UIStackView {
         titleLabel.font = .systemFont(ofSize: 20)
         titleLabel.text = "문항 제목"
         
-        let bottomBorder = UIView()
-        bottomBorder.backgroundColor = .systemGray4
-        bottomBorder.translatesAutoresizingMaskIntoConstraints = false
-        bottomBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
-        let textFieldStackView = UIStackView(arrangedSubviews: [problemTextView, bottomBorder])
-        textFieldStackView.spacing = 4
-        textFieldStackView.layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        textFieldStackView.isLayoutMarginsRelativeArrangement = true
-        textFieldStackView.axis = .vertical
-        
-        addArrangedSubview(titleLabel)
-        addArrangedSubview(textFieldStackView)
-        spacing = 4
+        spacing = 12
         axis = .vertical
         alignment = .fill
+        
+        addArrangedSubview(titleLabel)
+        addArrangedSubview(problemTextView)
     }
 }

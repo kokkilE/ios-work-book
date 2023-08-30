@@ -13,6 +13,8 @@ final class ProblemSolveView: UIStackView {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = AppColor.yellowGreen
         scrollView.layer.cornerRadius = 10
+        scrollView.layer.borderColor = AppColor.deepGreen.cgColor
+        scrollView.layer.borderWidth = 0.5
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         return scrollView
