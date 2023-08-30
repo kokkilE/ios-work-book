@@ -74,7 +74,7 @@ final class ProblemListViewController: UIViewController {
     }
     
     private func setupNavigationRightBarButtonItem() {
-        let systemImageName = "plus.app"
+        let systemImageName = "plus.app.fill"
         let image = UIImage(systemName: systemImageName)
         
         let rightBarButton = UIBarButtonItem(image: image,

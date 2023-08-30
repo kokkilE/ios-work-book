@@ -183,7 +183,11 @@ final class ProblemSolveView: UIStackView {
     }
     
     private func activateHeightAnchor() {
-        let height = mainStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        var height = mainStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let maxHeight = UIScreen.main.bounds.height * 0.6
+        if height > maxHeight {
+            height = maxHeight
+        }
         
         scrollViewHeightConstraint?.isActive = false
         scrollViewHeightConstraint = scrollView.heightAnchor.constraint(equalToConstant: height)
