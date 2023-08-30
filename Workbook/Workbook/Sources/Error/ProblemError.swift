@@ -12,6 +12,7 @@ enum ProblemError: ErrorDescriptionProtocol {
     case emptyAnswer
     case notEnoughExample
     case duplicatedExample
+    case notMatchedUserAnswer
     
     var description: String {
         switch self {
@@ -23,6 +24,8 @@ enum ProblemError: ErrorDescriptionProtocol {
             return "문항의 보기를 \(Problem.minimumExampleCount)개 이상 작성해주세요."
         case .duplicatedExample:
             return "문항의 보기가 중복되었습니다."
+        case .notMatchedUserAnswer:
+            return "버그 발생 (문자열 수정 필요)"
         }
     }
 }

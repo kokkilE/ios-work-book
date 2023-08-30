@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 
-final class ProblemSolveViewModel {
-    private let workbookManager = WorkbookManager.shared
-    private let selectedWorkbook: Workbook?
-    private var userAnswerList = [ProblemUserAnswer]()
+final class ProblemSolveViewModel: UserAnswerProcessing {
+    let workbookManager = WorkbookManager.shared
+    let selectedWorkbook: Workbook?
+    var userAnswerList = [ProblemUserAnswer]()
     private var currentProblemIndex = 0
     private let problemsCount: Int?
     @Published var currentProblem: Problem?
@@ -51,7 +51,11 @@ final class ProblemSolveViewModel {
     
     func moveToNext() {
         guard let problemsCount,
-              0...(problemsCount - 1) ~= (currentProblemIndex + 1) else { return }
+              0...(problemsCount - 1) ~= (currentProblemIndex + 1) else {
+            grade()
+            
+            return
+        }
         
         isMovedToNext = true
         currentProblemIndex += 1
@@ -82,5 +86,9 @@ final class ProblemSolveViewModel {
         case .multipleChoice:
             userAnswerList[safe: currentProblemIndex]?.multipleAnswer = multipleAnswer
         }
+    }
+    
+    private func grade() {
+        
     }
 }
