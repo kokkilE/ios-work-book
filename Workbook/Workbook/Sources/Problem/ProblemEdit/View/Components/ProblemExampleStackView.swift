@@ -179,6 +179,8 @@ final class ProblemExampleStackView: UIStackView {
         removeButton.addTarget(self, action: #selector(removeExampleItem), for: .touchUpInside)
 
         let itemStackView = UIStackView(arrangedSubviews: [exampleTextView, removeButton])
+        itemStackView.axis = .horizontal
+        itemStackView.spacing = 12
         
         removeButtonList.append(removeButton)
         exampleTextViewList.append(exampleTextView)

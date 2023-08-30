@@ -24,7 +24,7 @@ final class ProblemAddViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
     }
     
     private func addSubviews() {

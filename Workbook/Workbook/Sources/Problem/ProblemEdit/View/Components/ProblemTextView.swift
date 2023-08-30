@@ -48,6 +48,7 @@ final class ProblemTextView: UITextView {
     }
         
     private func setupView() {
+        layer.cornerRadius = 10
         isScrollEnabled = false
         delegate = self
         
