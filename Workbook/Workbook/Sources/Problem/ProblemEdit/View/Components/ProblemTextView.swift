@@ -46,6 +46,11 @@ final class ProblemTextView: UITextView {
         
         return copiedText
     }
+    
+    func restoreToPlaceHolder() {
+        text = placeHolder
+        textColor = .placeholderText
+    }
         
     private func setupView() {
         layer.cornerRadius = 10
@@ -83,8 +88,7 @@ extension ProblemTextView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if isEmptyExceptSpaces() {
-            text = placeHolder
-            textColor = .placeholderText
+            restoreToPlaceHolder()
         }
     }
 }

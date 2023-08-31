@@ -158,7 +158,11 @@ final class ProblemSolveView: UIStackView {
     }
     
     func configure(_ userAnswer: ProblemUserAnswer?) {
-        guard let userAnswer else { return }
+        guard let userAnswer else {
+            answerTextView.restoreToPlaceHolder()
+            
+            return
+        }
         
         switch userAnswer.problemType {
         case .shortAnswer:
@@ -201,12 +205,16 @@ final class ProblemSolveView: UIStackView {
         viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
                                  multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
         viewModel.moveToPrevious()
+        
+        answerTextView.resignFirstResponder()
     }
     
     @objc private func touchUpNextButton() {
         viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
                                  multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
         viewModel.moveToNext()
+        
+        answerTextView.resignFirstResponder()
     }
     
     private func bind() {

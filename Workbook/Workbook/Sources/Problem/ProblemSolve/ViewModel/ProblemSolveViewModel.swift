@@ -72,19 +72,28 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
     func saveUserAnswer(shortAnswer: String?, multipleAnswer: Set<Int>?) {
         guard let problemType = currentProblem?.problemType else { return }
         
-        if userAnswerList[safe: currentProblemIndex] == nil {
-            let problemUserAnswer = ProblemUserAnswer(problemType: problemType,
-                                                      shortAnswer: shortAnswer,
-                                                      multipleAnswer: multipleAnswer)
-            userAnswerList.append(problemUserAnswer)
-            
-            return
-        }
-        
         switch problemType {
         case .shortAnswer:
+            if userAnswerList[safe: currentProblemIndex] == nil {
+                let problemUserAnswer = ProblemUserAnswer(problemType: problemType,
+                                                          shortAnswer: shortAnswer,
+                                                          multipleAnswer: nil)
+                userAnswerList.append(problemUserAnswer)
+                
+                return
+            }
+            
             userAnswerList[safe: currentProblemIndex]?.shortAnswer = shortAnswer
         case .multipleChoice:
+            if userAnswerList[safe: currentProblemIndex] == nil {
+                let problemUserAnswer = ProblemUserAnswer(problemType: problemType,
+                                                          shortAnswer: nil,
+                                                          multipleAnswer: multipleAnswer)
+                userAnswerList.append(problemUserAnswer)
+                
+                return
+            }
+            
             userAnswerList[safe: currentProblemIndex]?.multipleAnswer = multipleAnswer
         }
     }
