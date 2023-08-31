@@ -9,6 +9,12 @@ import UIKit
 import Combine
 
 final class ProblemAddViewController: UIViewController {
+    private let scrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
     private let problemAddView = ProblemAddView()
     private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
@@ -28,16 +34,24 @@ final class ProblemAddViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(problemAddView)
+        scrollView.addSubview(problemAddView)
+        
+        view.addSubview(scrollView)
     }
     
     private func layout() {
         let safe = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            problemAddView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
-            problemAddView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
-            problemAddView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16)
+            scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
+            scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
+            scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
+            scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -8),
+            
+            problemAddView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            problemAddView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            problemAddView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            problemAddView.heightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.heightAnchor)
         ])
     }
     

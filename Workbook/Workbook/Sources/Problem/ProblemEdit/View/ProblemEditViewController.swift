@@ -9,6 +9,12 @@ import UIKit
 import Combine
 
 final class ProblemEditViewController: UIViewController {
+    private let scrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
     private let problemEditView: ProblemEditView
     private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
@@ -38,16 +44,24 @@ final class ProblemEditViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(problemEditView)
+        scrollView.addSubview(problemEditView)
+        
+        view.addSubview(scrollView)
     }
     
     private func layout() {
         let safe = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            problemEditView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
-            problemEditView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
-            problemEditView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16)
+            scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
+            scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
+            scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
+            scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -8),
+            
+            problemEditView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            problemEditView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            problemEditView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            problemEditView.heightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.heightAnchor)
         ])
     }
     
