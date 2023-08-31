@@ -29,7 +29,7 @@ final class ProblemTitleStackView: UIStackView {
     }
     
     func configure(with text: String) {        
-        problemTextView.text = text
+        problemTextView.configure(text)
     }
     
     private func setupView() {

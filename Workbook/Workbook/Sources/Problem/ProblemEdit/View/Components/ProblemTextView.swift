@@ -51,6 +51,11 @@ final class ProblemTextView: UITextView {
         text = placeHolder
         textColor = .placeholderText
     }
+    
+    func configure(_ text: String) {
+        self.text = text
+        textColor = .black
+    }
         
     private func setupView() {
         layer.cornerRadius = 10

@@ -31,7 +31,7 @@ final class ProblemAnswerStackView: UIStackView {
     func configure(with text: String?) {
         guard let text else { return }
         
-        problemTextView.text = text
+        problemTextView.configure(text)
     }
     
     private func setupView() {

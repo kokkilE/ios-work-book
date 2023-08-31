@@ -153,8 +153,6 @@ final class ProblemSolveView: UIStackView {
         case .multipleChoice:
             configureMultipleAnswerProblme(problem)
         }
-        
-        activateHeightAnchor()
     }
     
     func configure(_ userAnswer: ProblemUserAnswer?) {
@@ -167,7 +165,9 @@ final class ProblemSolveView: UIStackView {
         switch userAnswer.problemType {
         case .shortAnswer:
             if let answer = userAnswer.shortAnswer {
-                answerTextView.text = answer
+                answerTextView.configure(answer)
+            } else {
+                answerTextView.restoreToPlaceHolder()
             }
         case .multipleChoice:
             problemExampleChoiceStackView.configureUserAnswer(userAnswer.multipleAnswer)
@@ -188,8 +188,8 @@ final class ProblemSolveView: UIStackView {
         problemExampleChoiceStackView.setupExampleLabelList(examples: examples)
     }
     
-    private func activateHeightAnchor() {
-        var height = mainStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+    func activateHeightAnchor() {
+        var height = mainStackView.systemLayoutSizeFitting(mainStackView.frame.size).height
         let maxHeight = UIScreen.main.bounds.height * 0.6
         if height > maxHeight {
             height = maxHeight
@@ -202,19 +202,27 @@ final class ProblemSolveView: UIStackView {
     }
     
     @objc private func touchUpPreviousButton() {
-        viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
-                                 multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
+        viewModel.saveUserAnswer(
+            shortAnswer: answerTextView.isEmptyExceptSpaces() ? nil : answerTextView.text,
+            multipleAnswer: problemExampleChoiceStackView.selectedIndexList
+        )
         viewModel.moveToPrevious()
         
-        answerTextView.resignFirstResponder()
+        if answerTextView.isFirstResponder {
+            answerTextView.resignFirstResponder()
+        }
     }
     
     @objc private func touchUpNextButton() {
-        viewModel.saveUserAnswer(shortAnswer: answerTextView.text,
-                                 multipleAnswer: problemExampleChoiceStackView.selectedIndexList)
+        viewModel.saveUserAnswer(
+            shortAnswer: answerTextView.isEmptyExceptSpaces() ? nil : answerTextView.text,
+            multipleAnswer: problemExampleChoiceStackView.selectedIndexList
+        )
         viewModel.moveToNext()
         
-        answerTextView.resignFirstResponder()
+        if answerTextView.isFirstResponder {
+            answerTextView.resignFirstResponder()
+        }
     }
     
     private func bind() {
