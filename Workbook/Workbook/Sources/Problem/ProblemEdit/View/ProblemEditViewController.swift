@@ -18,6 +18,7 @@ final class ProblemEditViewController: UIViewController {
     private let problemEditView: ProblemEditView
     private let viewModel = ProblemEditViewModel()
     private var subscriptions = Set<AnyCancellable>()
+    private var dynamicScrollViewBottomAnchor: NSLayoutConstraint?
     
     init(problem: Problem) {
         problemEditView = ProblemEditView(problem: problem)
@@ -37,6 +38,7 @@ final class ProblemEditViewController: UIViewController {
         layout()
         setupNavigationItems()
         bind()
+        addKeyboardObserver()
     }
     
     private func setupView() {
@@ -52,11 +54,12 @@ final class ProblemEditViewController: UIViewController {
     private func layout() {
         let safe = view.safeAreaLayoutGuide
         
+        configureScrollViewBottomAnchor(constant: -8)
+        
         NSLayoutConstraint.activate([
             scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
             scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
             scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
-            scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -8),
             
             problemEditView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             problemEditView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -125,5 +128,34 @@ final class ProblemEditViewController: UIViewController {
         let viewController = ProblemExampleChoiceViewController(problem: problem, mode: .Edit)
         
         present(viewController, animated: true)
+    }
+}
+
+// MARK: Keyboard layout
+extension ProblemEditViewController {
+    private func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            configureScrollViewBottomAnchor(constant: -keyboardFrame.height)
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        configureScrollViewBottomAnchor(constant: -8)
+    }
+    
+    private func configureScrollViewBottomAnchor(constant: CGFloat) {
+        dynamicScrollViewBottomAnchor?.isActive = false
+        
+        dynamicScrollViewBottomAnchor = scrollView.frameLayoutGuide.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            constant: constant
+        )
+        
+        dynamicScrollViewBottomAnchor?.isActive = true
     }
 }
