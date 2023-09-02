@@ -20,32 +20,52 @@ final class ProblemSolveViewController: UIViewController {
         
         return label
     }()
+    private let scrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
     private lazy var problemSolveView = ProblemSolveView(viewModel: viewModel)
     
     private var subscriptions = Set<AnyCancellable>()
+    private var dynamicScrollViewBottomAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        addSubviews()
         layout()
         setupNavigationItems()
         bind()
+        addKeyboardObserver()
     }
     
     private func setupView() {
         view.backgroundColor = .white
+    }
+    
+    private func addSubviews() {
+        scrollView.addSubview(problemSolveView)
         
-        view.addSubview(problemSolveView)
+        view.addSubview(scrollView)
     }
     
     private func layout() {
         let safe = view.safeAreaLayoutGuide
         
+        configureScrollViewBottomAnchor(constant: -8)
+        
         NSLayoutConstraint.activate([
-            problemSolveView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 16),
-            problemSolveView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
-            problemSolveView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16)
+            scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safe.topAnchor, constant: 8),
+            scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 16),
+            scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -16),
+            
+            problemSolveView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            problemSolveView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            problemSolveView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            problemSolveView.heightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.heightAnchor)
         ])
     }
     
@@ -105,5 +125,34 @@ final class ProblemSolveViewController: UIViewController {
     
     @objc private func dismissProblemSolveViewController() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: Keyboard layout
+extension ProblemSolveViewController {
+    private func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            configureScrollViewBottomAnchor(constant: -keyboardFrame.height)
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        configureScrollViewBottomAnchor(constant: -8)
+    }
+    
+    private func configureScrollViewBottomAnchor(constant: CGFloat) {
+        dynamicScrollViewBottomAnchor?.isActive = false
+        
+        dynamicScrollViewBottomAnchor = scrollView.frameLayoutGuide.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            constant: constant
+        )
+        
+        dynamicScrollViewBottomAnchor?.isActive = true
     }
 }
