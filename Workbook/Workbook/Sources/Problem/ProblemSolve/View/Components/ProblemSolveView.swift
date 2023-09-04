@@ -9,16 +9,6 @@ import UIKit
 import Combine
 
 final class ProblemSolveView: UIStackView {
-    private let scrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = AppColor.yellowGreen
-        scrollView.layer.cornerRadius = 10
-        scrollView.layer.borderColor = AppColor.deepGreen.cgColor
-        scrollView.layer.borderWidth = 0.5
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
-    }()
     private lazy var mainStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel,
                                                        answerTextView,
@@ -27,8 +17,13 @@ final class ProblemSolveView: UIStackView {
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 4, bottom: 20, right: 4)
+        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 12, bottom: 16, right: 12)
         stackView.isLayoutMarginsRelativeArrangement = true
+        
+        stackView.backgroundColor = AppColor.yellowGreen
+        stackView.layer.cornerRadius = 10
+        stackView.layer.borderColor = AppColor.deepGreen.cgColor
+        stackView.layer.borderWidth = 0.5
         
         return stackView
     }()
@@ -112,7 +107,6 @@ final class ProblemSolveView: UIStackView {
         
         setupView()
         addSubviews()
-        layout()
         bind()
     }
     
@@ -127,19 +121,8 @@ final class ProblemSolveView: UIStackView {
     }
     
     private func addSubviews() {
-        addArrangedSubview(scrollView)
         addArrangedSubview(buttonStackView)
-        
-        scrollView.addSubview(mainStackView)
-    }
-    
-    private func layout() {
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.95),
-            mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-        ])
+        addArrangedSubview(mainStackView)
     }
     
     func configure(_ problem: Problem?) {
@@ -186,19 +169,6 @@ final class ProblemSolveView: UIStackView {
         let examples = problem.example
         
         problemExampleChoiceStackView.setupExampleLabelList(examples: examples)
-    }
-    
-    func activateHeightAnchor() {
-        var height = mainStackView.systemLayoutSizeFitting(mainStackView.frame.size).height
-        let maxHeight = UIScreen.main.bounds.height * 0.6
-        if height > maxHeight {
-            height = maxHeight
-        }
-        
-        scrollViewHeightConstraint?.isActive = false
-        scrollViewHeightConstraint = scrollView.heightAnchor.constraint(equalToConstant: height)
-        scrollViewHeightConstraint?.isActive = true
-        scrollView.layoutIfNeeded()
     }
     
     @objc private func touchUpPreviousButton() {

@@ -105,7 +105,6 @@ final class ProblemSolveViewController: UIViewController {
                         self.progressLabel.text = self.viewModel.getProgressString()
                         self.problemSolveView.configure(problem)
                         self.problemSolveView.configure(self.viewModel.currentProblemUserAnswer)
-                        self.problemSolveView.activateHeightAnchor()
                     }
                 }, completion: nil)
             }
