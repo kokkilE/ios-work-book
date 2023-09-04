@@ -54,8 +54,6 @@ final class ProblemExampleChoiceStackView: UIStackView {
     func configureUserAnswer(_ selectedIndexList: Set<Int>?) {
         guard let selectedIndexList else { return }
         
-        self.selectedIndexList.removeAll()
-        
         selectedIndexList.forEach { index in
             guard let button = exampleButtonList[safe: index] else { return }
             
@@ -64,6 +62,7 @@ final class ProblemExampleChoiceStackView: UIStackView {
     }
     
     private func clear() {
+        selectedIndexList.removeAll()
         exampleButtonList.removeAll()
         subviews.forEach { subview in
             subview.removeFromSuperview()
