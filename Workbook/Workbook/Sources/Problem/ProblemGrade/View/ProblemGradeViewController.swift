@@ -8,6 +8,7 @@
 import UIKit
 
 class ProblemGradeViewController: UIViewController {
+    private let resultControlView = ResultControlView()
     private let viewModel: ProblemGradeViewModel
     
     init(viewModel: UserAnswerProcessing) {
@@ -24,9 +25,30 @@ class ProblemGradeViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        addSubviews()
+        layout()
+        
+        resultControlView.configureOverviewLabel(
+            problemCount: viewModel.problemCount,
+            correctProblemCount: viewModel.correctProblemCount
+        )
     }
     
     private func setupView() {
         view.backgroundColor = .systemGray6
+    }
+    
+    private func addSubviews() {
+        view.addSubview(resultControlView)
+    }
+    
+    private func layout() {
+        let safe = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            resultControlView.topAnchor.constraint(equalTo: safe.topAnchor, constant: 4),
+            resultControlView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 8),
+            resultControlView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -8)
+        ])
     }
 }
