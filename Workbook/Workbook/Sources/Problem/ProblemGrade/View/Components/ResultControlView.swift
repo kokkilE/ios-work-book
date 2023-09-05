@@ -82,7 +82,7 @@ final class ResultControlView: UIStackView {
         guard let problemCount,
               let correctProblemCount else { return }
         
-        let formattedCorrectAnswersPercentage = NumberFormatter().getPercent(
+        let formattedCorrectAnswersPercentage = NumberFormatter().getPercentage(
             numerator: correctProblemCount,
             denominator: problemCount,
             digits: 2

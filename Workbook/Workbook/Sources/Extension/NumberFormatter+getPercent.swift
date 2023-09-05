@@ -8,7 +8,7 @@
 import Foundation
 
 extension NumberFormatter {
-    func getPercent(numerator: Int, denominator: Int, digits: Int) -> Double {
+    func getPercentage(numerator: Int, denominator: Int, digits: Int) -> Double {
         let correctAnswersRate: Double = Double(Double(numerator) / Double(denominator))
         let correctAnswersPercentage: Double = correctAnswersRate * 100
         let formattedCorrectAnswersPercentage = round(correctAnswersPercentage * pow(10, Double(digits))) / pow(10, Double(digits))
