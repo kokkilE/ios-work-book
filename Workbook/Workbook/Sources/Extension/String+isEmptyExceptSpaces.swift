@@ -10,7 +10,6 @@ import Foundation
 extension String {
     func isEmptyExceptSpaces() -> Bool {
         var copiedText = self
-        
         copiedText.removeAll { $0 == " " || $0 == "\n" }
         
         if copiedText.isEmpty {
@@ -18,5 +17,13 @@ extension String {
         }
         
         return false
+    }
+    
+    func getExceptSpaces() -> String {
+        var copiedText = self
+        
+        copiedText.removeAll { $0 == " " || $0 == "\n" }
+        
+        return copiedText
     }
 }
