@@ -82,10 +82,13 @@ final class ResultControlView: UIStackView {
         guard let problemCount,
               let correctProblemCount else { return }
         
-        let correctAnswersRate: Double = Double(Double(correctProblemCount) / Double(problemCount))
-        let correctAnswersPercentage: Double = correctAnswersRate * 100
+        let formattedCorrectAnswersPercentage = NumberFormatter().getPercent(
+            numerator: correctProblemCount,
+            denominator: problemCount,
+            digits: 2
+        )
         
-        overviewLabel.text = "정답률: \(correctAnswersPercentage)% (\(correctProblemCount) / \(problemCount))"
+        overviewLabel.text = "정답률: \(formattedCorrectAnswersPercentage)% (\(correctProblemCount) / \(problemCount))"
     }
     
     private func setupView() {
