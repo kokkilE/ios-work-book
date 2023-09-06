@@ -5,11 +5,11 @@
 //  Created by 조향래 on 2023/08/30.
 //
 
-import Foundation
+import Combine
 
 final class ProblemGradeViewModel: UserAnswerProcessing {
-    
-    var selectedWorkbook: Workbook?
+    private let workbookManager = WorkbookManager.shared
+    private let selectedWorkbook: Workbook?
     var userAnswerList: [ProblemUserAnswer]
     private(set) var correctProblemIndex = Set<Int>()
     var problemCount: Int? {
@@ -24,9 +24,13 @@ final class ProblemGradeViewModel: UserAnswerProcessing {
     }
     
     init(_ viewModel: UserAnswerProcessing) {
-        selectedWorkbook = viewModel.selectedWorkbook
+        selectedWorkbook = workbookManager.selectedWorkbook()
         userAnswerList = viewModel.userAnswerList
         grade()
+    }
+    
+    func requestProblemListPublisher() -> AnyPublisher<[Problem], Never>? {
+        return workbookManager.requestProblemListPublisher()
     }
     
     private func grade() {
