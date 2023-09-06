@@ -17,6 +17,7 @@ class ProblemGradeViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemGray6
+        tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.register(ProblemGradeResultListCell.self, forCellReuseIdentifier: ProblemGradeResultListCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -121,5 +122,11 @@ class ProblemGradeViewController: UIViewController {
         }
         
         return .systemRed
+    }
+}
+
+extension ProblemGradeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
