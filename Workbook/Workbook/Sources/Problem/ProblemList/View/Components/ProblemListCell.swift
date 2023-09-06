@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProblemListCell: UITableViewCell {
+class ProblemListCell: UITableViewCell {
     private let label = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

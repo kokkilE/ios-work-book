@@ -8,6 +8,5 @@
 import Foundation
 
 protocol UserAnswerProcessing {
-    var selectedWorkbook: Workbook? { get }
     var userAnswerList: [ProblemUserAnswer] { get }
 }

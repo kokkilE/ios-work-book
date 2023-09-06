@@ -30,6 +30,7 @@
 		AA8FA2A52A9F22D800E8FB4B /* ProblemGradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FA2A42A9F22D800E8FB4B /* ProblemGradeViewModel.swift */; };
 		AA95C5DF2A9E6650009D8282 /* DataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95C5DE2A9E6650009D8282 /* DataUpdatable.swift */; };
 		AAA313F82A7C974A00BA6463 /* ProblemAnswerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA313F72A7C974900BA6463 /* ProblemAnswerStackView.swift */; };
+		AAA5A04F2AA84EE800422561 /* ProblemGradeResultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5A04E2AA84EE800422561 /* ProblemGradeResultListCell.swift */; };
 		AAB38CC12A64E248004E0A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC02A64E248004E0A55 /* AppDelegate.swift */; };
 		AAB38CC32A64E248004E0A55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */; };
 		AAB38CC52A64E248004E0A55 /* WorkbookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB38CC42A64E248004E0A55 /* WorkbookListViewController.swift */; };
@@ -77,6 +78,7 @@
 		AA8FA2A42A9F22D800E8FB4B /* ProblemGradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemGradeViewModel.swift; sourceTree = "<group>"; };
 		AA95C5DE2A9E6650009D8282 /* DataUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUpdatable.swift; sourceTree = "<group>"; };
 		AAA313F72A7C974900BA6463 /* ProblemAnswerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemAnswerStackView.swift; sourceTree = "<group>"; };
+		AAA5A04E2AA84EE800422561 /* ProblemGradeResultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemGradeResultListCell.swift; sourceTree = "<group>"; };
 		AAB38CBD2A64E248004E0A55 /* Workbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAB38CC02A64E248004E0A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAB38CC22A64E248004E0A55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				AA175A362AA618B800FC7B29 /* ResultControlView.swift */,
+				AAA5A04E2AA84EE800422561 /* ProblemGradeResultListCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				AAFEA5142A657DE700080313 /* ProblemControlView.swift in Sources */,
 				AAF2078F2A9B4B5400D6ED74 /* ProblemEditViewModel.swift in Sources */,
 				AA8FA2A22A9F21B100E8FB4B /* UserAnswerProcessing.swift in Sources */,
+				AAA5A04F2AA84EE800422561 /* ProblemGradeResultListCell.swift in Sources */,
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
 				AA26B28E2A986A0D00D8B9C8 /* ProblemSolveViewController.swift in Sources */,

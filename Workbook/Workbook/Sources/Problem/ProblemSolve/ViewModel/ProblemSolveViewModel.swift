@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 final class ProblemSolveViewModel: UserAnswerProcessing {
-    let workbookManager = WorkbookManager.shared
-    let selectedWorkbook: Workbook?
+    private let workbookManager = WorkbookManager.shared
+    private let selectedWorkbook: Workbook?
     var userAnswerList = [ProblemUserAnswer]()
     private var currentProblemIndex = 0
     private let problemsCount: Int?
