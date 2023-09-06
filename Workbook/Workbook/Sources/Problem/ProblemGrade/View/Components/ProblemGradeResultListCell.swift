@@ -8,5 +8,7 @@
 import UIKit
 
 final class ProblemGradeResultListCell: ProblemListCell {
-    
+    func configureBackgroundColor(with color: UIColor) {
+        backgroundColor = color
+    }
 }

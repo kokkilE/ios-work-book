@@ -5,6 +5,7 @@
 //  Created by 조향래 on 2023/08/30.
 //
 
+import Foundation
 import Combine
 
 final class ProblemGradeViewModel: UserAnswerProcessing {
@@ -31,6 +32,14 @@ final class ProblemGradeViewModel: UserAnswerProcessing {
     
     func requestProblemListPublisher() -> AnyPublisher<[Problem], Never>? {
         return workbookManager.requestProblemListPublisher()
+    }
+    
+    func isCorrectAnswer(_ index: IndexPath) -> Bool {
+        if correctProblemIndex.contains(index.item) {
+            return true
+        }
+        
+        return false
     }
     
     private func grade() {

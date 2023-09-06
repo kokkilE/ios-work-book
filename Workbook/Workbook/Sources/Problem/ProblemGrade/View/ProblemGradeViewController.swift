@@ -81,15 +81,18 @@ class ProblemGradeViewController: UIViewController {
     }
     
     private func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource<Section, Problem>(tableView: tableView) { tableView, indexPath, problem in
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: ProblemGradeResultListCell.reuseIdentifier,
-                for: indexPath) as? ProblemGradeResultListCell else {
+        dataSource = UITableViewDiffableDataSource<Section, Problem>(tableView: tableView) { [weak self] tableView, indexPath, problem in
+            guard let self,
+                  let cell = tableView.dequeueReusableCell(
+                    withIdentifier: ProblemGradeResultListCell.reuseIdentifier,
+                    for: indexPath) as? ProblemGradeResultListCell else {
                 return UITableViewCell()
             }
             
             let cellTitle = problem.question
+            let cellColor = getCellColor(indexPath: indexPath)
             cell.configure(title: cellTitle)
+            cell.configureBackgroundColor(with: cellColor)
             
             return cell
         }
@@ -110,5 +113,13 @@ class ProblemGradeViewController: UIViewController {
         snapshot.appendItems(problemList)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func getCellColor(indexPath: IndexPath) -> UIColor {
+        if viewModel.isCorrectAnswer(indexPath) {
+            return AppColor.yellowGreen
+        }
+        
+        return .systemRed
     }
 }
