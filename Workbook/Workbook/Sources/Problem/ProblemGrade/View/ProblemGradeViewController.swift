@@ -128,5 +128,9 @@ class ProblemGradeViewController: UIViewController {
 extension ProblemGradeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let problemExplainViewController = ProblemExplainViewController()
+        
+        navigationController?.pushViewController(problemExplainViewController, animated: true)
     }
 }

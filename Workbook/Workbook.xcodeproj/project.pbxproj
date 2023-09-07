@@ -24,6 +24,7 @@
 		AA7C35392A70E97800B6B0C5 /* ProblemTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */; };
 		AA7C353B2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */; };
 		AA7C35402A714C8400B6B0C5 /* ProblemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */; };
+		AA85D14E2AA9B25800DC2E28 /* ProblemExplainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85D14D2AA9B25800DC2E28 /* ProblemExplainViewController.swift */; };
 		AA8E23182A9C6C860072F110 /* ProblemSolveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E23172A9C6C860072F110 /* ProblemSolveView.swift */; };
 		AA8FA2A02A9F1D8100E8FB4B /* ProblemGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FA29F2A9F1D8100E8FB4B /* ProblemGradeViewController.swift */; };
 		AA8FA2A22A9F21B100E8FB4B /* UserAnswerProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FA2A12A9F21B100E8FB4B /* UserAnswerProcessing.swift */; };
@@ -72,6 +73,7 @@
 		AA7C35382A70E97800B6B0C5 /* ProblemTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTitleStackView.swift; sourceTree = "<group>"; };
 		AA7C353A2A70EA9A00B6B0C5 /* ProblemExampleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExampleStackView.swift; sourceTree = "<group>"; };
 		AA7C353F2A714C8400B6B0C5 /* ProblemTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTextView.swift; sourceTree = "<group>"; };
+		AA85D14D2AA9B25800DC2E28 /* ProblemExplainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemExplainViewController.swift; sourceTree = "<group>"; };
 		AA8E23172A9C6C860072F110 /* ProblemSolveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemSolveView.swift; sourceTree = "<group>"; };
 		AA8FA29F2A9F1D8100E8FB4B /* ProblemGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemGradeViewController.swift; sourceTree = "<group>"; };
 		AA8FA2A12A9F21B100E8FB4B /* UserAnswerProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswerProcessing.swift; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 			path = ProblemEdit;
 			sourceTree = "<group>";
 		};
+		AA85D14C2AA9AD2500DC2E28 /* ProblemExplain */ = {
+			isa = PBXGroup;
+			children = (
+				AA85D14D2AA9B25800DC2E28 /* ProblemExplainViewController.swift */,
+			);
+			path = ProblemExplain;
+			sourceTree = "<group>";
+		};
 		AA8E23162A9C6C340072F110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +418,7 @@
 				AA7C353E2A714C1D00B6B0C5 /* ProblemEdit */,
 				AA26B28C2A9869E500D8B9C8 /* ProblemSolve */,
 				AA8FA29B2A9F1D2900E8FB4B /* ProblemGrade */,
+				AA85D14C2AA9AD2500DC2E28 /* ProblemExplain */,
 			);
 			path = Problem;
 			sourceTree = "<group>";
@@ -544,6 +555,7 @@
 				AAA5A04F2AA84EE800422561 /* ProblemGradeResultListCell.swift in Sources */,
 				AAFEA5012A6566FE00080313 /* Problem.swift in Sources */,
 				AAFEA4FE2A6566B600080313 /* WorkbookListCell.swift in Sources */,
+				AA85D14E2AA9B25800DC2E28 /* ProblemExplainViewController.swift in Sources */,
 				AA26B28E2A986A0D00D8B9C8 /* ProblemSolveViewController.swift in Sources */,
 				AA59E6802A9CE5E3003977A7 /* ProblemUserAnswer.swift in Sources */,
 				AA26B28B2A985EEA00D8B9C8 /* String+isEmptyExceptSpaces.swift in Sources */,
