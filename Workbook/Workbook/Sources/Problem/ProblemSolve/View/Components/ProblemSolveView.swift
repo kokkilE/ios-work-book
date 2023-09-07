@@ -20,7 +20,7 @@ final class ProblemSolveView: UIStackView {
         stackView.layoutMargins = UIEdgeInsets(top: 16, left: 12, bottom: 16, right: 12)
         stackView.isLayoutMarginsRelativeArrangement = true
         
-        stackView.backgroundColor = AppColor.yellowGreen
+        stackView.backgroundColor = AppColor.lightGreen
         stackView.layer.cornerRadius = 10
         stackView.layer.borderColor = AppColor.deepGreen.cgColor
         stackView.layer.borderWidth = 0.5

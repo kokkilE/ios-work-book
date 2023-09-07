@@ -21,7 +21,7 @@ class ProblemGradeViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.register(ProblemGradeResultListCell.self, forCellReuseIdentifier: ProblemGradeResultListCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return tableView
     }()
     
@@ -118,10 +118,10 @@ class ProblemGradeViewController: UIViewController {
     
     private func getCellColor(indexPath: IndexPath) -> UIColor {
         if viewModel.isCorrectAnswer(indexPath) {
-            return AppColor.yellowGreen
+            return .white
         }
         
-        return .systemRed
+        return AppColor.lightRed
     }
 }
 
