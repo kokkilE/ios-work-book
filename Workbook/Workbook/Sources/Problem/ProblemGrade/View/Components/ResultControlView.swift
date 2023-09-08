@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class ResultControlView: UIStackView {
     private let overviewLabel = {
@@ -66,6 +67,8 @@ final class ResultControlView: UIStackView {
         
         return button
     }()
+    @Published var isExplainAllProblemButtonTapped = false
+    @Published var isExplainWrongProblemButtonTapped = false
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -106,11 +109,11 @@ final class ResultControlView: UIStackView {
     }
     
     @objc private func explainWrongProblem() {
-        
+        isExplainWrongProblemButtonTapped = true
     }
     
     @objc private func explainAllProblem() {
-        
+        isExplainAllProblemButtonTapped = true
     }
 }
 

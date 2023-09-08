@@ -123,14 +123,18 @@ class ProblemGradeViewController: UIViewController {
         
         return AppColor.lightRed
     }
+    
+    private func presentProblemExplainViewController() {
+        let problemExplainViewController = ProblemExplainViewController()
+        
+        navigationController?.pushViewController(problemExplainViewController, animated: true)
+    }
 }
 
 extension ProblemGradeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let problemExplainViewController = ProblemExplainViewController()
-        
-        navigationController?.pushViewController(problemExplainViewController, animated: true)
+        presentProblemExplainViewController()
     }
 }
