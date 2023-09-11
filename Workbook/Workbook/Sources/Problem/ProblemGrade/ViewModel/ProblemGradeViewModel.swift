@@ -42,9 +42,26 @@ final class ProblemGradeViewModel: UserAnswerProcessing {
         return false
     }
     
-    private func grade() {
-        guard let selectedWorkbook else { return }
+    func getProblem(at index: Int) -> Problem? {
+        return workbookManager.getProblem(at: index)
+    }
+    
+    func getWrongProblemList() -> [Problem] {
+        var problemList = [Problem]()
+        let indexRange = userAnswerList.startIndex...userAnswerList.endIndex
         
+        for index in indexRange {
+            if correctProblemIndex.contains(index) { continue }
+            
+            guard let problem = workbookManager.getProblem(at: index) else { continue }
+            
+            problemList.append(problem)
+        }
+        
+        return problemList
+    }
+    
+    private func grade() {
         let indexRange = userAnswerList.startIndex...userAnswerList.endIndex
         
         for index in indexRange {
@@ -52,11 +69,11 @@ final class ProblemGradeViewModel: UserAnswerProcessing {
             
             switch userAnswer.problemType {
             case .shortAnswer:
-                if userAnswer.shortAnswer?.getExceptSpaces() == selectedWorkbook.getProblem(at: index)?.shortAnswer?.getExceptSpaces() {
+                if userAnswer.shortAnswer?.getExceptSpaces() == workbookManager.getProblem(at: index)?.shortAnswer?.getExceptSpaces() {
                     correctProblemIndex.insert(index)
                 }
             case .multipleChoice:
-                if userAnswer.multipleAnswer == selectedWorkbook.getProblem(at: index)?.multipleAnswer {
+                if userAnswer.multipleAnswer == workbookManager.getProblem(at: index)?.multipleAnswer {
                     correctProblemIndex.insert(index)
                 }
             }

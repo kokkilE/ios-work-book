@@ -38,7 +38,7 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
     init() {
         selectedWorkbook = workbookManager.selectedWorkbook()
         problemsCount = selectedWorkbook?.getProblemsCount()
-        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
+        currentProblem = workbookManager.getProblem(at: currentProblemIndex)
     }
     
     func moveToPrevious() {
@@ -47,7 +47,7 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
         
         isMovedToNext = false
         currentProblemIndex -= 1
-        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
+        currentProblem = workbookManager.getProblem(at: currentProblemIndex)
     }
     
     func moveToNext() {
@@ -60,7 +60,7 @@ final class ProblemSolveViewModel: UserAnswerProcessing {
         
         isMovedToNext = true
         currentProblemIndex += 1
-        currentProblem = selectedWorkbook?.getProblem(at: currentProblemIndex)
+        currentProblem = workbookManager.getProblem(at: currentProblemIndex)
     }
     
     func getProgressString() -> String? {
