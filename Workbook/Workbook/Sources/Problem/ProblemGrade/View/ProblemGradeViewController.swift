@@ -105,6 +105,18 @@ class ProblemGradeViewController: UIViewController {
                 self?.applySnapshot(problemList: problemList)
             }
             .store(in: &subscriptions)
+        
+        resultControlView.$isExplainAllProblemButtonTapped
+            .sink { [weak self] _ in
+                
+            }
+            .store(in: &subscriptions)
+        
+        resultControlView.$isExplainWrongProblemButtonTapped
+            .sink { [weak self] _ in
+                
+            }
+            .store(in: &subscriptions)
     }
     
     private func applySnapshot(problemList: [Problem]) {
