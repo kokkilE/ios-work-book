@@ -23,6 +23,7 @@ final class ProblemGradeViewModel: UserAnswerProcessing {
             return correctProblemIndex.count
         }
     }
+    var problemList: [Problem]?
     
     init(_ viewModel: UserAnswerProcessing) {
         selectedWorkbook = workbookManager.selectedWorkbook()

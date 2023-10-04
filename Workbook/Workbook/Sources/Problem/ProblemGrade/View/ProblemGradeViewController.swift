@@ -102,19 +102,20 @@ class ProblemGradeViewController: UIViewController {
     private func bind() {
         viewModel.requestProblemListPublisher()?
             .sink { [weak self] problemList in
+                self?.viewModel.problemList = problemList
                 self?.applySnapshot(problemList: problemList)
             }
             .store(in: &subscriptions)
         
         resultControlView.$isExplainAllProblemButtonTapped
             .sink { [weak self] _ in
-                
+                let problemList = self?.viewModel.problemList
             }
             .store(in: &subscriptions)
         
         resultControlView.$isExplainWrongProblemButtonTapped
             .sink { [weak self] _ in
-                
+                let problemList = self?.viewModel.getWrongProblemList()
             }
             .store(in: &subscriptions)
     }
@@ -146,6 +147,8 @@ class ProblemGradeViewController: UIViewController {
 extension ProblemGradeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let problem = viewModel.getProblem(at: indexPath.item)
         
         presentProblemExplainViewController()
     }
